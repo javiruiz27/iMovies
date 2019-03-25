@@ -1,9 +1,45 @@
 /*CSS code for iMovies*/
 
-.header {
-  padding: 60px;
-  text-align: center;
-  background: #1abc9c;
-  color: white;
-  font-size: 30px;
+/*Code of initial page*/
+body{
+  background-image: url("http://muestradecinecubano.albaceteporcuba.com/wp-content/uploads/2014/04/cinefondo.png");
+  font-family: Georgia, 'Times New Roman', Times, serif;
 }
+.centrado_inicialTit{
+  color: red;
+  font-weight: bold;
+  margin-top: 5%;
+  margin-left: 50%;
+}
+
+.centrado_inicialText{
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-weight: bold;
+
+  
+  margin-left: 45%;
+}
+
+.centrado_inicialbtn{
+ 
+  margin-left: 47%;
+}
+.logomd{
+  margin-left: 80%;
+ 
+  
+  width: 150px;
+  height: 150px;
+}
+
+.btn_face{
+  margin-left: 80%;
+  
+  
+  
+}
+
+
+
+/*=======================================*/
+

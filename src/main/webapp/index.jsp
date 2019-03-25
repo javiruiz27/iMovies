@@ -1,15 +1,12 @@
-
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta charset="ISO-8859-1">
 <title>iMovies</title>
 <link rel="stylesheet" href="css/iMovies.css">
 </head>
-<!--  header -->
-
-
-
 <body>
 
 	<div class = btn_face>
@@ -22,8 +19,8 @@
 		<h1>iMovies</h1>
 	</div>
 	<div class="centrado_inicialText">
-		<p>¡Busca tu película favorita y ve su tráiler</p>
-		<p>y cines más cercanos para disfrutarla!</p>
+		<p>Busca tu pelï¿½cula favorita y ve su trï¿½iler</p>
+		<p>y cines mï¿½s cercanos para disfrutarla!</p>
 
 
 	</div>
@@ -42,9 +39,5 @@
 		alt="Fallo en la carga de imagen">
 
 
-
-
 </body>
-
-
 </html>

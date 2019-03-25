@@ -13,8 +13,43 @@
 	</servlet-mapping>
 	
 	<welcome-file-list>
-		<welcome-file>index.html</welcome-file>
+		<welcome-file>index.jsp</welcome-file>
 	</welcome-file-list>
+	
+	  <!--    Facebook OAuth Servlets -->    
+  <!--    TODO: Completar con los 2 servlets para implementar OAuth con facebook -->
+ <servlet>
+    <description></description>
+    <display-name>FacebookAuthController</display-name>
+    <servlet-name>FacebookAuthController</servlet-name>
+    <servlet-class>aiss.controller.oauth.GenericAuthController</servlet-class>
+    <init-param>
+    	<param-name>provider</param-name>
+    	<param-value>Facebook</param-value>
+    </init-param>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>FacebookAuthController</servlet-name>
+    <url-pattern>/AuthController/Facebook</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>FacebookAuth2Callback</display-name>
+    <servlet-name>FacebookOAuth2Callback</servlet-name>
+    <servlet-class>aiss.controller.oauth.OAuth2Callback</servlet-class>
+    <init-param>
+    	<param-name>provider</param-name>
+    	<param-value>Facebook</param-value>
+    </init-param>
+    <init-param>
+    	<param-name>onSuccess</param-name>
+    	<param-value>redirect:/facebookFriendsListing</param-value>
+    </init-param>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>FacebookOAuth2Callback</servlet-name>
+    <url-pattern>/oauth2callback/Facebook</url-pattern>
+  </servlet-mapping>
 	
 	<!--  OAUTH SERVLETS 
   
