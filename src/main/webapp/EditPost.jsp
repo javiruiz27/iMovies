@@ -14,7 +14,7 @@
 			<br>
 			<div class="bottom_links">
 				<button type="submit" class="button">Publicar en Facebook</button>
-				<button type="button" onClick="javascript:window.location.href='index.html'" class="button">Cancel</button>
+				<button type="button" onClick="javascript:window.location.href='index.jsp'" class="button">Cancel</button>
 			</div>
 		</form>
 	</div>

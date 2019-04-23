@@ -48,17 +48,18 @@ public class InfoController extends HttpServlet {
 
 		Details detalles = tmdb.getDetalles(id2);
 		String overview = detalles.getOverview();
-		String title = detalles.getTitle();
-		String fecha = detalles.getReleaseDate();
+		String imdbID = detalles.getImdbId();
+		String fechaEstreno = detalles.getReleaseDate();
 		Double puntuacion = detalles.getVoteAverage();
 
 		rd = request.getRequestDispatcher("/infoPeliculas.jsp");
 		request.setAttribute("overview", overview);
-		request.setAttribute("titulo", title);
-		request.setAttribute("fechaEstreno", fecha);
+		request.setAttribute("imdbID", imdbID);
+		request.setAttribute("titulo", titulo);
+		request.setAttribute("fechaEstreno", fechaEstreno);
 		request.setAttribute("puntuacion", puntuacion);
 
-		log.log(Level.INFO, "Mostrando información detallada de: " + titulo + "con id: " + id);
+		log.log(Level.INFO, "Mostrando información detallada de: " + titulo + " con id: " + id);
 		rd.forward(request, response);
 
 	}

@@ -20,8 +20,8 @@
 		<h1>iMovies</h1>
 	</div>
 	<div class="centrado_inicialText">
-		<p>Search your favorite film and see the trailer </p>
-		<p>and nearest cinemas to watch it</p>
+		<p>Find your favorite movie, watch the trailer and find your
+			nearest cinema</p>
 
 
 	</div>
@@ -38,7 +38,7 @@
 		<form id="actualesForm" action="PeliculasActualesSearchController"
 			method="post">
 
-			<br>Películas actuales en cartelera<br> <br> <input
+			<br> Current movies on the billboard<br> <br> <input
 				type="submit" name="" value="Ver Cartelera">
 		</form>
 	</div>
