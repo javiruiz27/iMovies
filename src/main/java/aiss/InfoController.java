@@ -15,6 +15,8 @@ import aiss.model.resource.TMDBSearchResource;
 import aiss.model.tmdb.Details;
 import aiss.model.tmdb.Result;
 import aiss.model.tmdb.SearchMovie;
+import aiss.model.tmdb.VideoResult;
+import aiss.model.tmdb.Videos;
 
 /**
  * Servlet implementation class InfoController
@@ -51,8 +53,12 @@ public class InfoController extends HttpServlet {
 		String imdbID = detalles.getImdbId();
 		String fechaEstreno = detalles.getReleaseDate();
 		Double puntuacion = detalles.getVoteAverage();
+		Videos v = tmdb.getVideo(id2);
+		List<VideoResult> result = v.getResults();
+		String url = result.get(0).getKey();
 
 		rd = request.getRequestDispatcher("/infoPeliculas.jsp");
+		request.setAttribute("url", url);
 		request.setAttribute("overview", overview);
 		request.setAttribute("imdbID", imdbID);
 		request.setAttribute("titulo", titulo);

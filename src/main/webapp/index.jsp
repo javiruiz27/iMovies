@@ -43,6 +43,10 @@
 		</form>
 	</div>
 
+	<div>
+		<a class="" href="busquedaCines.jsp">Busca tu cine</a>
+	</div>
+
 
 
 	<img class="logomd" src="images/logo.jpeg"

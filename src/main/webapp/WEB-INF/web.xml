@@ -73,4 +73,14 @@
     <servlet-name>InfoController</servlet-name>
     <url-pattern>/InfoController</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>PlacesSearchController</display-name>
+    <servlet-name>PlacesSearchController</servlet-name>
+    <servlet-class>aiss.PlacesSearchController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>PlacesSearchController</servlet-name>
+    <url-pattern>/PlacesSearchController</url-pattern>
+  </servlet-mapping>
 </web-app>
