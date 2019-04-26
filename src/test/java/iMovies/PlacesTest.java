@@ -16,7 +16,7 @@ public class PlacesTest {
 	@Test
 	public void getCines() throws UnsupportedEncodingException{
 		
-		String lugar = "Seville";
+		String lugar = "sevilla";
 		
 		PlacesSearchResource places = new PlacesSearchResource();
 		

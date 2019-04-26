@@ -9,7 +9,7 @@ import aiss.model.places.Search;
 
 public class PlacesSearchResource {
 
-	private static final String PLACES_API_KEY = "AIzaSyBtt13oReVlb_S7QjIPXG_KM8-bWLmEI6I";
+	private static final String PLACES_API_KEY = "AIzaSyDVW1Wu80726Oq6WTidJWtIw_D3tKf2CAs";
 	private static final Logger log = Logger.getLogger(PlacesSearchResource.class.getName());
 
 	public Search getPlaces(String place) throws UnsupportedEncodingException {
