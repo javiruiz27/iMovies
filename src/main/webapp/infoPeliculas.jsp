@@ -11,6 +11,10 @@
 </head>
 <body>
 
+<img alt="Poster" src="${requestScope.url2}">
+
+
+
 	<fieldset>
 		<legend>
 			Mostrando información de "

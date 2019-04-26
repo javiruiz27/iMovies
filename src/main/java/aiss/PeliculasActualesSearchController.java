@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import aiss.model.resource.TMDBSearchResource;
 import aiss.model.tmdb.Result;
+import aiss.model.tmdb.SearchImagen;
 import aiss.model.tmdb.SearchMovie;
 
 /**
@@ -37,17 +38,21 @@ public class PeliculasActualesSearchController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		RequestDispatcher rd = null;
-
+	
+		
 		TMDBSearchResource tmdb = new TMDBSearchResource();
-
+		
+		
 		SearchMovie cartelera = tmdb.getCartelera();
 
 		List<Result> pelActuales = cartelera.getResults();
+		
 
 		if (cartelera != null || pelActuales.size() > 0) {
 			rd = request.getRequestDispatcher("/peliculasActuales.jsp");
 			request.setAttribute("pelActuales", pelActuales);
 			log.log(Level.INFO, "Se han cargado las películas actuales.");
+			
 		} else {
 			log.log(Level.INFO, "Ha ocurrido un fallo al cargar las películas actuales.");
 			rd = request.getRequestDispatcher("/error.jsp");

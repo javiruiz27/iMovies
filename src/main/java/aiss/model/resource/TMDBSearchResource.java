@@ -6,6 +6,7 @@ import java.util.logging.Logger;
 import org.restlet.resource.ClientResource;
 
 import aiss.model.tmdb.Details;
+import aiss.model.tmdb.SearchImagen;
 import aiss.model.tmdb.SearchMovie;
 import aiss.model.tmdb.Videos;
 
@@ -55,5 +56,16 @@ public class TMDBSearchResource {
 
 		return ps;
 	}
+	
+	
 
+	public SearchImagen getImagen(Integer id) throws UnsupportedEncodingException {
+
+		String URL = "https://api.themoviedb.org/3/movie/"+ id +"/images?api_key=e925e771d23f12d0770dad8d0309141f&language=ES";
+
+		ClientResource cr = new ClientResource(URL);
+		SearchImagen ps = cr.get(SearchImagen.class);
+
+		return ps;
+	}
 }

@@ -13,7 +13,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import aiss.model.resource.TMDBSearchResource;
 import aiss.model.tmdb.Details;
+import aiss.model.tmdb.Poster;
 import aiss.model.tmdb.Result;
+import aiss.model.tmdb.SearchImagen;
 import aiss.model.tmdb.SearchMovie;
 import aiss.model.tmdb.VideoResult;
 import aiss.model.tmdb.Videos;
@@ -42,12 +44,17 @@ public class InfoController extends HttpServlet {
 		RequestDispatcher rd = null;
 
 		TMDBSearchResource tmdb = new TMDBSearchResource();
-
+		//String url2 = "https://image.tmdb.org/t/p/w500/kqjL17yufvn9OVLyXYpvtyrFfak.jpg";
 		String titulo = request.getParameter("titulo");
 		String id = request.getParameter("id");
 
 		Integer id2 = Integer.parseInt(id);
-
+		
+		SearchImagen imagen = tmdb.getImagen(id2);
+		List<Poster> imagenes = imagen.getPosters();
+		Poster poster = imagenes.get(0);
+		String url2 ="https://image.tmdb.org/t/p/w300/" + poster.getFilePath();
+		
 		Details detalles = tmdb.getDetalles(id2);
 		String overview = detalles.getOverview();
 		String imdbID = detalles.getImdbId();
@@ -64,6 +71,7 @@ public class InfoController extends HttpServlet {
 		request.setAttribute("titulo", titulo);
 		request.setAttribute("fechaEstreno", fechaEstreno);
 		request.setAttribute("puntuacion", puntuacion);
+		request.setAttribute("url2", url2);
 
 		log.log(Level.INFO, "Mostrando información detallada de: " + titulo + " con id: " + id);
 		rd.forward(request, response);
