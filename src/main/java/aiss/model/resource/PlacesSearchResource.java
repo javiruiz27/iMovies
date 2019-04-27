@@ -21,5 +21,18 @@ public class PlacesSearchResource {
 		return result;
 
 	}
+	
+	public Search getFotos(String referencia) throws UnsupportedEncodingException {
+		String url = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=" + referencia+ "&key=" + PLACES_API_KEY;
+						
+						ClientResource cr = new ClientResource(url);
+						Search result = cr.get(Search.class);
+
+		return result;
+
+	}
+	
+	
+	
 
 }

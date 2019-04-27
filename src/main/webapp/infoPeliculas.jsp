@@ -12,7 +12,18 @@
 <body>
 
 
-<img alt="Poster" src="${requestScope.url2}">
+<img alt="Poster" src="${requestScope.url2}"> 	
+
+<object
+  type="application/x-shockwave-flash"
+  data="${requestScope.url3}"
+  style="width: 640px; height:360px;">
+  <param
+    name="movie"
+    value="${requestScope.url3}">
+  ERROR (no puede mostrarse el objeto)
+</object>
+
 
 
 	<fieldset>
@@ -34,10 +45,11 @@
 		</span><br />
 
 	 <br>
-			<a class="" href="${requestScope.url3}" target="_blank">VER TRAILER</a>
+			
 		
 
 	</fieldset>
+	
 
 
 

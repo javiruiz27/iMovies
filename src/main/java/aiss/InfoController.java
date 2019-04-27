@@ -1,7 +1,6 @@
 package aiss;
 
 import java.io.IOException;
-
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -12,15 +11,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.google.apphosting.utils.remoteapi.RemoteApiPb.Request;
-
 import aiss.model.resource.TMDBSearchResource;
 import aiss.model.tmdb.Details;
 import aiss.model.tmdb.Poster;
-import aiss.model.tmdb.Result;
 import aiss.model.tmdb.Result2;
 import aiss.model.tmdb.SearchImagen;
-import aiss.model.tmdb.SearchMovie;
 import aiss.model.tmdb.SearchVideo;
 
 /**
@@ -50,7 +45,7 @@ public class InfoController extends HttpServlet {
 		//String url2 = "https://image.tmdb.org/t/p/w500/kqjL17yufvn9OVLyXYpvtyrFfak.jpg";
 		String titulo = request.getParameter("titulo");
 		String id = request.getParameter("id");
-		String actuales = request.getParameter("actuales");
+
 
 		//String url3= "https://www.themoviedb.org/movie/299537-captain-marvel#play=Z1BCujX3pw8";
 		Integer id2 = Integer.parseInt(id);
@@ -63,7 +58,7 @@ public class InfoController extends HttpServlet {
 		SearchVideo video= tmdb.getVideo(id2);
 		List<Result2> videos= video.getResults();
 		Result2 r2= videos.get(0);
-		String url3= "https://www.youtube.com/watch?v=" + r2.getKey();
+		String url3= "https://www.youtube.com/v/" + r2.getKey();
 		
 		Details detalles = tmdb.getDetalles(id2);
 		String overview = detalles.getOverview();
@@ -80,9 +75,19 @@ public class InfoController extends HttpServlet {
 			request.setAttribute("puntuacion", puntuacion);
 			request.setAttribute("url2", url2);
 			request.setAttribute("url3", url3);
-			request.setAttribute("actuales", actuales);
+			
+			log.log(Level.INFO, "No hay problemas");
+			
+			
 		}else {
 			rd=request.getRequestDispatcher("/infoPeliculasError.jsp");
+			request.setAttribute("overview", overview);
+			request.setAttribute("imdbID", imdbID);
+			request.setAttribute("titulo", titulo);
+			request.setAttribute("fechaEstreno", fechaEstreno);
+			request.setAttribute("puntuacion", puntuacion);
+			request.setAttribute("url3", url3);
+			log.log(Level.INFO, "No existen imagenes");
 		}
 
 		log.log(Level.INFO, "Mostrando información detallada de: " + titulo + " con id: " + id);

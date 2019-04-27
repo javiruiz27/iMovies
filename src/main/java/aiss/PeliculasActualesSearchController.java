@@ -1,7 +1,6 @@
 package aiss;
 
 import java.io.IOException;
-
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -14,7 +13,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import aiss.model.resource.TMDBSearchResource;
 import aiss.model.tmdb.Result;
-import aiss.model.tmdb.SearchImagen;
 import aiss.model.tmdb.SearchMovie;
 
 /**
