@@ -15,9 +15,11 @@
 			"
 		</legend>
 
-		<c:forEach items="${requestScope.cines}" var="cine" end="4">
-			<span>Lugar: <c:out value="${cine.formattedAddress}" />
-			</span>
+		<c:forEach items="${requestScope.cines}" var="cine" end="8">
+			<span><c:out value="${cine.name}" /> - <c:out
+					value="${cine.geometry.location.lat}"></c:out>-  
+					<c:out value="${cine.geometry.location.lng}"></c:out> </span>
+					- <c:out value="${cine.opening_hours.open_now}"></c:out>
 			<br />
 		</c:forEach>
 

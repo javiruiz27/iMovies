@@ -24,9 +24,14 @@ public class PlacesTest {
 		
 		List<Result> result = search.getResults();
 		
-		assertNotNull("Search result is null", result);
 		
-		System.out.println("Los cines en sevilla son: " + result.size());
+		for (Result vr : result) {
+
+			String key = vr.getName();
+			System.out.println(key);
+
+		}
+
 	
 				
 	}

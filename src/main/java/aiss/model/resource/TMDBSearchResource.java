@@ -1,6 +1,7 @@
 package aiss.model.resource;
 
 import java.io.UnsupportedEncodingException;
+
 import java.util.logging.Logger;
 
 import org.restlet.resource.ClientResource;

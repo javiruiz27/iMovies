@@ -10,12 +10,12 @@
 
 	<h1>ENCUENTRA TU CINE MÁS CERCANO</h1>
 
-	<div class="container">
+	<div class="">
 
-		<p class="message"></p>
+		<p class=""></p>
 
 		<form action="PlacesSearchController" method="post">
-			<input type="text" name="searchQuery" value=> <input
+			<input type="text" name="ciudad" value=> <input
 				class="submit" type="submit" name="searchBtn" title="search"
 				value="Buscar">
 		</form>
