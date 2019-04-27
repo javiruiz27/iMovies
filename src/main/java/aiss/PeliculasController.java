@@ -49,7 +49,7 @@ public class PeliculasController extends HttpServlet {
 		if (pelPorNombre != null || result.size() > 0) {
 			rd = request.getRequestDispatcher("/peliculasActuales.jsp");
 			request.setAttribute("name", name);
-			request.setAttribute("pelicula", result);
+			request.setAttribute("pelActuales", result);
 			log.log(Level.INFO, "Se han cargado las películas con el nombre " + name);
 		} else {
 			log.log(Level.INFO, "Ha ocurrido un error al cargar los cines de " + name);
