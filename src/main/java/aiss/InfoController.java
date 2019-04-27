@@ -12,14 +12,16 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.google.apphosting.utils.remoteapi.RemoteApiPb.Request;
+
 import aiss.model.resource.TMDBSearchResource;
 import aiss.model.tmdb.Details;
 import aiss.model.tmdb.Poster;
 import aiss.model.tmdb.Result;
+import aiss.model.tmdb.Result2;
 import aiss.model.tmdb.SearchImagen;
 import aiss.model.tmdb.SearchMovie;
-import aiss.model.tmdb.VideoResult;
-import aiss.model.tmdb.Videos;
+import aiss.model.tmdb.SearchVideo;
 
 /**
  * Servlet implementation class InfoController
@@ -49,6 +51,7 @@ public class InfoController extends HttpServlet {
 		String titulo = request.getParameter("titulo");
 		String id = request.getParameter("id");
 
+		//String url3= "https://www.themoviedb.org/movie/299537-captain-marvel#play=Z1BCujX3pw8";
 		Integer id2 = Integer.parseInt(id);
 		
 		SearchImagen imagen = tmdb.getImagen(id2);
@@ -56,26 +59,34 @@ public class InfoController extends HttpServlet {
 		Poster poster = imagenes.get(0);
 		String url2 ="https://image.tmdb.org/t/p/w300/" + poster.getFilePath();
 		
+		SearchVideo video= tmdb.getVideo(id2);
+		List<Result2> videos= video.getResults();
+		Result2 r2= videos.get(0);
+		String url3= "https://www.youtube.com/watch?v=" + r2.getKey();
+		
 		Details detalles = tmdb.getDetalles(id2);
 		String overview = detalles.getOverview();
 		String imdbID = detalles.getImdbId();
 		String fechaEstreno = detalles.getReleaseDate();
 		Double puntuacion = detalles.getVoteAverage();
-		Videos v = tmdb.getVideo(id2);
-		List<VideoResult> result = v.getResults();
-		String url = result.get(0).getKey();
 
-		rd = request.getRequestDispatcher("/infoPeliculas.jsp");
-		request.setAttribute("url", url);
-		request.setAttribute("overview", overview);
-		request.setAttribute("imdbID", imdbID);
-		request.setAttribute("titulo", titulo);
-		request.setAttribute("fechaEstreno", fechaEstreno);
-		request.setAttribute("puntuacion", puntuacion);
-		request.setAttribute("url2", url2);
+		if(poster.getFilePath()!=null || imagenes.size()!=0) {
+			rd = request.getRequestDispatcher("/infoPeliculas.jsp");
+			request.setAttribute("overview", overview);
+			request.setAttribute("imdbID", imdbID);
+			request.setAttribute("titulo", titulo);
+			request.setAttribute("fechaEstreno", fechaEstreno);
+			request.setAttribute("puntuacion", puntuacion);
+			request.setAttribute("url2", url2);
+			request.setAttribute("url3", url3);
+		}else {
+			rd=request.getRequestDispatcher("/infoPeliculasError.jsp");
+		}
 
 		log.log(Level.INFO, "Mostrando información detallada de: " + titulo + " con id: " + id);
 		rd.forward(request, response);
+		
+		
 
 	}
 

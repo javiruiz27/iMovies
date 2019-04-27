@@ -1,6 +1,7 @@
 package aiss;
 
 import java.io.IOException;
+
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -13,8 +14,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import aiss.model.resource.TMDBSearchResource;
 import aiss.model.tmdb.Details;
-import aiss.model.tmdb.VideoResult;
-import aiss.model.tmdb.Videos;
+import aiss.model.tmdb.Result2;
+import aiss.model.tmdb.SearchVideo;
 
 
 
@@ -47,13 +48,13 @@ public class SearchMoviesController extends HttpServlet {
 		
 		TMDBSearchResource tmdb = new TMDBSearchResource();		
 		
-		Videos v = tmdb.getVideo(nuevo);
+		SearchVideo v = tmdb.getVideo(nuevo);
 		Details detalles = tmdb.getDetalles(nuevo);	
 		
 		String sinopsis = detalles.getOverview();
 		String fechaEstreno = detalles.getReleaseDate();
 		
-		List<VideoResult> listita = v.getResults();
+		List<Result2> listita = v.getResults();
 		
 		String url = listita.get(0).getKey();
 		
