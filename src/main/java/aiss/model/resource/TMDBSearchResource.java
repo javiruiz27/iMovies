@@ -36,6 +36,17 @@ public class TMDBSearchResource {
 
 		return ps;
 	}
+	
+	public SearchMovie getMovieByName(String name) throws UnsupportedEncodingException{
+		
+		String URL = "https://api.themoviedb.org/3/search/movie?api_key=" + TMDB_API_KEY + "&language=ES&query="
+				+ name + "&page=1";
+		ClientResource cr = new ClientResource(URL);
+		SearchMovie ps = cr.get(SearchMovie.class);
+		
+		return ps;
+		
+	}
 
 	public SearchVideo getVideo(Integer id) throws UnsupportedEncodingException {
 

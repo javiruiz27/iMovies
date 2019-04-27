@@ -12,19 +12,18 @@ import aiss.model.places.Search;
 import aiss.model.resource.PlacesSearchResource;
 
 public class PlacesTest {
-	
+
 	@Test
-	public void getCines() throws UnsupportedEncodingException{
-		
+	public void getCines() throws UnsupportedEncodingException {
+
 		String lugar = "sevilla";
-		
+
 		PlacesSearchResource places = new PlacesSearchResource();
-		
+
 		Search search = places.getPlaces(lugar);
-		
+
 		List<Result> result = search.getResults();
-		
-		
+
 		for (Result vr : result) {
 
 			String key = vr.getName();
@@ -32,8 +31,8 @@ public class PlacesTest {
 
 		}
 
-	
-				
 	}
+	
+
 
 }

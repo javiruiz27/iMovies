@@ -27,8 +27,8 @@
 	</div>
 
 	<div class="centrado_inicialbtn">
-		<form id=action=>
-			<input type="text" name="searchQuery" value=> <input
+		<form id="" action="PeliculasController" >
+			<input type="text" name="name" value=> <input
 				class="submit" type="submit" name="searchBtn" title="search"
 				value="Buscar">
 		</form>

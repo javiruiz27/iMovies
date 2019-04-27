@@ -7,6 +7,7 @@ import java.io.UnsupportedEncodingException;
 import org.junit.Test;
 
 import aiss.model.resource.TMDBSearchResource;
+import aiss.model.tmdb.Result;
 import aiss.model.tmdb.SearchMovie;
 
 public class TMDBTest {
@@ -20,6 +21,17 @@ public class TMDBTest {
 		assertNotNull("Search result is null", result);
 		
 		System.out.println("El tamaño de la cartelera es: " + result.getTotalResults());
+		
+	}
+	
+	@Test 
+	public void getPeliculasPorNombre() throws UnsupportedEncodingException{
+		String name = "Avengers";
+		TMDBSearchResource tmdb = new TMDBSearchResource();
+		SearchMovie result = tmdb.getMovieByName(name);
+		Result res = result.getResults().get(0);
+		
+		System.out.println(res.getOriginalTitle());
 		
 	}
 

@@ -83,4 +83,14 @@
     <servlet-name>PlacesSearchController</servlet-name>
     <url-pattern>/PlacesSearchController</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>PeliculasController</display-name>
+    <servlet-name>PeliculasController</servlet-name>
+    <servlet-class>aiss.PeliculasController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>PeliculasController</servlet-name>
+    <url-pattern>/PeliculasController</url-pattern>
+  </servlet-mapping>
 </web-app>
