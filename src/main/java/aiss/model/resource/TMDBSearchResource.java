@@ -1,6 +1,7 @@
 package aiss.model.resource;
 
 import java.io.UnsupportedEncodingException;
+
 import java.util.logging.Logger;
 
 import org.restlet.resource.ClientResource;
@@ -8,7 +9,7 @@ import org.restlet.resource.ClientResource;
 import aiss.model.tmdb.Details;
 import aiss.model.tmdb.SearchImagen;
 import aiss.model.tmdb.SearchMovie;
-import aiss.model.tmdb.Videos;
+import aiss.model.tmdb.SearchVideo;
 
 public class TMDBSearchResource {
 
@@ -36,13 +37,14 @@ public class TMDBSearchResource {
 		return ps;
 	}
 
-	public Videos getVideo(Integer movieId) throws UnsupportedEncodingException {
+	public SearchVideo getVideo(Integer id) throws UnsupportedEncodingException {
 
-		String URL = "https://api.themoviedb.org/3/movie/" + movieId + "/videos?api_key=" + TMDB_API_KEY
-				+ "&language=en-US";
+		String URL = "https://api.themoviedb.org/3/movie/" +id + "/videos?api_key=" + TMDB_API_KEY
+				+ "&language=ES";
+		//https://api.themoviedb.org/3/movie/{movie_id}/videos?api_key=<<api_key>>&language=en-US
 
 		ClientResource cr = new ClientResource(URL);
-		Videos ps = cr.get(Videos.class);
+		SearchVideo ps = cr.get(SearchVideo.class);
 		
 		return ps;
 	}
@@ -61,7 +63,7 @@ public class TMDBSearchResource {
 
 	public SearchImagen getImagen(Integer id) throws UnsupportedEncodingException {
 
-		String URL = "https://api.themoviedb.org/3/movie/"+ id +"/images?api_key=e925e771d23f12d0770dad8d0309141f&language=ES";
+		String URL = "https://api.themoviedb.org/3/movie/"+ id +"/images?api_key=" + TMDB_API_KEY + "&language=ES";
 
 		ClientResource cr = new ClientResource(URL);
 		SearchImagen ps = cr.get(SearchImagen.class);

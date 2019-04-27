@@ -11,8 +11,8 @@
 </head>
 <body>
 
-<img alt="Poster" src="${requestScope.url2}">
-
+<p> Error al cargar imagen</p>
+<br>
 
 	<fieldset>
 		<legend>
