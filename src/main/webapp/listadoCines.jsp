@@ -19,7 +19,7 @@
 			<span><c:out value="${cine.name}" /> - <c:out
 					value="${cine.geometry.location.lat}"></c:out>-  
 					<c:out value="${cine.geometry.location.lng}"></c:out> </span>
-					- <c:out value="${cine.opening_hours.open_now}"></c:out>
+					
 			<br />
 		</c:forEach>
 
