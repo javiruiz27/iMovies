@@ -48,10 +48,12 @@ public class PeliculasActualesSearchController extends HttpServlet {
 
 		List<Result> pelActuales = cartelera.getResults();
 		
-
+	
+		
 		if (cartelera != null || pelActuales.size() > 0) {
 			rd = request.getRequestDispatcher("/peliculasActuales.jsp");
 			request.setAttribute("pelActuales", pelActuales);
+		
 			log.log(Level.INFO, "Se han cargado las películas actuales.");
 			
 		} else {

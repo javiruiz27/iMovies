@@ -50,7 +50,7 @@ public class InfoController extends HttpServlet {
 		//String url2 = "https://image.tmdb.org/t/p/w500/kqjL17yufvn9OVLyXYpvtyrFfak.jpg";
 		String titulo = request.getParameter("titulo");
 		String id = request.getParameter("id");
-		
+		String actuales = request.getParameter("actuales");
 
 		//String url3= "https://www.themoviedb.org/movie/299537-captain-marvel#play=Z1BCujX3pw8";
 		Integer id2 = Integer.parseInt(id);
@@ -80,6 +80,7 @@ public class InfoController extends HttpServlet {
 			request.setAttribute("puntuacion", puntuacion);
 			request.setAttribute("url2", url2);
 			request.setAttribute("url3", url3);
+			request.setAttribute("actuales", actuales);
 		}else {
 			rd=request.getRequestDispatcher("/infoPeliculasError.jsp");
 		}

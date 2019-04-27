@@ -11,6 +11,7 @@
 </head>
 <body>
 
+
 <img alt="Poster" src="${requestScope.url2}">
 
 
@@ -41,8 +42,13 @@
 
 
 	<a class="" href="index.jsp">Inicio</a>
+	
 
-	<a class="" href="/PeliculasActualesSearchController">Volver atrás</a>
+	
+	<a href="javascript:history.back()"> Volver Atrás</a>
+	
+	
+	
 
 
 </body>

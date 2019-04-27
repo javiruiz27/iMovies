@@ -21,6 +21,7 @@
 
 				<input name="titulo" type="hidden" value="${pelicula.title}">
 				<input name="id" type="hidden" value="${pelicula.id}">
+			
 
 
 
