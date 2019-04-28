@@ -41,8 +41,10 @@ public class PeliculasController extends HttpServlet {
 		RequestDispatcher rd = null;
 		
 
+		
+		if( name.length()>0) {
+			
 		TMDBSearchResource tmdb = new TMDBSearchResource();
-
 		SearchMovie pelPorNombre = tmdb.getMovieByName(name);
 
 		List<Result> result = pelPorNombre.getResults();
@@ -51,16 +53,23 @@ public class PeliculasController extends HttpServlet {
 		
 
 		
-		if (pelPorNombre != null || result.size() > 0) {
+		if ( result.size() > 0 ) {
 			rd = request.getRequestDispatcher("/peliculasActuales.jsp");
 			request.setAttribute("name", name);
 			request.setAttribute("pelActuales", result);
 			request.setAttribute("actuales", actuales);
-		
+
 			log.log(Level.INFO, "Se han cargado las películas con el nombre " + name);
-		} else {
+		}else {
+			rd= request.getRequestDispatcher("/error.jsp");
 			log.log(Level.INFO, "Ha ocurrido un error al cargar los cines de " + name);
-			rd = request.getRequestDispatcher("/error.jsp");
+		}
+		
+		} else {
+			rd = request.getRequestDispatcher("/index.jsp");
+			
+			log.log(Level.INFO, "Has dejado el nombre en blanco");
+			
 		}
 
 		rd.forward(request, response);

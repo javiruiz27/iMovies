@@ -50,7 +50,7 @@ public class PeliculasActualesSearchController extends HttpServlet {
 		
 	
 		
-		if (cartelera != null || pelActuales.size() > 0) {
+		if ( pelActuales.size() > 0) {
 			rd = request.getRequestDispatcher("/peliculasActuales.jsp");
 			request.setAttribute("pelActuales", pelActuales);
 			request.setAttribute("actuales", actuales);

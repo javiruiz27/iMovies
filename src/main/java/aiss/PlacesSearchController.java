@@ -48,7 +48,7 @@ public class PlacesSearchController extends HttpServlet {
 
 		List<Result> result = cines.getResults();
 
-		if (cines != null || result.size() > 0) {
+		if ( result.size() > 0) {
 			rd = request.getRequestDispatcher("/listadoCines.jsp");
 			request.setAttribute("lugar", lugar);
 			request.setAttribute("cines", result);
@@ -57,7 +57,6 @@ public class PlacesSearchController extends HttpServlet {
 			log.log(Level.INFO, "Ha ocurrido un error al cargar los cines de " + lugar);
 			rd = request.getRequestDispatcher("/error.jsp");
 		}
-
 		rd.forward(request, response);
 
 	}

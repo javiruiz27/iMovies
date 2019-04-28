@@ -51,7 +51,11 @@ public class InfoController extends HttpServlet {
 		//String url3= "https://www.themoviedb.org/movie/299537-captain-marvel#play=Z1BCujX3pw8";
 		Integer id2 = Integer.parseInt(id);
 		
+		
+		
 		SearchImagen imagen = tmdb.getImagen(id2);
+		
+		
 		List<Poster> imagenes = imagen.getPosters();
 		Poster poster = imagenes.get(0);
 		String url2 ="https://image.tmdb.org/t/p/w300/" + poster.getFilePath();
@@ -94,6 +98,8 @@ public class InfoController extends HttpServlet {
 			
 			log.log(Level.INFO, "No existen imagenes");
 		}
+	
+		
 
 		log.log(Level.INFO, "Mostrando información detallada de: " + titulo + " con id: " + id);
 		rd.forward(request, response);
