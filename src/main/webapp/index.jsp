@@ -1,9 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
+<meta charset="UTF-8">
 <title>iMovies</title>
 <link rel="stylesheet" href="css/iMovies.css">
 </head>
@@ -20,9 +20,7 @@
 		<h1>iMovies</h1>
 	</div>
 	<div class="centrado_inicialText">
-		<p>Find your favorite movie, watch the trailer and find your
-			nearest cinema</p>
-
+		<p>Encuentra tu película favorita y mira su tráiler</p>
 
 	</div>
 
@@ -38,13 +36,9 @@
 		<form id="actualesForm" action="PeliculasActualesSearchController"
 			method="post">
 
-			<br> Current movies on the billboard<br> <br> <input
+			<br> Películas actuales en la cartelera.<br> <br> <input
 				type="submit" name="" value="Ver Cartelera">
 		</form>
-	</div>
-
-	<div>
-		<a class="" href="busquedaCines.jsp">Busca tu cine</a>
 	</div>
 
 

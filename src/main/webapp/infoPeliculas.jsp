@@ -1,34 +1,42 @@
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
-<title>Información de la película</title>
+<meta charset="UTF-8">
+<title>InformaciÃ³n de la pelÃ­cula</title>
 </head>
 <body>
 
 
-<img alt="Poster" src="${requestScope.url2}"> 	
-
-<object
-  type="application/x-shockwave-flash"
-  data="${requestScope.url3}"
-  style="width: 640px; height:360px;">
-  <param
-    name="movie"
-    value="${requestScope.url3}">
-  ERROR (no puede mostrarse el objeto)
-</object>
+	<img alt="Poster" src="${requestScope.url2}"> 	
+  
+	<object
+ 	 type="application/x-shockwave-flash"
+ 	 data="${requestScope.url3}"
+  	style="width: 640px; height:360px;">
+ 	 <param
+  	  name="movie"
+   	 value="${requestScope.url3}">
+ 	 ERROR (no puede mostrarse el video)
+	</object>
+	<c:if test="${requestScope.actuales=='si'}">
+		<form action="PlacesSearchController" method="post">
+		<p>Â¿En que ciudad te encuentras?</p>
+			<input type="text" name="ciudad" value=> <input
+				class="submit" type="submit" name="searchBtn" title="search"
+				value="Buscar">
+		</form>
+		</c:if>
 
 
 
 	<fieldset>
 		<legend>
-			Mostrando información de "
+			Mostrando informaciÃ³n de "
 			<c:out value="${requestScope.titulo}" />
 			"
 		</legend>
@@ -43,6 +51,8 @@
 		</span><br /> <span>Sinopsis: <c:out value="${requestScope.overview}" />
 		<br>
 		</span><br />
+		
+	
 
 	 <br>
 			
@@ -57,7 +67,7 @@
 	
 
 	
-	<a href="javascript:history.back()"> Volver Atrás</a>
+	<a href="javascript:history.back()"> Volver AtrÃ¡s</a>
 	
 	
 	

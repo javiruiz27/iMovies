@@ -47,12 +47,15 @@ public class PeliculasController extends HttpServlet {
 
 		List<Result> result = pelPorNombre.getResults();
 		
+		String actuales = "no";
+		
 
 		
 		if (pelPorNombre != null || result.size() > 0) {
 			rd = request.getRequestDispatcher("/peliculasActuales.jsp");
 			request.setAttribute("name", name);
 			request.setAttribute("pelActuales", result);
+			request.setAttribute("actuales", actuales);
 		
 			log.log(Level.INFO, "Se han cargado las películas con el nombre " + name);
 		} else {

@@ -10,13 +10,13 @@
 <body>
 	<fieldset>
 		<legend>
-			Lista de cines de "
+			Lista de cines en "
 			<c:out value="${requestScope.lugar}" />
 			"
 		</legend>
 
 		<c:forEach items="${requestScope.cines}" var="cine" end="8">
-			<span><c:out value="${cine.name}" /> - <c:out
+			<span><c:out value="${cine.name}" /> Coordenadas: <c:out
 					value="${cine.geometry.location.lat}"></c:out>-  
 					<c:out value="${cine.geometry.location.lng}"></c:out> </span>
 					
