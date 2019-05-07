@@ -71,7 +71,7 @@ public class InfoController extends HttpServlet {
 		String fechaEstreno = detalles.getReleaseDate();
 		Double puntuacion = detalles.getVoteAverage();
 
-		if(poster.getFilePath()!=null || imagenes.size()!=0) {
+		if(poster.getFilePath()!=null || imagenes.size()!=0 || overview != null && puntuacion>3) {
 			rd = request.getRequestDispatcher("/infoPeliculas.jsp");
 			request.setAttribute("overview", overview);
 			request.setAttribute("imdbID", imdbID);

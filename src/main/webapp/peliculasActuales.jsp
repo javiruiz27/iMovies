@@ -18,16 +18,16 @@
 			<span>Pelicula: <c:out value="${pelicula.title}" /> (<c:out
 					value="${pelicula.voteAverage}" />)
 			</span>
-			
-			
+
+
 			<form action="InfoController" method="post">
 
 
 				<input name="titulo" type="hidden" value="${pelicula.title}">
-				<input name="id" type="hidden" value="${pelicula.id}">
-				<input name="actuales" type="hidden" value="${requestScope.actuales}">
-				
-			
+				<input name="id" type="hidden" value="${pelicula.id}"> <input
+					name="actuales" type="hidden" value="${requestScope.actuales}">
+
+
 
 
 

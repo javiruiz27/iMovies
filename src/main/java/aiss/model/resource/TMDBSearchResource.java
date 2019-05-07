@@ -29,52 +29,50 @@ public class TMDBSearchResource {
 
 	public SearchMovie getCartelera() throws UnsupportedEncodingException {
 
-		String URL = "https://api.themoviedb.org/3/movie/now_playing?api_key=" + TMDB_API_KEY + "&language=ES&page=1";
+		String URL = "https://api.themoviedb.org/3/movie/now_playing?api_key=" + TMDB_API_KEY + "&language=EN&page=1";
 
 		ClientResource cr = new ClientResource(URL);
 		SearchMovie ps = cr.get(SearchMovie.class);
 
 		return ps;
 	}
-	
-	public SearchMovie getMovieByName(String name) throws UnsupportedEncodingException{
-		
-		String URL = "https://api.themoviedb.org/3/search/movie?api_key=" + TMDB_API_KEY + "&language=ES&query="
-				+ name + "&page=1";
+
+	public SearchMovie getMovieByName(String name) throws UnsupportedEncodingException {
+
+		String URL = "https://api.themoviedb.org/3/search/movie?api_key=" + TMDB_API_KEY + "&language=EN&query=" + name
+				+ "&page=1";
 		ClientResource cr = new ClientResource(URL);
 		SearchMovie ps = cr.get(SearchMovie.class);
-		
+
 		return ps;
-		
+
 	}
+
 
 	public SearchVideo getVideo(Integer id) throws UnsupportedEncodingException {
 
-		String URL = "https://api.themoviedb.org/3/movie/" +id + "/videos?api_key=" + TMDB_API_KEY
-				+ "&language=ES";
-		//https://api.themoviedb.org/3/movie/{movie_id}/videos?api_key=<<api_key>>&language=en-US
+		String URL = "https://api.themoviedb.org/3/movie/" + id + "/videos?api_key=" + TMDB_API_KEY + "&language=EN";
+		// https://api.themoviedb.org/3/movie/{movie_id}/videos?api_key=<<api_key>>&language=en-US
 
 		ClientResource cr = new ClientResource(URL);
 		SearchVideo ps = cr.get(SearchVideo.class);
-		
+
 		return ps;
 	}
 
 	public Details getDetalles(Integer id) throws UnsupportedEncodingException {
 
-		String URL = "https://api.themoviedb.org/3/movie/" + id + "?api_key=" + TMDB_API_KEY + "&language=ES";
+		String URL = "https://api.themoviedb.org/3/movie/" + id + "?api_key=" + TMDB_API_KEY + "&language=EN";
 
 		ClientResource cr = new ClientResource(URL);
 		Details ps = cr.get(Details.class);
 
 		return ps;
 	}
-	
-	
 
 	public SearchImagen getImagen(Integer id) throws UnsupportedEncodingException {
 
-		String URL = "https://api.themoviedb.org/3/movie/"+ id +"/images?api_key=" + TMDB_API_KEY + "&language=ES";
+		String URL = "https://api.themoviedb.org/3/movie/" + id + "/images?api_key=" + TMDB_API_KEY + "&language=EN";
 
 		ClientResource cr = new ClientResource(URL);
 		SearchImagen ps = cr.get(SearchImagen.class);
