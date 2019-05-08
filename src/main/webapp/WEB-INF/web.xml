@@ -93,4 +93,47 @@
     <servlet-name>PeliculasController</servlet-name>
     <url-pattern>/PeliculasController</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ListCalendarSearchController</display-name>
+    <servlet-name>ListCalendarSearchController</servlet-name>
+    <servlet-class>aiss.ListCalendarSearchController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ListCalendarSearchController</servlet-name>
+    <url-pattern>/ListCalendarSearchController</url-pattern>
+  </servlet-mapping>
+  
+     <!-- GoogleDriveAuthController-->
+    <servlet>
+        <description/>
+        <servlet-name>GoogleCalendarAuthController</servlet-name>
+        <servlet-class>aiss.controller.oauth.GenericAuthController</servlet-class>
+        <init-param>
+            <param-name>provider</param-name>
+            <param-value>GoogleCalendar</param-value>
+        </init-param>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>GoogleCalendarAuthController</servlet-name>
+        <url-pattern>/AuthController/GoogleCalendar</url-pattern>
+    </servlet-mapping>
+    <!--GoogleCalendarOAuth2Callback-->
+    <servlet>
+        <description/>
+        <servlet-name>GoogleCalendarOAuth2Callback</servlet-name>
+        <servlet-class>aiss.controller.oauth.OAuth2Callback</servlet-class>
+        <init-param>
+            <param-name>provider</param-name>
+            <param-value>GoogleCalendar</param-value>
+        </init-param>
+        <init-param>
+            <param-name>onSuccess</param-name>
+            <param-value>redirect:/muestraCalendario</param-value>
+        </init-param>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>GoogleCalendarOAuth2Callback</servlet-name>
+        <url-pattern>/oauth2callback/GoogleCalendar</url-pattern> <!-- url de callback- -->
+    </servlet-mapping>
 </web-app>

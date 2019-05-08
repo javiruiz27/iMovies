@@ -1,0 +1,18 @@
+{	
+    "GoogleDrive": { 
+        "tokenUrl": "https://www.googleapis.com/oauth2/v4/token",
+        "clientId": "141143682881-jjtrmgqdknrokihhkovegdqihmcq7lhi.apps.googleusercontent.com",
+        "clientSecret": "omNiMfIj6JzEAhhFioffmv9n",
+        "authorizationFormUrl": "https://accounts.google.com/o/oauth2/v2/auth",
+        "scopes": ["https://www.googleapis.com/auth/drive"]
+    },
+    "GoogleCalendar": {
+        "tokenUrl": "https://www.googleapis.com/oauth2/v4/token",
+        "clientId": "180078058894-ag2mir95alt1h72tprmo2rbfbj6drt7o.apps.googleusercontent.com",
+        "clientSecret": "FHntZr_VN9Ruq2QVd0kA18jQ",
+        "authorizationFormUrl": "https://accounts.google.com/o/oauth2/v2/auth",
+        "scopes": ["https://www.googleapis.com/auth/calendar","https://www.googleapis.com/auth/calendar.events",
+        "https://www.googleapis.com/auth/calendar.events.readonly","https://www.googleapis.com/auth/calendar.readonly"
+        ,"https://www.googleapis.com/auth/calendar.settings.readonly"]
+    }
+}		

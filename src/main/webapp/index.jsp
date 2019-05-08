@@ -31,6 +31,8 @@
 				value="Buscar">
 		</form>
 	</div>
+	
+	
 
 	<div id="actualesDiv">
 		<form id="actualesForm" action="PeliculasActualesSearchController"
@@ -38,6 +40,15 @@
 
 			<br> Películas actuales en la cartelera.<br> <br> <input
 				type="submit" name="" value="Ver Cartelera">
+		</form>
+	</div>
+	
+	<div id="">
+		<form id="" action="ListCalendarSearchController"
+			method="post">
+
+			<br> Id de tu calendario.<br> <br> <input
+				type="submit" name="" value="Calendario">
 		</form>
 	</div>
 
