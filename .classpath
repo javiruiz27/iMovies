@@ -52,8 +52,8 @@
 			<attribute name="test" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/Usurio/Desktop/universidad/tercer año/Segundo Cuatrimestre/AISS/Proyecto/google calendar/libreria google/calendar/google-api-services-calendar-v3-rev377-1.25.0.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Usurio/Desktop/universidad/tercer año/Segundo Cuatrimestre/AISS/Proyecto/google calendar/libreria google/calendar/google-api-services-calendar-v3-rev377-1.25.0-javadoc.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Usurio/Desktop/universidad/tercer año/Segundo Cuatrimestre/AISS/Proyecto/google calendar/libreria google/calendar/google-api-services-calendar-v3-rev377-1.25.0-sources.jar"/>
+	<classpathentry kind="lib" path="lib/google-api-services-calendar-v3-rev377-1.25.0-javadoc.jar"/>
+	<classpathentry kind="lib" path="lib/google-api-services-calendar-v3-rev377-1.25.0-sources.jar"/>
+	<classpathentry kind="lib" path="lib/google-api-services-calendar-v3-rev377-1.25.0.jar"/>
 	<classpathentry kind="output" path="target/project_name-0.0.1-SNAPSHOT/WEB-INF/classes"/>
 </classpath>
