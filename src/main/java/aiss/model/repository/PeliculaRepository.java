@@ -38,12 +38,12 @@ public class PeliculaRepository {
 		// Create Pelicula
 		Pelicula p = new Pelicula();
 		p.setId(001);
-		p.setTitle("Infinity War");
+		p.setTitle("EndGame");
 		addPelicula(p);
 
 		Pelicula m = new Pelicula();
 		m.setId(002);
-		m.setTitle("Deadpool 2");
+		m.setTitle("Shazam");
 		addPelicula(m);
 
 	}
