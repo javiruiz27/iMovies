@@ -18,16 +18,16 @@ public class GoogleDriveResource {
 
 	private static final Logger log = Logger.getLogger(GoogleDriveResource.class.getName());
 
-	private String uri = "https://www.googleapis.com/drive/v2/files";
-	private String access_token;
-	private String uri_upload = "https://www.googleapis.com/upload/drive/v2/files";
+	private final String access_token;
+	private final String uri = "https://www.googleapis.com/drive/v2/files";
+	private final String uri_upload = "https://www.googleapis.com/upload/drive/v2/files";
 
 	public GoogleDriveResource(String access_token) {
 		this.access_token = access_token;
 	}
 
 	/**
-	 * 
+	 *
 	 * @return Files
 	 */
 	public Files getFiles() {
@@ -35,6 +35,7 @@ public class GoogleDriveResource {
 		Files files = null;
 		try {
 			cr = new ClientResource(uri + "?access_token=" + access_token);
+			String result = cr.get(String.class);
 			files = cr.get(Files.class);
 
 		} catch (ResourceException re) {
@@ -113,13 +114,20 @@ public class GoogleDriveResource {
 		String contentURL = item.getDownloadUrl();
 		try {
 			ClientResource cr = new ClientResource(contentURL);
+			/*
+			 * Map<String, Object> reqAttribs = cr.getRequestAttributes(); Series<Header>
+			 * headers = (Series<Header>)reqAttribs.get("org.restlet.http.headers"); if
+			 * (headers == null) { headers = new Series<Header>(Header.class);
+			 * reqAttribs.put("org.restlet.http.headers", headers); } headers.add(new
+			 * Header("Authorization:", "Bearer "+access_token));
+			 */
 			ChallengeResponse chr = new ChallengeResponse(ChallengeScheme.HTTP_OAUTH_BEARER);
 			chr.setRawValue(access_token);
 			cr.setChallengeResponse(chr);
 
 			result = cr.get(String.class);
 		} catch (ResourceException re) {
-			log.warning("Error when obtaining content of file: " + item.getId());
+			log.warning("Error when obtaining the content of file: " + item.getId());
 		}
 		return result;
 	}
