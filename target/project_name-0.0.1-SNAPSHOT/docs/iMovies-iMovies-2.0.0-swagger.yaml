@@ -1,0 +1,211 @@
+swagger: '2.0'
+openapi: 3.0.0
+info:
+  description: This is a documentation for iMovies Project
+  version: 2.0.0
+  title: iMovies API
+  # put the contact info for your development or API team
+  contact:
+    email: javiruizz.jr@gmail.com
+
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+
+# tags are used for organizing operations
+tags:
+- name: admins
+  description: Secured Admin-only calls
+- name: developers
+  description: Operations available to regular developers
+
+paths:
+  /movies/{id}: 
+    get:
+      tags:
+      - developers
+      summary: searches inventory
+      operationId: get
+      description: |
+        Returns a movie inventory
+      produces:
+      - application/json
+      parameters:
+      - in: path
+        name: id
+        description: Movie´s Id
+        required: true
+        type: string
+  
+      responses:
+        '200':
+          description: search results matching criteria
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/InventoryItem'
+        '400':
+          description: bad input parameter
+          
+        '404':
+          description: not found
+    delete:
+      tags:
+      - users registered
+      summary: delete an movie item
+      operationId: deletePelicula
+      description: Delete a movie to the system
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: path
+        name: id
+        description: Movie´s Id
+        required: true
+        type: string
+      responses:
+        '200':
+          description: movie delete
+        '400':
+          description: invalid input, movie invalid
+        '409':
+          description: control version error
+  /movies:
+    post:
+      tags:
+      - users registered
+      summary: adds an movie item
+      operationId: add
+      description: Adds a movie to the system
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: movieItem
+        description: Movie to add
+        schema:
+          $ref: '#/definitions'
+      responses:
+        201:
+          description: Movie created
+        400:
+          description: Invalid input, movie invalid
+        409:
+          description: A movie already exists
+    put:
+      tags:
+      - users registered
+      summary: update an movie item
+      operationId: put
+      description: Update a movie to the system
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: movieItem
+        description: Update Movie
+        schema:
+          $ref: '#/definitions/InventoryItem'
+      responses:
+        200:
+          description: Movie update
+        400:
+          description: Invalid input, movie invalid
+        409:
+          description: Control version error
+    
+definitions:
+  InventoryItem:
+    type: object
+    required:
+    - id
+    - name
+    - manufacturer
+    - releaseDate
+    properties:
+      id:
+        type: integer
+        format: uuid
+        example: 01
+      name:
+        type: string
+        example: EndGame
+      releaseDate:
+        type: string
+        format: date-time
+        example: 2019-05-15T09:12:33.001Z
+      manufacturer:
+        $ref: '#/definitions/iMovies'
+  
+  InventoryItem2:
+    type: object
+    required:
+    - id
+    - name
+    - manufacturer
+    - releaseDate
+    properties:
+      id:
+        type: integer
+        format: uuid
+        example: 02
+      name:
+        type: string
+        example: Shazam
+      releaseDate:
+        type: string
+        format: date-time
+        example: 2019-05-15T09:12:33.001Z
+      manufacturer:
+        $ref: '#/definitions/iMovies'
+        
+  InventoryItem3:
+    type: object
+    required:
+    - id
+    - name
+    - manufacturer
+    - releaseDate
+    properties:
+      id:
+        type: integer
+        format: uuid
+        example: 03
+      name:
+        type: string
+        example: Spiderman
+      releaseDate:
+        type: string
+        format: date-time
+        example: 2019-05-15T09:12:33.001Z
+      manufacturer:
+        $ref: '#/definitions/iMovies'
+        
+  iMovies:
+    required:
+    - name
+    properties:
+      name:
+        type: string
+        example: iMovies
+      homePage:
+        type: string
+        format: url
+        example:  https://
+      phone:
+        type: string
+        example: 666666666
+# Added by API Auto Mocking Plugin
+# host: 5-dot-imovies-234214.appspot.com
+# basePath: /api
+schemes:
+ - https
+# Added by API Auto Mocking Plugin
+host: 5-dot-imovies-234214.appspot.com
+basePath: /api

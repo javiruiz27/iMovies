@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>GenericAuthController.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">project_name</a> &gt; <a href="index.source.html" class="el_package">aiss.controller.oauth</a> &gt; <span class="el_source">GenericAuthController.java</span></div><h1>GenericAuthController.java</h1><pre class="source lang-java linenums">package aiss.controller.oauth;
+
+import java.io.IOException;
+import java.util.UUID;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.google.api.client.auth.oauth2.AuthorizationCodeFlow;
+import com.google.api.client.extensions.servlet.auth.oauth2.AbstractAuthorizationCodeServlet;
+import com.google.api.client.http.GenericUrl;
+
+import aiss.utility.OAuthRegistry;
+
+/**
+ * Generic OAuth controller that initiates an OAuth 2.0 authorization flow.
+ * 
+ * This servlet uses two init parameters:
+ * &lt;ul&gt;
+ * 	&lt;li&gt;&lt;b&gt;&lt;/b&gt;: This &lt;i&gt;required&lt;/i&gt;&lt;/li&gt;
+ * 	&lt;li&gt;&lt;b&gt;&lt;/b&gt;: This &lt;i&gt;optional&lt;/i&gt; parameter specifies the&lt;/li&gt;
+ * &lt;ul&gt;
+ */
+<span class="nc" id="L26">public class GenericAuthController extends AbstractAuthorizationCodeServlet {</span>
+	private static final long serialVersionUID = 1L;
+
+	
+	
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
+<span class="nc" id="L36">		String provider=getInitParameter(&quot;provider&quot;);</span>
+<span class="nc" id="L37">		request.getSession().setAttribute(provider+&quot;-token&quot;, getCredential().getAccessToken());</span>
+<span class="nc" id="L38">		OAuthRegistry.onAuthorizationSuccess(getInitParameter(&quot;onSuccess&quot;), provider, getCredential(), request, response);											</span>
+<span class="nc" id="L39">	}</span>
+
+	@Override
+	protected String getRedirectUri(HttpServletRequest req) throws ServletException, IOException {
+<span class="nc" id="L43">		String provider=getInitParameter(&quot;provider&quot;);		</span>
+<span class="nc" id="L44">		GenericUrl url = new GenericUrl(req.getRequestURL().toString());</span>
+<span class="nc" id="L45">		url.setRawPath(&quot;/oauth2callback/&quot;+provider);</span>
+<span class="nc" id="L46">		return url.build();</span>
+	}
+
+	@Override
+	protected AuthorizationCodeFlow initializeFlow() throws IOException {			
+<span class="nc" id="L51">		return OAuthRegistry.initializeFlow(getInitParameter(&quot;provider&quot;));</span>
+	}
+
+	@Override
+	protected String getUserId(HttpServletRequest req) throws ServletException, IOException {			
+<span class="nc" id="L56">		return UUID.randomUUID().toString();</span>
+	}
+		
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.3.201901230119</span></div></body></html>

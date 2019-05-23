@@ -1,0 +1,348 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>FileItem.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">project_name</a> &gt; <a href="index.source.html" class="el_package">aiss.model.google.drive</a> &gt; <span class="el_source">FileItem.java</span></div><h1>FileItem.java</h1><pre class="source lang-java linenums">
+package aiss.model.google.drive;
+
+import java.io.Serializable;
+import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+@JsonIgnoreProperties(ignoreUnknown=true)
+<span class="nc" id="L9">public class FileItem implements Serializable</span>
+{
+
+    private String kind;
+    private String id;
+    private String etag;
+    private String selfLink;
+    private String webContentLink;
+    private String alternateLink;
+    private String embedLink;
+    private String iconLink;
+    private String thumbnailLink;
+    private String title;
+    private String mimeType;
+    private Labels labels;
+    private String createdDate;
+    private String modifiedDate;
+    private String markedViewedByMeDate;
+    private String version;
+<span class="nc" id="L28">    private List&lt;Parent&gt; parents = null;</span>
+    private String downloadUrl;
+    private UserPermission userPermission;
+    private String originalFilename;
+    private String fileExtension;
+    private String md5Checksum;
+    private String fileSize;
+    private String quotaBytesUsed;
+<span class="nc" id="L36">    private List&lt;String&gt; ownerNames = null;</span>
+<span class="nc" id="L37">    private List&lt;Owner&gt; owners = null;</span>
+    private String lastModifyingUserName;
+    private LastModifyingUser lastModifyingUser;
+    private Capabilities capabilities;
+    private Boolean editable;
+    private Boolean copyable;
+    private Boolean writersCanShare;
+    private Boolean shared;
+    private Boolean explicitlyTrashed;
+    private Boolean appDataContents;
+    private String headRevisionId;
+<span class="nc" id="L48">    private List&lt;String&gt; spaces = null;</span>
+    private final static long serialVersionUID = -8601006027688796541L;
+
+    public String getKind() {
+<span class="nc" id="L52">        return kind;</span>
+    }
+
+    public void setKind(String kind) {
+<span class="nc" id="L56">        this.kind = kind;</span>
+<span class="nc" id="L57">    }</span>
+
+    public String getId() {
+<span class="nc" id="L60">        return id;</span>
+    }
+
+    public void setId(String id) {
+<span class="nc" id="L64">        this.id = id;</span>
+<span class="nc" id="L65">    }</span>
+
+    public String getEtag() {
+<span class="nc" id="L68">        return etag;</span>
+    }
+
+    public void setEtag(String etag) {
+<span class="nc" id="L72">        this.etag = etag;</span>
+<span class="nc" id="L73">    }</span>
+
+    public String getSelfLink() {
+<span class="nc" id="L76">        return selfLink;</span>
+    }
+
+    public void setSelfLink(String selfLink) {
+<span class="nc" id="L80">        this.selfLink = selfLink;</span>
+<span class="nc" id="L81">    }</span>
+
+    public String getWebContentLink() {
+<span class="nc" id="L84">        return webContentLink;</span>
+    }
+
+    public void setWebContentLink(String webContentLink) {
+<span class="nc" id="L88">        this.webContentLink = webContentLink;</span>
+<span class="nc" id="L89">    }</span>
+
+    public String getAlternateLink() {
+<span class="nc" id="L92">        return alternateLink;</span>
+    }
+
+    public void setAlternateLink(String alternateLink) {
+<span class="nc" id="L96">        this.alternateLink = alternateLink;</span>
+<span class="nc" id="L97">    }</span>
+
+    public String getEmbedLink() {
+<span class="nc" id="L100">        return embedLink;</span>
+    }
+
+    public void setEmbedLink(String embedLink) {
+<span class="nc" id="L104">        this.embedLink = embedLink;</span>
+<span class="nc" id="L105">    }</span>
+
+    public String getIconLink() {
+<span class="nc" id="L108">        return iconLink;</span>
+    }
+
+    public void setIconLink(String iconLink) {
+<span class="nc" id="L112">        this.iconLink = iconLink;</span>
+<span class="nc" id="L113">    }</span>
+
+    public String getThumbnailLink() {
+<span class="nc" id="L116">        return thumbnailLink;</span>
+    }
+
+    public void setThumbnailLink(String thumbnailLink) {
+<span class="nc" id="L120">        this.thumbnailLink = thumbnailLink;</span>
+<span class="nc" id="L121">    }</span>
+
+    public String getTitle() {
+<span class="nc" id="L124">        return title;</span>
+    }
+
+    public void setTitle(String title) {
+<span class="nc" id="L128">        this.title = title;</span>
+<span class="nc" id="L129">    }</span>
+
+    public String getMimeType() {
+<span class="nc" id="L132">        return mimeType;</span>
+    }
+
+    public void setMimeType(String mimeType) {
+<span class="nc" id="L136">        this.mimeType = mimeType;</span>
+<span class="nc" id="L137">    }</span>
+
+    public Labels getLabels() {
+<span class="nc" id="L140">        return labels;</span>
+    }
+
+    public void setLabels(Labels labels) {
+<span class="nc" id="L144">        this.labels = labels;</span>
+<span class="nc" id="L145">    }</span>
+
+    public String getCreatedDate() {
+<span class="nc" id="L148">        return createdDate;</span>
+    }
+
+    public void setCreatedDate(String createdDate) {
+<span class="nc" id="L152">        this.createdDate = createdDate;</span>
+<span class="nc" id="L153">    }</span>
+
+    public String getModifiedDate() {
+<span class="nc" id="L156">        return modifiedDate;</span>
+    }
+
+    public void setModifiedDate(String modifiedDate) {
+<span class="nc" id="L160">        this.modifiedDate = modifiedDate;</span>
+<span class="nc" id="L161">    }</span>
+
+    public String getMarkedViewedByMeDate() {
+<span class="nc" id="L164">        return markedViewedByMeDate;</span>
+    }
+
+    public void setMarkedViewedByMeDate(String markedViewedByMeDate) {
+<span class="nc" id="L168">        this.markedViewedByMeDate = markedViewedByMeDate;</span>
+<span class="nc" id="L169">    }</span>
+
+    public String getVersion() {
+<span class="nc" id="L172">        return version;</span>
+    }
+
+    public void setVersion(String version) {
+<span class="nc" id="L176">        this.version = version;</span>
+<span class="nc" id="L177">    }</span>
+
+    public List&lt;Parent&gt; getParents() {
+<span class="nc" id="L180">        return parents;</span>
+    }
+
+    public void setParents(List&lt;Parent&gt; parents) {
+<span class="nc" id="L184">        this.parents = parents;</span>
+<span class="nc" id="L185">    }</span>
+
+    public String getDownloadUrl() {
+<span class="nc" id="L188">        return downloadUrl;</span>
+    }
+
+    public void setDownloadUrl(String downloadUrl) {
+<span class="nc" id="L192">        this.downloadUrl = downloadUrl;</span>
+<span class="nc" id="L193">    }</span>
+
+    public UserPermission getUserPermission() {
+<span class="nc" id="L196">        return userPermission;</span>
+    }
+
+    public void setUserPermission(UserPermission userPermission) {
+<span class="nc" id="L200">        this.userPermission = userPermission;</span>
+<span class="nc" id="L201">    }</span>
+
+    public String getOriginalFilename() {
+<span class="nc" id="L204">        return originalFilename;</span>
+    }
+
+    public void setOriginalFilename(String originalFilename) {
+<span class="nc" id="L208">        this.originalFilename = originalFilename;</span>
+<span class="nc" id="L209">    }</span>
+
+    public String getFileExtension() {
+<span class="nc" id="L212">        return fileExtension;</span>
+    }
+
+    public void setFileExtension(String fileExtension) {
+<span class="nc" id="L216">        this.fileExtension = fileExtension;</span>
+<span class="nc" id="L217">    }</span>
+
+    public String getMd5Checksum() {
+<span class="nc" id="L220">        return md5Checksum;</span>
+    }
+
+    public void setMd5Checksum(String md5Checksum) {
+<span class="nc" id="L224">        this.md5Checksum = md5Checksum;</span>
+<span class="nc" id="L225">    }</span>
+
+    public String getFileSize() {
+<span class="nc" id="L228">        return fileSize;</span>
+    }
+
+    public void setFileSize(String fileSize) {
+<span class="nc" id="L232">        this.fileSize = fileSize;</span>
+<span class="nc" id="L233">    }</span>
+
+    public String getQuotaBytesUsed() {
+<span class="nc" id="L236">        return quotaBytesUsed;</span>
+    }
+
+    public void setQuotaBytesUsed(String quotaBytesUsed) {
+<span class="nc" id="L240">        this.quotaBytesUsed = quotaBytesUsed;</span>
+<span class="nc" id="L241">    }</span>
+
+    public List&lt;String&gt; getOwnerNames() {
+<span class="nc" id="L244">        return ownerNames;</span>
+    }
+
+    public void setOwnerNames(List&lt;String&gt; ownerNames) {
+<span class="nc" id="L248">        this.ownerNames = ownerNames;</span>
+<span class="nc" id="L249">    }</span>
+
+    public List&lt;Owner&gt; getOwners() {
+<span class="nc" id="L252">        return owners;</span>
+    }
+
+    public void setOwners(List&lt;Owner&gt; owners) {
+<span class="nc" id="L256">        this.owners = owners;</span>
+<span class="nc" id="L257">    }</span>
+
+    public String getLastModifyingUserName() {
+<span class="nc" id="L260">        return lastModifyingUserName;</span>
+    }
+
+    public void setLastModifyingUserName(String lastModifyingUserName) {
+<span class="nc" id="L264">        this.lastModifyingUserName = lastModifyingUserName;</span>
+<span class="nc" id="L265">    }</span>
+
+    public LastModifyingUser getLastModifyingUser() {
+<span class="nc" id="L268">        return lastModifyingUser;</span>
+    }
+
+    public void setLastModifyingUser(LastModifyingUser lastModifyingUser) {
+<span class="nc" id="L272">        this.lastModifyingUser = lastModifyingUser;</span>
+<span class="nc" id="L273">    }</span>
+
+    public Capabilities getCapabilities() {
+<span class="nc" id="L276">        return capabilities;</span>
+    }
+
+    public void setCapabilities(Capabilities capabilities) {
+<span class="nc" id="L280">        this.capabilities = capabilities;</span>
+<span class="nc" id="L281">    }</span>
+
+    public Boolean getEditable() {
+<span class="nc" id="L284">        return editable;</span>
+    }
+
+    public void setEditable(Boolean editable) {
+<span class="nc" id="L288">        this.editable = editable;</span>
+<span class="nc" id="L289">    }</span>
+
+    public Boolean getCopyable() {
+<span class="nc" id="L292">        return copyable;</span>
+    }
+
+    public void setCopyable(Boolean copyable) {
+<span class="nc" id="L296">        this.copyable = copyable;</span>
+<span class="nc" id="L297">    }</span>
+
+    public Boolean getWritersCanShare() {
+<span class="nc" id="L300">        return writersCanShare;</span>
+    }
+
+    public void setWritersCanShare(Boolean writersCanShare) {
+<span class="nc" id="L304">        this.writersCanShare = writersCanShare;</span>
+<span class="nc" id="L305">    }</span>
+
+    public Boolean getShared() {
+<span class="nc" id="L308">        return shared;</span>
+    }
+
+    public void setShared(Boolean shared) {
+<span class="nc" id="L312">        this.shared = shared;</span>
+<span class="nc" id="L313">    }</span>
+
+    public Boolean getExplicitlyTrashed() {
+<span class="nc" id="L316">        return explicitlyTrashed;</span>
+    }
+
+    public void setExplicitlyTrashed(Boolean explicitlyTrashed) {
+<span class="nc" id="L320">        this.explicitlyTrashed = explicitlyTrashed;</span>
+<span class="nc" id="L321">    }</span>
+
+    public Boolean getAppDataContents() {
+<span class="nc" id="L324">        return appDataContents;</span>
+    }
+
+    public void setAppDataContents(Boolean appDataContents) {
+<span class="nc" id="L328">        this.appDataContents = appDataContents;</span>
+<span class="nc" id="L329">    }</span>
+
+    public String getHeadRevisionId() {
+<span class="nc" id="L332">        return headRevisionId;</span>
+    }
+
+    public void setHeadRevisionId(String headRevisionId) {
+<span class="nc" id="L336">        this.headRevisionId = headRevisionId;</span>
+<span class="nc" id="L337">    }</span>
+
+    public List&lt;String&gt; getSpaces() {
+<span class="nc" id="L340">        return spaces;</span>
+    }
+
+    public void setSpaces(List&lt;String&gt; spaces) {
+<span class="nc" id="L344">        this.spaces = spaces;</span>
+<span class="nc" id="L345">    }</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.3.201901230119</span></div></body></html>

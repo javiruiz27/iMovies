@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Result.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">project_name</a> &gt; <a href="index.source.html" class="el_package">aiss.model.tmdb</a> &gt; <span class="el_source">Result.java</span></div><h1>Result.java</h1><pre class="source lang-java linenums">
+package aiss.model.tmdb;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import com.fasterxml.jackson.annotation.JsonAnyGetter;
+import com.fasterxml.jackson.annotation.JsonAnySetter;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+
+@JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonPropertyOrder({
+    &quot;vote_count&quot;,
+    &quot;id&quot;,
+    &quot;video&quot;,
+    &quot;vote_average&quot;,
+    &quot;title&quot;,
+    &quot;popularity&quot;,
+    &quot;poster_path&quot;,
+    &quot;original_language&quot;,
+    &quot;original_title&quot;,
+    &quot;genre_ids&quot;,
+    &quot;backdrop_path&quot;,
+    &quot;adult&quot;,
+    &quot;overview&quot;,
+    &quot;release_date&quot;
+})
+<span class="fc" id="L32">public class Result {</span>
+
+    @JsonProperty(&quot;vote_count&quot;)
+    private int voteCount;
+    @JsonProperty(&quot;id&quot;)
+    private int id;
+    @JsonProperty(&quot;video&quot;)
+    private boolean video;
+    @JsonProperty(&quot;vote_average&quot;)
+    private double voteAverage;
+    @JsonProperty(&quot;title&quot;)
+    private String title;
+    @JsonProperty(&quot;popularity&quot;)
+    private double popularity;
+    @JsonProperty(&quot;poster_path&quot;)
+    private String posterPath;
+    @JsonProperty(&quot;original_language&quot;)
+    private String originalLanguage;
+    @JsonProperty(&quot;original_title&quot;)
+    private String originalTitle;
+    @JsonProperty(&quot;genre_ids&quot;)
+<span class="fc" id="L53">    private List&lt;Integer&gt; genreIds = null;</span>
+    @JsonProperty(&quot;backdrop_path&quot;)
+    private String backdropPath;
+    @JsonProperty(&quot;adult&quot;)
+    private boolean adult;
+    @JsonProperty(&quot;overview&quot;)
+    private String overview;
+    @JsonProperty(&quot;release_date&quot;)
+    private String releaseDate;
+    @JsonIgnore
+<span class="fc" id="L63">    private Map&lt;String, Object&gt; additionalProperties = new HashMap&lt;String, Object&gt;();</span>
+
+    @JsonProperty(&quot;vote_count&quot;)
+    public int getVoteCount() {
+<span class="nc" id="L67">        return voteCount;</span>
+    }
+
+    @JsonProperty(&quot;vote_count&quot;)
+    public void setVoteCount(int voteCount) {
+<span class="fc" id="L72">        this.voteCount = voteCount;</span>
+<span class="fc" id="L73">    }</span>
+
+    @JsonProperty(&quot;id&quot;)
+    public int getId() {
+<span class="nc" id="L77">        return id;</span>
+    }
+
+    @JsonProperty(&quot;id&quot;)
+    public void setId(int id) {
+<span class="fc" id="L82">        this.id = id;</span>
+<span class="fc" id="L83">    }</span>
+
+    @JsonProperty(&quot;video&quot;)
+    public boolean isVideo() {
+<span class="nc" id="L87">        return video;</span>
+    }
+
+    @JsonProperty(&quot;video&quot;)
+    public void setVideo(boolean video) {
+<span class="fc" id="L92">        this.video = video;</span>
+<span class="fc" id="L93">    }</span>
+
+    @JsonProperty(&quot;vote_average&quot;)
+    public double getVoteAverage() {
+<span class="nc" id="L97">        return voteAverage;</span>
+    }
+
+    @JsonProperty(&quot;vote_average&quot;)
+    public void setVoteAverage(double voteAverage) {
+<span class="fc" id="L102">        this.voteAverage = voteAverage;</span>
+<span class="fc" id="L103">    }</span>
+
+    @JsonProperty(&quot;title&quot;)
+    public String getTitle() {
+<span class="nc" id="L107">        return title;</span>
+    }
+
+    @JsonProperty(&quot;title&quot;)
+    public void setTitle(String title) {
+<span class="fc" id="L112">        this.title = title;</span>
+<span class="fc" id="L113">    }</span>
+    
+    
+
+    @JsonProperty(&quot;popularity&quot;)
+    public double getPopularity() {
+<span class="nc" id="L119">        return popularity;</span>
+    }
+
+    @JsonProperty(&quot;popularity&quot;)
+    public void setPopularity(double popularity) {
+<span class="fc" id="L124">        this.popularity = popularity;</span>
+<span class="fc" id="L125">    }</span>
+
+    @JsonProperty(&quot;poster_path&quot;)
+    public String getPosterPath() {
+<span class="nc" id="L129">        return posterPath;</span>
+    }
+
+    @JsonProperty(&quot;poster_path&quot;)
+    public void setPosterPath(String posterPath) {
+<span class="fc" id="L134">        this.posterPath = posterPath;</span>
+<span class="fc" id="L135">    }</span>
+
+    @JsonProperty(&quot;original_language&quot;)
+    public String getOriginalLanguage() {
+<span class="nc" id="L139">        return originalLanguage;</span>
+    }
+
+    @JsonProperty(&quot;original_language&quot;)
+    public void setOriginalLanguage(String originalLanguage) {
+<span class="fc" id="L144">        this.originalLanguage = originalLanguage;</span>
+<span class="fc" id="L145">    }</span>
+
+    @JsonProperty(&quot;original_title&quot;)
+    public String getOriginalTitle() {
+<span class="fc" id="L149">        return originalTitle;</span>
+    }
+
+    @JsonProperty(&quot;original_title&quot;)
+    public void setOriginalTitle(String originalTitle) {
+<span class="fc" id="L154">        this.originalTitle = originalTitle;</span>
+<span class="fc" id="L155">    }</span>
+
+    @JsonProperty(&quot;genre_ids&quot;)
+    public List&lt;Integer&gt; getGenreIds() {
+<span class="nc" id="L159">        return genreIds;</span>
+    }
+
+    @JsonProperty(&quot;genre_ids&quot;)
+    public void setGenreIds(List&lt;Integer&gt; genreIds) {
+<span class="fc" id="L164">        this.genreIds = genreIds;</span>
+<span class="fc" id="L165">    }</span>
+
+    @JsonProperty(&quot;backdrop_path&quot;)
+    public String getBackdropPath() {
+<span class="nc" id="L169">        return backdropPath;</span>
+    }
+
+    @JsonProperty(&quot;backdrop_path&quot;)
+    public void setBackdropPath(String backdropPath) {
+<span class="fc" id="L174">        this.backdropPath = backdropPath;</span>
+<span class="fc" id="L175">    }</span>
+
+    @JsonProperty(&quot;adult&quot;)
+    public boolean isAdult() {
+<span class="nc" id="L179">        return adult;</span>
+    }
+
+    @JsonProperty(&quot;adult&quot;)
+    public void setAdult(boolean adult) {
+<span class="fc" id="L184">        this.adult = adult;</span>
+<span class="fc" id="L185">    }</span>
+
+    @JsonProperty(&quot;overview&quot;)
+    public String getOverview() {
+<span class="nc" id="L189">        return overview;</span>
+    }
+
+    @JsonProperty(&quot;overview&quot;)
+    public void setOverview(String overview) {
+<span class="fc" id="L194">        this.overview = overview;</span>
+<span class="fc" id="L195">    }</span>
+
+    @JsonProperty(&quot;release_date&quot;)
+    public String getReleaseDate() {
+<span class="nc" id="L199">        return releaseDate;</span>
+    }
+
+    @JsonProperty(&quot;release_date&quot;)
+    public void setReleaseDate(String releaseDate) {
+<span class="fc" id="L204">        this.releaseDate = releaseDate;</span>
+<span class="fc" id="L205">    }</span>
+
+    @JsonAnyGetter
+    public Map&lt;String, Object&gt; getAdditionalProperties() {
+<span class="nc" id="L209">        return this.additionalProperties;</span>
+    }
+
+    @JsonAnySetter
+    public void setAdditionalProperty(String name, Object value) {
+<span class="nc" id="L214">        this.additionalProperties.put(name, value);</span>
+<span class="nc" id="L215">    }</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.3.201901230119</span></div></body></html>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>GuessID.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">project_name</a> &gt; <a href="index.source.html" class="el_package">aiss.model.tmdb</a> &gt; <span class="el_source">GuessID.java</span></div><h1>GuessID.java</h1><pre class="source lang-java linenums">
+package aiss.model.tmdb;
+
+import java.util.HashMap;
+import java.util.Map;
+import com.fasterxml.jackson.annotation.JsonAnyGetter;
+import com.fasterxml.jackson.annotation.JsonAnySetter;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+
+@JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonPropertyOrder({
+    &quot;success&quot;,
+    &quot;guest_session_id&quot;,
+    &quot;expires_at&quot;
+})
+<span class="nc" id="L19">public class GuessID {</span>
+
+    @JsonProperty(&quot;success&quot;)
+    private Boolean success;
+    @JsonProperty(&quot;guest_session_id&quot;)
+    private String guestSessionId;
+    @JsonProperty(&quot;expires_at&quot;)
+    private String expiresAt;
+    @JsonIgnore
+<span class="nc" id="L28">    private Map&lt;String, Object&gt; additionalProperties = new HashMap&lt;String, Object&gt;();</span>
+
+    @JsonProperty(&quot;success&quot;)
+    public Boolean getSuccess() {
+<span class="nc" id="L32">        return success;</span>
+    }
+
+    @JsonProperty(&quot;success&quot;)
+    public void setSuccess(Boolean success) {
+<span class="nc" id="L37">        this.success = success;</span>
+<span class="nc" id="L38">    }</span>
+
+    @JsonProperty(&quot;guest_session_id&quot;)
+    public String getGuestSessionId() {
+<span class="nc" id="L42">        return guestSessionId;</span>
+    }
+
+    @JsonProperty(&quot;guest_session_id&quot;)
+    public void setGuestSessionId(String guestSessionId) {
+<span class="nc" id="L47">        this.guestSessionId = guestSessionId;</span>
+<span class="nc" id="L48">    }</span>
+
+    @JsonProperty(&quot;expires_at&quot;)
+    public String getExpiresAt() {
+<span class="nc" id="L52">        return expiresAt;</span>
+    }
+
+    @JsonProperty(&quot;expires_at&quot;)
+    public void setExpiresAt(String expiresAt) {
+<span class="nc" id="L57">        this.expiresAt = expiresAt;</span>
+<span class="nc" id="L58">    }</span>
+
+    @JsonAnyGetter
+    public Map&lt;String, Object&gt; getAdditionalProperties() {
+<span class="nc" id="L62">        return this.additionalProperties;</span>
+    }
+
+    @JsonAnySetter
+    public void setAdditionalProperty(String name, Object value) {
+<span class="nc" id="L67">        this.additionalProperties.put(name, value);</span>
+<span class="nc" id="L68">    }</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.3.201901230119</span></div></body></html>

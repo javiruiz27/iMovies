@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>NotificationSettings.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">project_name</a> &gt; <a href="index.source.html" class="el_package">aiss.model.calendar</a> &gt; <span class="el_source">NotificationSettings.java</span></div><h1>NotificationSettings.java</h1><pre class="source lang-java linenums">
+package aiss.model.calendar;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import com.fasterxml.jackson.annotation.JsonAnyGetter;
+import com.fasterxml.jackson.annotation.JsonAnySetter;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+
+@JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonPropertyOrder({
+    &quot;notifications&quot;
+})
+<span class="nc" id="L18">public class NotificationSettings {</span>
+
+    @JsonProperty(&quot;notifications&quot;)
+<span class="nc" id="L21">    private List&lt;Notification&gt; notifications = null;</span>
+    @JsonIgnore
+<span class="nc" id="L23">    private Map&lt;String, Object&gt; additionalProperties = new HashMap&lt;String, Object&gt;();</span>
+
+    @JsonProperty(&quot;notifications&quot;)
+    public List&lt;Notification&gt; getNotifications() {
+<span class="nc" id="L27">        return notifications;</span>
+    }
+
+    @JsonProperty(&quot;notifications&quot;)
+    public void setNotifications(List&lt;Notification&gt; notifications) {
+<span class="nc" id="L32">        this.notifications = notifications;</span>
+<span class="nc" id="L33">    }</span>
+
+    @JsonAnyGetter
+    public Map&lt;String, Object&gt; getAdditionalProperties() {
+<span class="nc" id="L37">        return this.additionalProperties;</span>
+    }
+
+    @JsonAnySetter
+    public void setAdditionalProperty(String name, Object value) {
+<span class="nc" id="L42">        this.additionalProperties.put(name, value);</span>
+<span class="nc" id="L43">    }</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.3.201901230119</span></div></body></html>

@@ -31,6 +31,14 @@
 				value="Buscar">
 		</form>
 		</c:if>
+		
+ 	<form action="/RateController" method="post">
+		<p>Valora la película</p>
+			<input type="hidden" name="idpelicula" value="${requestScope.imdbID}"/>
+			<input type="number" name="rate" value=> 
+			<input	class="submit" type="submit" name="searchBtn" title="search"
+				value="Buscar">
+		</form>
 
 
 

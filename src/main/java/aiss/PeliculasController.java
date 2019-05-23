@@ -36,6 +36,7 @@ public class PeliculasController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+	
 
 		String name = request.getParameter("name");
 		RequestDispatcher rd = null;

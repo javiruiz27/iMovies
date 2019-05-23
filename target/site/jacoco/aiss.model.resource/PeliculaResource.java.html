@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>PeliculaResource.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">project_name</a> &gt; <a href="index.source.html" class="el_package">aiss.model.resource</a> &gt; <span class="el_source">PeliculaResource.java</span></div><h1>PeliculaResource.java</h1><pre class="source lang-java linenums">package aiss.model.resource;
+
+import java.net.URI;
+import java.util.Collection;
+
+import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
+import javax.ws.rs.GET;
+import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
+import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.Context;
+import javax.ws.rs.core.Response;
+import javax.ws.rs.core.Response.ResponseBuilder;
+import javax.ws.rs.core.UriBuilder;
+import javax.ws.rs.core.UriInfo;
+
+import org.jboss.resteasy.spi.BadRequestException;
+
+
+import aiss.model.repository.PeliculaRepository;
+import aiss.models.Pelicula;
+import javassist.NotFoundException;
+
+@Path(&quot;/movies&quot;)
+public class PeliculaResource {
+	
+<span class="nc" id="L30">	public static PeliculaResource _instance = null;</span>
+	PeliculaRepository repository;
+
+<span class="nc" id="L33">	private PeliculaResource() {</span>
+<span class="nc" id="L34">		repository = PeliculaRepository.getInstance();</span>
+<span class="nc" id="L35">	}</span>
+
+	public static PeliculaResource getInstance() {
+<span class="nc bnc" id="L38" title="All 2 branches missed.">		if (_instance == null)</span>
+<span class="nc" id="L39">			_instance = new PeliculaResource();</span>
+<span class="nc" id="L40">		return _instance;</span>
+	}
+
+	@GET
+	@Produces(&quot;application/json&quot;)
+	public Collection&lt;Pelicula&gt; getAll() {
+<span class="nc" id="L46">		return repository.getAllPeliculas();</span>
+	}
+
+	@GET
+	@Path(&quot;/{id}&quot;)
+	@Produces(&quot;application/json&quot;)
+	public Pelicula get(@PathParam(&quot;id&quot;) Integer movieId) throws NotFoundException {
+<span class="nc" id="L53">		Pelicula peli = repository.getPelicula(movieId);</span>
+
+<span class="nc bnc" id="L55" title="All 2 branches missed.">		if (peli == null) {</span>
+<span class="nc" id="L56">			throw new NotFoundException(&quot;La pelicula con id=&quot; + movieId + &quot; no se encuentra&quot;);</span>
+		}
+
+<span class="nc" id="L59">		return peli;</span>
+	}
+
+	@POST
+	@Consumes(&quot;application/json&quot;)
+	@Produces(&quot;application/json&quot;)
+	public Response addMovie(@Context UriInfo uriInfo, Pelicula movie) {
+<span class="nc bnc" id="L66" title="All 4 branches missed.">		if (movie.getTitle() == null || &quot;&quot;.equals(movie.getTitle()))</span>
+<span class="nc" id="L67">			throw new BadRequestException(&quot;El nombre de la pelicula no puede ser nulo&quot;);</span>
+
+<span class="nc" id="L69">		repository.addPelicula(movie);</span>
+<span class="nc" id="L70">		Integer id = movie.getId();</span>
+<span class="nc" id="L71">		String titulo = movie.getTitle();</span>
+<span class="nc" id="L72">		String id2 = String.valueOf(id);</span>
+<span class="nc" id="L73">		repository.agregarPelicula(titulo, id2);</span>
+
+<span class="nc" id="L75">		UriBuilder ub = uriInfo.getAbsolutePathBuilder().path(this.getClass(), &quot;get&quot;);</span>
+<span class="nc" id="L76">		URI uri = ub.build(movie.getId());</span>
+<span class="nc" id="L77">		ResponseBuilder resp = Response.created(uri);</span>
+<span class="nc" id="L78">		resp.entity(movie);</span>
+<span class="nc" id="L79">		return resp.build();</span>
+	}
+
+	@PUT
+	@Consumes(&quot;application/json&quot;)
+	public Response updateMovie(Pelicula movie) throws NotFoundException {
+<span class="nc" id="L85">		Pelicula oldmovie = repository.getPelicula(movie.getId());</span>
+<span class="nc" id="L86">		String titulo = oldmovie.getTitle();</span>
+<span class="nc" id="L87">		repository.eliminarPelicula(titulo);</span>
+<span class="nc bnc" id="L88" title="All 2 branches missed.">		if (oldmovie == null) {</span>
+<span class="nc" id="L89">			throw new NotFoundException(&quot;La pelicula con id=&quot; + movie.getId() + &quot; no se ecuentra&quot;);</span>
+		}
+
+<span class="nc bnc" id="L92" title="All 2 branches missed.">		if (movie.getTitle() != null) {</span>
+<span class="nc" id="L93">			oldmovie.setTitle(movie.getTitle());</span>
+<span class="nc" id="L94">			repository.actualizarpeli(movie.getTitle(), movie.getId());</span>
+		}
+<span class="nc" id="L96">		return Response.noContent().build();</span>
+	}
+
+	@DELETE
+	@Path(&quot;/{id}&quot;)
+	public Response deleteMovie(@PathParam(&quot;id&quot;) Integer movieId) throws NotFoundException {
+<span class="nc" id="L102">		Pelicula toberemoved = repository.getPelicula(movieId);</span>
+<span class="nc" id="L103">		String titulo = repository.getPelicula(movieId).getTitle();</span>
+
+<span class="nc bnc" id="L105" title="All 2 branches missed.">		if (toberemoved == null)</span>
+<span class="nc" id="L106">			throw new NotFoundException(&quot;La pelicula con id=&quot; + movieId + &quot; no se encuentra&quot;);</span>
+		else
+<span class="nc" id="L108">			repository.deletePelicula(movieId);</span>
+<span class="nc" id="L109">		repository.borrarPelicula(titulo);</span>
+
+<span class="nc" id="L111">		return Response.noContent().build();</span>
+	}
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.3.201901230119</span></div></body></html>

@@ -1,12 +1,14 @@
 package aiss.model.resource;
 
 import java.io.UnsupportedEncodingException;
-
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import org.restlet.resource.ClientResource;
 
 import aiss.model.tmdb.Details;
+import aiss.model.tmdb.GuessID;
+import aiss.model.tmdb.Rate;
 import aiss.model.tmdb.SearchImagen;
 import aiss.model.tmdb.SearchMovie;
 import aiss.model.tmdb.SearchVideo;
@@ -16,16 +18,33 @@ public class TMDBSearchResource {
 	private static final String TMDB_API_KEY = "e925e771d23f12d0770dad8d0309141f";
 	private static final Logger log = Logger.getLogger(TMDBSearchResource.class.getName());
 
-	public SearchMovie getMovies(String artist) throws UnsupportedEncodingException {
-
-		String URL = "https://api.themoviedb.org/3/search/movie?api_key=" + TMDB_API_KEY + "&language=ES&query="
-				+ artist + "&page=1";
+	public Rate postRate(String idmovie, Double rate) throws UnsupportedEncodingException {
+		Rate res = null;
+		GuessID guess = TMDBSession.getGuestSession();
+		String sessionId = guess.getGuestSessionId();
+		log.log(Level.FINE, "El session id es " + sessionId);
+		// https://api.themoviedb.org/3/movie/{movie_id}/rating?api_key=<<api_key>>
+		String URL = "https://api.themoviedb.org/3/movie/" + idmovie + "/rating?guest_session_id=" + sessionId
+				+ "&api_key=" + TMDB_API_KEY;
 
 		ClientResource cr = new ClientResource(URL);
-		SearchMovie ps = cr.get(SearchMovie.class);
+		res = cr.post(rate, Rate.class);
+		log.log(Level.FINE, "El comentario ha sido posteado");
 
-		return ps;
+		return res;
+
 	}
+
+//	public SearchMovie getMovies(String artist) throws UnsupportedEncodingException {
+//
+//		String URL = "https://api.themoviedb.org/3/search/movie?api_key=" + TMDB_API_KEY + "&language=ES&query="
+//				+ artist + "&page=1";
+//
+//		ClientResource cr = new ClientResource(URL);
+//		SearchMovie ps = cr.get(SearchMovie.class);
+//
+//		return ps;
+//	}
 
 	public SearchMovie getCartelera() throws UnsupportedEncodingException {
 
@@ -47,7 +66,6 @@ public class TMDBSearchResource {
 		return ps;
 
 	}
-
 
 	public SearchVideo getVideo(Integer id) throws UnsupportedEncodingException {
 

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Capabilities.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">project_name</a> &gt; <a href="index.source.html" class="el_package">aiss.model.google.drive</a> &gt; <span class="el_source">Capabilities.java</span></div><h1>Capabilities.java</h1><pre class="source lang-java linenums">
+package aiss.model.google.drive;
+
+import java.io.Serializable;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+@JsonIgnoreProperties(ignoreUnknown=true)
+<span class="nc" id="L8">public class Capabilities implements Serializable</span>
+{
+
+    private Boolean canCopy;
+    private Boolean canEdit;
+    private final static long serialVersionUID = -5122409732108684424L;
+
+    public Boolean getCanCopy() {
+<span class="nc" id="L16">        return canCopy;</span>
+    }
+
+    public void setCanCopy(Boolean canCopy) {
+<span class="nc" id="L20">        this.canCopy = canCopy;</span>
+<span class="nc" id="L21">    }</span>
+
+    public Boolean getCanEdit() {
+<span class="nc" id="L24">        return canEdit;</span>
+    }
+
+    public void setCanEdit(Boolean canEdit) {
+<span class="nc" id="L28">        this.canEdit = canEdit;</span>
+<span class="nc" id="L29">    }</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.3.201901230119</span></div></body></html>

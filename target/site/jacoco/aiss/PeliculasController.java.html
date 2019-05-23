@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>PeliculasController.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">project_name</a> &gt; <a href="index.source.html" class="el_package">aiss</a> &gt; <span class="el_source">PeliculasController.java</span></div><h1>PeliculasController.java</h1><pre class="source lang-java linenums">package aiss;
+
+import java.io.IOException;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import aiss.model.resource.TMDBSearchResource;
+import aiss.model.tmdb.Result;
+import aiss.model.tmdb.SearchMovie;
+
+/**
+ * Servlet implementation class PeliculasController
+ */
+public class PeliculasController extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+<span class="nc" id="L23">	private static final Logger log = Logger.getLogger(PeliculasController.class.getName());</span>
+
+	/**
+	 * @see HttpServlet#HttpServlet()
+	 */
+	public PeliculasController() {
+<span class="nc" id="L29">		super();</span>
+		// TODO Auto-generated constructor stub
+<span class="nc" id="L31">	}</span>
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+	
+
+<span class="nc" id="L41">		String name = request.getParameter(&quot;name&quot;);</span>
+<span class="nc" id="L42">		RequestDispatcher rd = null;</span>
+		
+
+		
+<span class="nc bnc" id="L46" title="All 2 branches missed.">		if( name.length()&gt;0) {</span>
+			
+<span class="nc" id="L48">		TMDBSearchResource tmdb = new TMDBSearchResource();</span>
+<span class="nc" id="L49">		SearchMovie pelPorNombre = tmdb.getMovieByName(name);</span>
+
+<span class="nc" id="L51">		List&lt;Result&gt; result = pelPorNombre.getResults();</span>
+		
+<span class="nc" id="L53">		String actuales = &quot;no&quot;;</span>
+		
+
+		
+<span class="nc bnc" id="L57" title="All 2 branches missed.">		if ( result.size() &gt; 0 ) {</span>
+<span class="nc" id="L58">			rd = request.getRequestDispatcher(&quot;/peliculasActuales.jsp&quot;);</span>
+<span class="nc" id="L59">			request.setAttribute(&quot;name&quot;, name);</span>
+<span class="nc" id="L60">			request.setAttribute(&quot;pelActuales&quot;, result);</span>
+<span class="nc" id="L61">			request.setAttribute(&quot;actuales&quot;, actuales);</span>
+
+<span class="nc" id="L63">			log.log(Level.INFO, &quot;Se han cargado las películas con el nombre &quot; + name);</span>
+<span class="nc" id="L64">		}else {</span>
+<span class="nc" id="L65">			rd= request.getRequestDispatcher(&quot;/error.jsp&quot;);</span>
+<span class="nc" id="L66">			log.log(Level.INFO, &quot;Ha ocurrido un error al cargar los cines de &quot; + name);</span>
+		}
+		
+<span class="nc" id="L69">		} else {</span>
+<span class="nc" id="L70">			rd = request.getRequestDispatcher(&quot;/index.jsp&quot;);</span>
+			
+<span class="nc" id="L72">			log.log(Level.INFO, &quot;Has dejado el nombre en blanco&quot;);</span>
+			
+		}
+
+<span class="nc" id="L76">		rd.forward(request, response);</span>
+
+<span class="nc" id="L78">	}</span>
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		// TODO Auto-generated method stub
+<span class="nc" id="L87">		doGet(request, response);</span>
+<span class="nc" id="L88">	}</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.3.201901230119</span></div></body></html>

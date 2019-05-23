@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>GoogleDriveResource.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">project_name</a> &gt; <a href="index.source.html" class="el_package">aiss.model.resource</a> &gt; <span class="el_source">GoogleDriveResource.java</span></div><h1>GoogleDriveResource.java</h1><pre class="source lang-java linenums">package aiss.model.resource;
+
+import java.util.Map;
+
+import java.util.logging.Logger;
+
+import org.restlet.data.ChallengeResponse;
+import org.restlet.data.ChallengeScheme;
+import org.restlet.data.MediaType;
+import org.restlet.representation.StringRepresentation;
+import org.restlet.resource.ClientResource;
+import org.restlet.resource.ResourceException;
+
+import aiss.model.google.drive.FileItem;
+import aiss.model.google.drive.Files;
+
+public class GoogleDriveResource {
+
+<span class="nc" id="L19">	private static final Logger log = Logger.getLogger(GoogleDriveResource.class.getName());</span>
+
+	private final String access_token;
+<span class="nc" id="L22">	private final String uri = &quot;https://www.googleapis.com/drive/v2/files&quot;;</span>
+<span class="nc" id="L23">	private final String uri_upload = &quot;https://www.googleapis.com/upload/drive/v2/files&quot;;</span>
+
+<span class="nc" id="L25">	public GoogleDriveResource(String access_token) {</span>
+<span class="nc" id="L26">		this.access_token = access_token;</span>
+<span class="nc" id="L27">	}</span>
+
+	/**
+	 *
+	 * @return Files
+	 */
+	public Files getFiles() {
+<span class="nc" id="L34">		ClientResource cr = null;</span>
+<span class="nc" id="L35">		Files files = null;</span>
+		try {
+<span class="nc" id="L37">			cr = new ClientResource(uri + &quot;?access_token=&quot; + access_token);</span>
+<span class="nc" id="L38">			String result = cr.get(String.class);</span>
+<span class="nc" id="L39">			files = cr.get(Files.class);</span>
+
+<span class="nc" id="L41">		} catch (ResourceException re) {</span>
+<span class="nc" id="L42">			log.warning(&quot;Error when retrieving all files: &quot; + cr.getResponse().getStatus());</span>
+		}
+
+<span class="nc" id="L45">		return files;</span>
+
+	}
+
+	public FileItem getFile(String id) {
+
+<span class="nc" id="L51">		ClientResource cr = null;</span>
+<span class="nc" id="L52">		FileItem file = null;</span>
+		try {
+<span class="nc" id="L54">			cr = new ClientResource(uri + &quot;/&quot; + id + &quot;?access_token=&quot; + access_token);</span>
+<span class="nc" id="L55">			file = cr.get(FileItem.class);</span>
+
+<span class="nc" id="L57">		} catch (ResourceException re) {</span>
+<span class="nc" id="L58">			log.warning(&quot;Error when retrieving file: &quot; + cr.getResponse().getStatus());</span>
+		}
+
+<span class="nc" id="L61">		return file;</span>
+
+	}
+
+	public String insertFile(FileItem file, String content) {
+
+<span class="nc" id="L67">		ClientResource cr = null;</span>
+<span class="nc" id="L68">		String newId = null;</span>
+		try {
+<span class="nc" id="L70">			cr = new ClientResource(uri + &quot;?access_token=&quot; + access_token);</span>
+<span class="nc" id="L71">			FileItem newFile = cr.post(file, FileItem.class);</span>
+<span class="nc" id="L72">			newId = newFile.getId();</span>
+<span class="nc" id="L73">			cr = new ClientResource(uri_upload + &quot;/&quot; + newId + &quot;?uploadType=media&amp;access_token=&quot; + access_token);</span>
+<span class="nc" id="L74">			Map&lt;String, Object&gt; headers = cr.getRequestAttributes();</span>
+<span class="nc" id="L75">			headers.put(&quot;Content-Type&quot;, &quot;text/plain&quot;);</span>
+<span class="nc" id="L76">			cr.put(content);</span>
+<span class="nc" id="L77">		} catch (ResourceException re) {</span>
+<span class="nc" id="L78">			log.warning(&quot;Error when inserting file: &quot; + cr.getResponse().getStatus());</span>
+		}
+<span class="nc" id="L80">		return newId;</span>
+	}
+
+	public boolean updateFile(FileItem file) {
+
+<span class="nc" id="L85">		ClientResource cr = null;</span>
+<span class="nc" id="L86">		boolean result = true;</span>
+		try {
+<span class="nc" id="L88">			cr = new ClientResource(uri + &quot;/&quot; + file.getId() + &quot;?access_token=&quot; + access_token);</span>
+<span class="nc" id="L89">			cr.put(file);</span>
+<span class="nc" id="L90">		} catch (ResourceException re) {</span>
+<span class="nc" id="L91">			log.warning(&quot;Error when updating file: &quot; + cr.getResponse().getStatus());</span>
+<span class="nc" id="L92">			result = false;</span>
+		}
+<span class="nc" id="L94">		return result;</span>
+	}
+
+	public boolean deleteFile(String id) {
+
+<span class="nc" id="L99">		ClientResource cr = null;</span>
+<span class="nc" id="L100">		boolean result = true;</span>
+		try {
+<span class="nc" id="L102">			cr = new ClientResource(uri + &quot;/&quot; + id + &quot;?access_token=&quot; + access_token);</span>
+<span class="nc" id="L103">			cr.delete();</span>
+<span class="nc" id="L104">		} catch (ResourceException re) {</span>
+<span class="nc" id="L105">			log.warning(&quot;Error when deleting file: &quot; + cr.getResponse().getStatus());</span>
+<span class="nc" id="L106">			result = false;</span>
+		}
+<span class="nc" id="L108">		return result;</span>
+
+	}
+
+	public String getFileContent(FileItem item) {
+<span class="nc" id="L113">		String result = null;</span>
+<span class="nc" id="L114">		String contentURL = item.getDownloadUrl();</span>
+		try {
+<span class="nc" id="L116">			ClientResource cr = new ClientResource(contentURL);</span>
+			/*
+			 * Map&lt;String, Object&gt; reqAttribs = cr.getRequestAttributes(); Series&lt;Header&gt;
+			 * headers = (Series&lt;Header&gt;)reqAttribs.get(&quot;org.restlet.http.headers&quot;); if
+			 * (headers == null) { headers = new Series&lt;Header&gt;(Header.class);
+			 * reqAttribs.put(&quot;org.restlet.http.headers&quot;, headers); } headers.add(new
+			 * Header(&quot;Authorization:&quot;, &quot;Bearer &quot;+access_token));
+			 */
+<span class="nc" id="L124">			ChallengeResponse chr = new ChallengeResponse(ChallengeScheme.HTTP_OAUTH_BEARER);</span>
+<span class="nc" id="L125">			chr.setRawValue(access_token);</span>
+<span class="nc" id="L126">			cr.setChallengeResponse(chr);</span>
+
+<span class="nc" id="L128">			result = cr.get(String.class);</span>
+<span class="nc" id="L129">		} catch (ResourceException re) {</span>
+<span class="nc" id="L130">			log.warning(&quot;Error when obtaining the content of file: &quot; + item.getId());</span>
+		}
+<span class="nc" id="L132">		return result;</span>
+	}
+
+	public boolean updateFileContent(String id, String content) {
+<span class="nc" id="L136">		ClientResource cr = new ClientResource(uri_upload + &quot;/&quot; + id + &quot;?uploadType=media&quot;);</span>
+		try {
+<span class="nc" id="L138">			ChallengeResponse chr = new ChallengeResponse(ChallengeScheme.HTTP_OAUTH_BEARER);</span>
+<span class="nc" id="L139">			chr.setRawValue(access_token);</span>
+<span class="nc" id="L140">			cr.setChallengeResponse(chr);</span>
+<span class="nc" id="L141">			StringRepresentation rep = new StringRepresentation(content, MediaType.TEXT_PLAIN);</span>
+<span class="nc" id="L142">			cr.put(rep);</span>
+<span class="nc" id="L143">		} catch (ResourceException re) {</span>
+<span class="nc" id="L144">			log.warning(&quot;Error when updating the content of file: &quot; + id);</span>
+<span class="nc" id="L145">			log.warning(re.getMessage());</span>
+<span class="nc" id="L146">			return false;</span>
+		}
+<span class="nc" id="L148">		return true;</span>
+	}
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.3.201901230119</span></div></body></html>

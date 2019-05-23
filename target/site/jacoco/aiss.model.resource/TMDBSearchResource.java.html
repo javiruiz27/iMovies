@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>TMDBSearchResource.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">project_name</a> &gt; <a href="index.source.html" class="el_package">aiss.model.resource</a> &gt; <span class="el_source">TMDBSearchResource.java</span></div><h1>TMDBSearchResource.java</h1><pre class="source lang-java linenums">package aiss.model.resource;
+
+import java.io.UnsupportedEncodingException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+import org.restlet.resource.ClientResource;
+
+import aiss.model.tmdb.Details;
+import aiss.model.tmdb.GuessID;
+import aiss.model.tmdb.Rate;
+import aiss.model.tmdb.SearchImagen;
+import aiss.model.tmdb.SearchMovie;
+import aiss.model.tmdb.SearchVideo;
+
+<span class="nc" id="L16">public class TMDBSearchResource {</span>
+
+	private static final String TMDB_API_KEY = &quot;e925e771d23f12d0770dad8d0309141f&quot;;
+<span class="nc" id="L19">	private static final Logger log = Logger.getLogger(TMDBSearchResource.class.getName());</span>
+
+	public Rate postRate(String idmovie, Double rate) throws UnsupportedEncodingException {
+<span class="nc" id="L22">		Rate res = null;</span>
+<span class="nc" id="L23">		GuessID guess = TMDBSession.getGuestSession();</span>
+<span class="nc" id="L24">		String sessionId = guess.getGuestSessionId();</span>
+<span class="nc" id="L25">		log.log(Level.FINE,&quot;El session id es &quot;+sessionId);</span>
+		//https://api.themoviedb.org/3/movie/{movie_id}/rating?api_key=&lt;&lt;api_key&gt;&gt;
+<span class="nc" id="L27">		String URL = &quot;https://api.themoviedb.org/3/movie/&quot; + idmovie</span>
+<span class="nc" id="L28">				+ &quot;/rating?guest_session_id=&quot;+sessionId+&quot;&amp;api_key=&quot; + TMDB_API_KEY;</span>
+		
+<span class="nc" id="L30">		ClientResource cr = new ClientResource(URL);</span>
+<span class="nc" id="L31">		res = cr.post(rate,Rate.class);</span>
+<span class="nc" id="L32">		log.log(Level.FINE, &quot;El comentario ha sido posteado&quot;);</span>
+		
+<span class="nc" id="L34">		return res;</span>
+
+	}
+
+//	public SearchMovie getMovies(String artist) throws UnsupportedEncodingException {
+//
+//		String URL = &quot;https://api.themoviedb.org/3/search/movie?api_key=&quot; + TMDB_API_KEY + &quot;&amp;language=ES&amp;query=&quot;
+//				+ artist + &quot;&amp;page=1&quot;;
+//
+//		ClientResource cr = new ClientResource(URL);
+//		SearchMovie ps = cr.get(SearchMovie.class);
+//
+//		return ps;
+//	}
+	
+
+	public SearchMovie getCartelera() throws UnsupportedEncodingException {
+
+<span class="nc" id="L52">		String URL = &quot;https://api.themoviedb.org/3/movie/now_playing?api_key=&quot; + TMDB_API_KEY + &quot;&amp;language=EN&amp;page=1&quot;;</span>
+
+<span class="nc" id="L54">		ClientResource cr = new ClientResource(URL);</span>
+<span class="nc" id="L55">		SearchMovie ps = cr.get(SearchMovie.class);</span>
+
+<span class="nc" id="L57">		return ps;</span>
+	}
+
+	public SearchMovie getMovieByName(String name) throws UnsupportedEncodingException {
+
+<span class="nc" id="L62">		String URL = &quot;https://api.themoviedb.org/3/search/movie?api_key=&quot; + TMDB_API_KEY + &quot;&amp;language=EN&amp;query=&quot; + name</span>
+<span class="nc" id="L63">				+ &quot;&amp;page=1&quot;;</span>
+<span class="nc" id="L64">		ClientResource cr = new ClientResource(URL);</span>
+<span class="nc" id="L65">		SearchMovie ps = cr.get(SearchMovie.class);</span>
+
+<span class="nc" id="L67">		return ps;</span>
+
+	}
+
+	public SearchVideo getVideo(Integer id) throws UnsupportedEncodingException {
+
+<span class="nc" id="L73">		String URL = &quot;https://api.themoviedb.org/3/movie/&quot; + id + &quot;/videos?api_key=&quot; + TMDB_API_KEY + &quot;&amp;language=EN&quot;;</span>
+		// https://api.themoviedb.org/3/movie/{movie_id}/videos?api_key=&lt;&lt;api_key&gt;&gt;&amp;language=en-US
+
+<span class="nc" id="L76">		ClientResource cr = new ClientResource(URL);</span>
+<span class="nc" id="L77">		SearchVideo ps = cr.get(SearchVideo.class);</span>
+
+<span class="nc" id="L79">		return ps;</span>
+	}
+
+	public Details getDetalles(Integer id) throws UnsupportedEncodingException {
+
+<span class="nc" id="L84">		String URL = &quot;https://api.themoviedb.org/3/movie/&quot; + id + &quot;?api_key=&quot; + TMDB_API_KEY + &quot;&amp;language=EN&quot;;</span>
+
+<span class="nc" id="L86">		ClientResource cr = new ClientResource(URL);</span>
+<span class="nc" id="L87">		Details ps = cr.get(Details.class);</span>
+
+<span class="nc" id="L89">		return ps;</span>
+	}
+
+	public SearchImagen getImagen(Integer id) throws UnsupportedEncodingException {
+
+<span class="nc" id="L94">		String URL = &quot;https://api.themoviedb.org/3/movie/&quot; + id + &quot;/images?api_key=&quot; + TMDB_API_KEY + &quot;&amp;language=EN&quot;;</span>
+
+<span class="nc" id="L96">		ClientResource cr = new ClientResource(URL);</span>
+<span class="nc" id="L97">		SearchImagen ps = cr.get(SearchImagen.class);</span>
+
+<span class="nc" id="L99">		return ps;</span>
+	}
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.3.201901230119</span></div></body></html>

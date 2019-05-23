@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ListCalendar.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">project_name</a> &gt; <a href="index.source.html" class="el_package">aiss.model.calendar</a> &gt; <span class="el_source">ListCalendar.java</span></div><h1>ListCalendar.java</h1><pre class="source lang-java linenums">
+package aiss.model.calendar;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import com.fasterxml.jackson.annotation.JsonAnyGetter;
+import com.fasterxml.jackson.annotation.JsonAnySetter;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+
+@JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonPropertyOrder({
+    &quot;kind&quot;,
+    &quot;etag&quot;,
+    &quot;nextSyncToken&quot;,
+    &quot;items&quot;
+})
+<span class="nc" id="L21">public class ListCalendar {</span>
+
+    @JsonProperty(&quot;kind&quot;)
+    private String kind;
+    @JsonProperty(&quot;etag&quot;)
+    private String etag;
+    @JsonProperty(&quot;nextSyncToken&quot;)
+    private String nextSyncToken;
+    @JsonProperty(&quot;items&quot;)
+<span class="nc" id="L30">    private List&lt;Item&gt; items = null;</span>
+    @JsonIgnore
+<span class="nc" id="L32">    private Map&lt;String, Object&gt; additionalProperties = new HashMap&lt;String, Object&gt;();</span>
+
+    @JsonProperty(&quot;kind&quot;)
+    public String getKind() {
+<span class="nc" id="L36">        return kind;</span>
+    }
+
+    @JsonProperty(&quot;kind&quot;)
+    public void setKind(String kind) {
+<span class="nc" id="L41">        this.kind = kind;</span>
+<span class="nc" id="L42">    }</span>
+
+    @JsonProperty(&quot;etag&quot;)
+    public String getEtag() {
+<span class="nc" id="L46">        return etag;</span>
+    }
+
+    @JsonProperty(&quot;etag&quot;)
+    public void setEtag(String etag) {
+<span class="nc" id="L51">        this.etag = etag;</span>
+<span class="nc" id="L52">    }</span>
+
+    @JsonProperty(&quot;nextSyncToken&quot;)
+    public String getNextSyncToken() {
+<span class="nc" id="L56">        return nextSyncToken;</span>
+    }
+
+    @JsonProperty(&quot;nextSyncToken&quot;)
+    public void setNextSyncToken(String nextSyncToken) {
+<span class="nc" id="L61">        this.nextSyncToken = nextSyncToken;</span>
+<span class="nc" id="L62">    }</span>
+
+    @JsonProperty(&quot;items&quot;)
+    public List&lt;Item&gt; getItems() {
+<span class="nc" id="L66">        return items;</span>
+    }
+
+    @JsonProperty(&quot;items&quot;)
+    public void setItems(List&lt;Item&gt; items) {
+<span class="nc" id="L71">        this.items = items;</span>
+<span class="nc" id="L72">    }</span>
+
+    @JsonAnyGetter
+    public Map&lt;String, Object&gt; getAdditionalProperties() {
+<span class="nc" id="L76">        return this.additionalProperties;</span>
+    }
+
+    @JsonAnySetter
+    public void setAdditionalProperty(String name, Object value) {
+<span class="nc" id="L81">        this.additionalProperties.put(name, value);</span>
+<span class="nc" id="L82">    }</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.3.201901230119</span></div></body></html>

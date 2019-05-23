@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Details.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">project_name</a> &gt; <a href="index.source.html" class="el_package">aiss.model.tmdb</a> &gt; <span class="el_source">Details.java</span></div><h1>Details.java</h1><pre class="source lang-java linenums">
+package aiss.model.tmdb;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+@JsonIgnoreProperties(ignoreUnknown=true)
+<span class="nc" id="L8">public class Details {</span>
+
+    @JsonProperty(&quot;adult&quot;)
+    private boolean adult;
+    @JsonProperty(&quot;id&quot;)
+    private int id;
+    @JsonProperty(&quot;imdb_id&quot;)
+    private String imdbId;
+    @JsonProperty(&quot;overview&quot;)
+    private String overview;
+    @JsonProperty(&quot;release_date&quot;)
+    private String releaseDate;
+    @JsonProperty(&quot;title&quot;)
+    private String title;
+    @JsonProperty(&quot;video&quot;)
+    private boolean video;
+    @JsonProperty(&quot;vote_average&quot;)
+    private double voteAverage;
+    
+
+    @JsonProperty(&quot;adult&quot;)
+    public boolean isAdult() {
+<span class="nc" id="L30">        return adult;</span>
+    }
+
+    @JsonProperty(&quot;adult&quot;)
+    public void setAdult(boolean adult) {
+<span class="nc" id="L35">        this.adult = adult;</span>
+<span class="nc" id="L36">    }</span>
+
+    
+
+    
+   
+
+    @JsonProperty(&quot;id&quot;)
+    public int getId() {
+<span class="nc" id="L45">        return id;</span>
+    }
+
+    @JsonProperty(&quot;id&quot;)
+    public void setId(int id) {
+<span class="nc" id="L50">        this.id = id;</span>
+<span class="nc" id="L51">    }</span>
+
+    @JsonProperty(&quot;imdb_id&quot;)
+    public String getImdbId() {
+<span class="nc" id="L55">        return imdbId;</span>
+    }
+
+    @JsonProperty(&quot;imdb_id&quot;)
+    public void setImdbId(String imdbId) {
+<span class="nc" id="L60">        this.imdbId = imdbId;</span>
+<span class="nc" id="L61">    }</span>
+
+   
+    @JsonProperty(&quot;overview&quot;)
+    public String getOverview() {
+<span class="nc" id="L66">        return overview;</span>
+    }
+
+    @JsonProperty(&quot;overview&quot;)
+    public void setOverview(String overview) {
+<span class="nc" id="L71">        this.overview = overview;</span>
+<span class="nc" id="L72">    }</span>
+
+   
+
+    
+    @JsonProperty(&quot;release_date&quot;)
+    public String getReleaseDate() {
+<span class="nc" id="L79">        return releaseDate;</span>
+    }
+
+    @JsonProperty(&quot;release_date&quot;)
+    public void setReleaseDate(String releaseDate) {
+<span class="nc" id="L84">        this.releaseDate = releaseDate;</span>
+<span class="nc" id="L85">    }</span>
+
+    
+
+   
+
+    @JsonProperty(&quot;title&quot;)
+    public String getTitle() {
+<span class="nc" id="L93">        return title;</span>
+    }
+
+    @JsonProperty(&quot;title&quot;)
+    public void setTitle(String title) {
+<span class="nc" id="L98">        this.title = title;</span>
+<span class="nc" id="L99">    }</span>
+
+    @JsonProperty(&quot;video&quot;)
+    public boolean isVideo() {
+<span class="nc" id="L103">        return video;</span>
+    }
+
+    @JsonProperty(&quot;video&quot;)
+    public void setVideo(boolean video) {
+<span class="nc" id="L108">        this.video = video;</span>
+<span class="nc" id="L109">    }</span>
+
+    @JsonProperty(&quot;vote_average&quot;)
+    public double getVoteAverage() {
+<span class="nc" id="L113">        return voteAverage;</span>
+    }
+
+    @JsonProperty(&quot;vote_average&quot;)
+    public void setVoteAverage(double voteAverage) {
+<span class="nc" id="L118">        this.voteAverage = voteAverage;</span>
+<span class="nc" id="L119">    }</span>
+
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.3.201901230119</span></div></body></html>

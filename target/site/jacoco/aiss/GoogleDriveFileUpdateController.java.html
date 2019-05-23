@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>GoogleDriveFileUpdateController.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">project_name</a> &gt; <a href="index.source.html" class="el_package">aiss</a> &gt; <span class="el_source">GoogleDriveFileUpdateController.java</span></div><h1>GoogleDriveFileUpdateController.java</h1><pre class="source lang-java linenums">package aiss;
+
+import aiss.model.google.drive.FileItem;
+import aiss.model.resource.GoogleDriveResource;
+import java.io.IOException;
+import java.util.logging.Logger;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+<span class="nc" id="L12">public class GoogleDriveFileUpdateController extends HttpServlet {</span>
+
+ 
+	private static final long serialVersionUID = 1L;
+<span class="nc" id="L16">	private static final Logger log = Logger.getLogger(GoogleDriveFileDeleteController.class.getName());</span>
+
+    @Override
+    public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
+<span class="nc" id="L20">        String id = req.getParameter(&quot;id&quot;);</span>
+<span class="nc bnc" id="L21" title="All 4 branches missed.">        if (id != null &amp;&amp; !&quot;&quot;.equals(id)) {</span>
+<span class="nc" id="L22">            String accessToken = (String) req.getSession().getAttribute(&quot;GoogleDrive-token&quot;);</span>
+<span class="nc bnc" id="L23" title="All 4 branches missed.">            if (accessToken != null &amp;&amp; !&quot;&quot;.equals(accessToken)) {</span>
+<span class="nc" id="L24">                GoogleDriveResource gdResource = new GoogleDriveResource(accessToken);</span>
+<span class="nc" id="L25">                FileItem file = gdResource.getFile(id);</span>
+<span class="nc" id="L26">                req.setAttribute(&quot;file&quot;, file);</span>
+<span class="nc" id="L27">                req.setAttribute(&quot;content&quot;, gdResource.getFileContent(file));</span>
+<span class="nc" id="L28">                req.getRequestDispatcher(&quot;/googleDriveFileEdit.jsp&quot;).forward(req, resp);</span>
+<span class="nc" id="L29">            } else {</span>
+<span class="nc" id="L30">                log.info(&quot;Trying to access Google Drive without an access token, redirecting to OAuth servlet&quot;);</span>
+<span class="nc" id="L31">                req.getRequestDispatcher(&quot;/AuthController/GoogleDrive&quot;).forward(req, resp);</span>
+            }
+<span class="nc" id="L33">        } else {</span>
+<span class="nc" id="L34">            log.warning(&quot;Invalid id for update!&quot;);</span>
+<span class="nc" id="L35">            req.getRequestDispatcher(&quot;/googleDriveFileList&quot;).forward(req, resp);</span>
+        }
+<span class="nc" id="L37">    }</span>
+
+    @Override
+    public void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
+<span class="nc" id="L41">        String id = req.getParameter(&quot;id&quot;);</span>
+<span class="nc bnc" id="L42" title="All 4 branches missed.">        if (id != null &amp;&amp; !&quot;&quot;.equals(id)) {</span>
+<span class="nc" id="L43">            String accessToken = (String) req.getSession().getAttribute(&quot;GoogleDrive-token&quot;);</span>
+<span class="nc" id="L44">            String content = req.getParameter(&quot;content&quot;);</span>
+<span class="nc bnc" id="L45" title="All 4 branches missed.">            if (accessToken != null &amp;&amp; !&quot;&quot;.equals(accessToken)) {</span>
+<span class="nc" id="L46">                GoogleDriveResource gdResource = new GoogleDriveResource(accessToken);</span>
+<span class="nc" id="L47">                gdResource.updateFileContent(id, content);</span>
+<span class="nc" id="L48">                req.getRequestDispatcher(&quot;/googleDriveFileList&quot;).forward(req, resp);</span>
+<span class="nc" id="L49">            } else {</span>
+<span class="nc" id="L50">                log.info(&quot;Trying to access Google Drive without an access token, redirecting to OAuth servlet&quot;);</span>
+<span class="nc" id="L51">                req.getRequestDispatcher(&quot;/AuthController/GoogleDrive&quot;).forward(req, resp);</span>
+            }
+<span class="nc" id="L53">        } else {</span>
+<span class="nc" id="L54">            log.warning(&quot;Invalid id for update!&quot;);</span>
+<span class="nc" id="L55">            req.getRequestDispatcher(&quot;/googleDriveFileList&quot;).forward(req, resp);</span>
+        }
+<span class="nc" id="L57">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.3.201901230119</span></div></body></html>

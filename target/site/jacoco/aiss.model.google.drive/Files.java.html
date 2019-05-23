@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Files.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">project_name</a> &gt; <a href="index.source.html" class="el_package">aiss.model.google.drive</a> &gt; <span class="el_source">Files.java</span></div><h1>Files.java</h1><pre class="source lang-java linenums">
+package aiss.model.google.drive;
+
+import java.io.Serializable;
+import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+@JsonIgnoreProperties(ignoreUnknown=true)
+<span class="nc" id="L9">public class Files implements Serializable</span>
+{
+
+    private String kind;
+    private String etag;
+    private String selfLink;
+    private String nextPageToken;
+    private String nextLink;
+    private Boolean incompleteSearch;
+<span class="nc" id="L18">    private List&lt;FileItem&gt; items = null;</span>
+    private final static long serialVersionUID = -82441093946662476L;
+
+    public String getKind() {
+<span class="nc" id="L22">        return kind;</span>
+    }
+
+    public void setKind(String kind) {
+<span class="nc" id="L26">        this.kind = kind;</span>
+<span class="nc" id="L27">    }</span>
+
+    public String getEtag() {
+<span class="nc" id="L30">        return etag;</span>
+    }
+
+    public void setEtag(String etag) {
+<span class="nc" id="L34">        this.etag = etag;</span>
+<span class="nc" id="L35">    }</span>
+
+    public String getSelfLink() {
+<span class="nc" id="L38">        return selfLink;</span>
+    }
+
+    public void setSelfLink(String selfLink) {
+<span class="nc" id="L42">        this.selfLink = selfLink;</span>
+<span class="nc" id="L43">    }</span>
+
+    public String getNextPageToken() {
+<span class="nc" id="L46">        return nextPageToken;</span>
+    }
+
+    public void setNextPageToken(String nextPageToken) {
+<span class="nc" id="L50">        this.nextPageToken = nextPageToken;</span>
+<span class="nc" id="L51">    }</span>
+
+    public String getNextLink() {
+<span class="nc" id="L54">        return nextLink;</span>
+    }
+
+    public void setNextLink(String nextLink) {
+<span class="nc" id="L58">        this.nextLink = nextLink;</span>
+<span class="nc" id="L59">    }</span>
+
+    public Boolean getIncompleteSearch() {
+<span class="nc" id="L62">        return incompleteSearch;</span>
+    }
+
+    public void setIncompleteSearch(Boolean incompleteSearch) {
+<span class="nc" id="L66">        this.incompleteSearch = incompleteSearch;</span>
+<span class="nc" id="L67">    }</span>
+
+    public List&lt;FileItem&gt; getItems() {
+<span class="nc" id="L70">        return items;</span>
+    }
+
+    public void setItems(List&lt;FileItem&gt; items) {
+<span class="nc" id="L74">        this.items = items;</span>
+<span class="nc" id="L75">    }</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.3.201901230119</span></div></body></html>

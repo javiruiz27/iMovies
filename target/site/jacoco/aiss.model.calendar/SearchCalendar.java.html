@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>SearchCalendar.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">project_name</a> &gt; <a href="index.source.html" class="el_package">aiss.model.calendar</a> &gt; <span class="el_source">SearchCalendar.java</span></div><h1>SearchCalendar.java</h1><pre class="source lang-java linenums">
+package aiss.model.calendar;
+
+import java.util.HashMap;
+import java.util.Map;
+import com.fasterxml.jackson.annotation.JsonAnyGetter;
+import com.fasterxml.jackson.annotation.JsonAnySetter;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+
+@JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonPropertyOrder({
+    &quot;kind&quot;,
+    &quot;etag&quot;,
+    &quot;id&quot;,
+    &quot;summary&quot;,
+    &quot;timeZone&quot;,
+    &quot;conferenceProperties&quot;
+})
+<span class="nc" id="L22">public class SearchCalendar {</span>
+
+    @JsonProperty(&quot;kind&quot;)
+    private String kind;
+    @JsonProperty(&quot;etag&quot;)
+    private String etag;
+    @JsonProperty(&quot;id&quot;)
+    private String id;
+    @JsonProperty(&quot;summary&quot;)
+    private String summary;
+    @JsonProperty(&quot;timeZone&quot;)
+    private String timeZone;
+    @JsonProperty(&quot;conferenceProperties&quot;)
+    private ConferenceProperties conferenceProperties;
+    @JsonIgnore
+<span class="nc" id="L37">    private Map&lt;String, Object&gt; additionalProperties = new HashMap&lt;String, Object&gt;();</span>
+
+    @JsonProperty(&quot;kind&quot;)
+    public String getKind() {
+<span class="nc" id="L41">        return kind;</span>
+    }
+
+    @JsonProperty(&quot;kind&quot;)
+    public void setKind(String kind) {
+<span class="nc" id="L46">        this.kind = kind;</span>
+<span class="nc" id="L47">    }</span>
+
+    @JsonProperty(&quot;etag&quot;)
+    public String getEtag() {
+<span class="nc" id="L51">        return etag;</span>
+    }
+
+    @JsonProperty(&quot;etag&quot;)
+    public void setEtag(String etag) {
+<span class="nc" id="L56">        this.etag = etag;</span>
+<span class="nc" id="L57">    }</span>
+
+    @JsonProperty(&quot;id&quot;)
+    public String getId() {
+<span class="nc" id="L61">        return id;</span>
+    }
+
+    @JsonProperty(&quot;id&quot;)
+    public void setId(String id) {
+<span class="nc" id="L66">        this.id = id;</span>
+<span class="nc" id="L67">    }</span>
+
+    @JsonProperty(&quot;summary&quot;)
+    public String getSummary() {
+<span class="nc" id="L71">        return summary;</span>
+    }
+
+    @JsonProperty(&quot;summary&quot;)
+    public void setSummary(String summary) {
+<span class="nc" id="L76">        this.summary = summary;</span>
+<span class="nc" id="L77">    }</span>
+
+    @JsonProperty(&quot;timeZone&quot;)
+    public String getTimeZone() {
+<span class="nc" id="L81">        return timeZone;</span>
+    }
+
+    @JsonProperty(&quot;timeZone&quot;)
+    public void setTimeZone(String timeZone) {
+<span class="nc" id="L86">        this.timeZone = timeZone;</span>
+<span class="nc" id="L87">    }</span>
+
+    @JsonProperty(&quot;conferenceProperties&quot;)
+    public ConferenceProperties getConferenceProperties() {
+<span class="nc" id="L91">        return conferenceProperties;</span>
+    }
+
+    @JsonProperty(&quot;conferenceProperties&quot;)
+    public void setConferenceProperties(ConferenceProperties conferenceProperties) {
+<span class="nc" id="L96">        this.conferenceProperties = conferenceProperties;</span>
+<span class="nc" id="L97">    }</span>
+
+    @JsonAnyGetter
+    public Map&lt;String, Object&gt; getAdditionalProperties() {
+<span class="nc" id="L101">        return this.additionalProperties;</span>
+    }
+
+    @JsonAnySetter
+    public void setAdditionalProperty(String name, Object value) {
+<span class="nc" id="L106">        this.additionalProperties.put(name, value);</span>
+<span class="nc" id="L107">    }</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.3.201901230119</span></div></body></html>

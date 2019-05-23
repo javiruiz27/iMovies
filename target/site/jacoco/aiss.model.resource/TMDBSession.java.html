@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>TMDBSession.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">project_name</a> &gt; <a href="index.source.html" class="el_package">aiss.model.resource</a> &gt; <span class="el_source">TMDBSession.java</span></div><h1>TMDBSession.java</h1><pre class="source lang-java linenums">package aiss.model.resource;
+
+import java.io.UnsupportedEncodingException;
+import java.util.logging.Logger;
+
+import org.restlet.resource.ClientResource;
+
+import aiss.model.tmdb.GuessID;
+
+<span class="nc" id="L10">public class TMDBSession {</span>
+	
+	private static final String TMDB_API_KEY = &quot;e925e771d23f12d0770dad8d0309141f&quot;;
+<span class="nc" id="L13">	private static final Logger log = Logger.getLogger(TMDBSession.class.getName());</span>
+	
+	public static GuessID getGuestSession() throws UnsupportedEncodingException {
+
+<span class="nc" id="L17">		String URL = &quot;https://api.themoviedb.org/3/authentication/guest_session/new?api_key=&quot; + TMDB_API_KEY;</span>
+
+<span class="nc" id="L19">		ClientResource cr = new ClientResource(URL);</span>
+<span class="nc" id="L20">		GuessID g = cr.get(GuessID.class);</span>
+
+<span class="nc" id="L22">		return g;</span>
+
+	}
+	
+	
+	
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.3.201901230119</span></div></body></html>

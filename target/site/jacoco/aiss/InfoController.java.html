@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>InfoController.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">project_name</a> &gt; <a href="index.source.html" class="el_package">aiss</a> &gt; <span class="el_source">InfoController.java</span></div><h1>InfoController.java</h1><pre class="source lang-java linenums">package aiss;
+
+import java.io.IOException;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import aiss.model.resource.TMDBSearchResource;
+import aiss.model.tmdb.Details;
+import aiss.model.tmdb.Poster;
+import aiss.model.tmdb.Result2;
+import aiss.model.tmdb.SearchImagen;
+import aiss.model.tmdb.SearchVideo;
+
+/**
+ * Servlet implementation class InfoController
+ */
+public class InfoController extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+<span class="nc" id="L26">	private static final Logger log = Logger.getLogger(InfoController.class.getName());</span>
+
+	/**
+	 * @see HttpServlet#HttpServlet()
+	 */
+	public InfoController() {
+<span class="nc" id="L32">		super();</span>
+<span class="nc" id="L33">	}</span>
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
+<span class="nc" id="L42">		RequestDispatcher rd = null;</span>
+
+<span class="nc" id="L44">		TMDBSearchResource tmdb = new TMDBSearchResource();</span>
+		//String url2 = &quot;https://image.tmdb.org/t/p/w500/kqjL17yufvn9OVLyXYpvtyrFfak.jpg&quot;;
+<span class="nc" id="L46">		String titulo = request.getParameter(&quot;titulo&quot;);</span>
+<span class="nc" id="L47">		String id = request.getParameter(&quot;id&quot;);</span>
+<span class="nc" id="L48">		String actuales = request.getParameter(&quot;actuales&quot;);</span>
+
+
+		//String url3= &quot;https://www.themoviedb.org/movie/299537-captain-marvel#play=Z1BCujX3pw8&quot;;
+<span class="nc" id="L52">		Integer id2 = Integer.parseInt(id);</span>
+		
+		
+		
+<span class="nc" id="L56">		SearchImagen imagen = tmdb.getImagen(id2);</span>
+		
+		
+<span class="nc" id="L59">		List&lt;Poster&gt; imagenes = imagen.getPosters();</span>
+<span class="nc" id="L60">		Poster poster = imagenes.get(0);</span>
+<span class="nc" id="L61">		String url2 =&quot;https://image.tmdb.org/t/p/w300/&quot; + poster.getFilePath();</span>
+		
+<span class="nc" id="L63">		SearchVideo video= tmdb.getVideo(id2);</span>
+<span class="nc" id="L64">		List&lt;Result2&gt; videos= video.getResults();</span>
+<span class="nc" id="L65">		Result2 r2= videos.get(0);</span>
+<span class="nc" id="L66">		String url3= &quot;https://www.youtube.com/v/&quot; + r2.getKey();</span>
+		
+<span class="nc" id="L68">		Details detalles = tmdb.getDetalles(id2);</span>
+<span class="nc" id="L69">		String overview = detalles.getOverview();</span>
+<span class="nc" id="L70">		String imdbID = detalles.getImdbId();</span>
+<span class="nc" id="L71">		String fechaEstreno = detalles.getReleaseDate();</span>
+<span class="nc" id="L72">		Double puntuacion = detalles.getVoteAverage();</span>
+
+<span class="nc bnc" id="L74" title="All 8 branches missed.">		if(poster.getFilePath()!=null || imagenes.size()!=0 || overview != null &amp;&amp; puntuacion&gt;3) {</span>
+<span class="nc" id="L75">			rd = request.getRequestDispatcher(&quot;/infoPeliculas.jsp&quot;);</span>
+<span class="nc" id="L76">			request.setAttribute(&quot;overview&quot;, overview);</span>
+<span class="nc" id="L77">			request.setAttribute(&quot;imdbID&quot;, imdbID);</span>
+<span class="nc" id="L78">			request.setAttribute(&quot;titulo&quot;, titulo);</span>
+<span class="nc" id="L79">			request.setAttribute(&quot;fechaEstreno&quot;, fechaEstreno);</span>
+<span class="nc" id="L80">			request.setAttribute(&quot;puntuacion&quot;, puntuacion);</span>
+<span class="nc" id="L81">			request.setAttribute(&quot;url2&quot;, url2);</span>
+<span class="nc" id="L82">			request.setAttribute(&quot;url3&quot;, url3);</span>
+<span class="nc" id="L83">			request.setAttribute(&quot;actuales&quot;, actuales);</span>
+			
+<span class="nc" id="L85">			log.log(Level.INFO, &quot;No hay problemas&quot;);</span>
+<span class="nc" id="L86">			log.log(Level.INFO, &quot;Valor de actuales:&quot; + actuales);</span>
+			
+			
+<span class="nc" id="L89">		}else {</span>
+<span class="nc" id="L90">			rd=request.getRequestDispatcher(&quot;/infoPeliculasError.jsp&quot;);</span>
+<span class="nc" id="L91">			request.setAttribute(&quot;overview&quot;, overview);</span>
+<span class="nc" id="L92">			request.setAttribute(&quot;imdbID&quot;, imdbID);</span>
+<span class="nc" id="L93">			request.setAttribute(&quot;titulo&quot;, titulo);</span>
+<span class="nc" id="L94">			request.setAttribute(&quot;fechaEstreno&quot;, fechaEstreno);</span>
+<span class="nc" id="L95">			request.setAttribute(&quot;puntuacion&quot;, puntuacion);</span>
+<span class="nc" id="L96">			request.setAttribute(&quot;url3&quot;, url3);</span>
+<span class="nc" id="L97">			request.setAttribute(&quot;actuales&quot;, actuales);</span>
+			
+<span class="nc" id="L99">			log.log(Level.INFO, &quot;No existen imagenes&quot;);</span>
+		}
+	
+		
+
+<span class="nc" id="L104">		log.log(Level.INFO, &quot;Mostrando información detallada de: &quot; + titulo + &quot; con id: &quot; + id);</span>
+<span class="nc" id="L105">		rd.forward(request, response);</span>
+		
+		
+
+<span class="nc" id="L109">	}</span>
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+<span class="nc" id="L117">		doGet(request, response);</span>
+<span class="nc" id="L118">	}</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.3.201901230119</span></div></body></html>

@@ -7,6 +7,8 @@ import java.io.UnsupportedEncodingException;
 import org.junit.Test;
 
 import aiss.model.resource.TMDBSearchResource;
+import aiss.model.resource.TMDBSession;
+import aiss.model.tmdb.GuessID;
 import aiss.model.tmdb.Result;
 import aiss.model.tmdb.SearchMovie;
 
@@ -34,5 +36,19 @@ public class TMDBTest {
 		System.out.println(res.getOriginalTitle());
 		
 	}
+	
+	@Test
+	public void getSession() throws UnsupportedEncodingException{
+		
+		TMDBSession tmdb = new TMDBSession();
+		GuessID result = tmdb.getGuestSession();
+		
+		assertNotNull("Search result is null", result);
+		
+		System.out.println("El id de sesion es: " + result.getGuestSessionId());
+		
+	} 
+	
+	
 
 }

@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Result.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">project_name</a> &gt; <a href="index.source.html" class="el_package">aiss.model.places</a> &gt; <span class="el_source">Result.java</span></div><h1>Result.java</h1><pre class="source lang-java linenums">
+package aiss.model.places;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import com.fasterxml.jackson.annotation.JsonAnyGetter;
+import com.fasterxml.jackson.annotation.JsonAnySetter;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+
+@JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonPropertyOrder({
+    &quot;geometry&quot;,
+    &quot;icon&quot;,
+    &quot;id&quot;,
+    &quot;name&quot;,
+    &quot;opening_hours&quot;,
+    &quot;photos&quot;,
+    &quot;place_id&quot;,
+    &quot;scope&quot;,
+    &quot;alt_ids&quot;,
+    &quot;reference&quot;,
+    &quot;types&quot;,
+    &quot;vicinity&quot;
+})
+<span class="fc" id="L29">public class Result {</span>
+
+    @JsonProperty(&quot;geometry&quot;)
+    private Geometry geometry;
+    @JsonProperty(&quot;icon&quot;)
+    private String icon;
+    @JsonProperty(&quot;id&quot;)
+    private String id;
+    @JsonProperty(&quot;name&quot;)
+    private String name;
+    @JsonProperty(&quot;opening_hours&quot;)
+    private OpeningHours openingHours;
+    @JsonProperty(&quot;photos&quot;)
+<span class="fc" id="L42">    private List&lt;Photo&gt; photos = null;</span>
+    @JsonProperty(&quot;place_id&quot;)
+    private String placeId;
+    @JsonProperty(&quot;scope&quot;)
+    private String scope;
+    @JsonProperty(&quot;alt_ids&quot;)
+<span class="fc" id="L48">    private List&lt;AltId&gt; altIds = null;</span>
+    @JsonProperty(&quot;reference&quot;)
+    private String reference;
+    @JsonProperty(&quot;types&quot;)
+<span class="fc" id="L52">    private List&lt;String&gt; types = null;</span>
+    @JsonProperty(&quot;vicinity&quot;)
+    private String vicinity;
+    @JsonIgnore
+<span class="fc" id="L56">    private Map&lt;String, Object&gt; additionalProperties = new HashMap&lt;String, Object&gt;();</span>
+
+    @JsonProperty(&quot;geometry&quot;)
+    public Geometry getGeometry() {
+<span class="nc" id="L60">        return geometry;</span>
+    }
+
+    @JsonProperty(&quot;geometry&quot;)
+    public void setGeometry(Geometry geometry) {
+<span class="fc" id="L65">        this.geometry = geometry;</span>
+<span class="fc" id="L66">    }</span>
+
+    @JsonProperty(&quot;icon&quot;)
+    public String getIcon() {
+<span class="nc" id="L70">        return icon;</span>
+    }
+
+    @JsonProperty(&quot;icon&quot;)
+    public void setIcon(String icon) {
+<span class="fc" id="L75">        this.icon = icon;</span>
+<span class="fc" id="L76">    }</span>
+
+    @JsonProperty(&quot;id&quot;)
+    public String getId() {
+<span class="nc" id="L80">        return id;</span>
+    }
+
+    @JsonProperty(&quot;id&quot;)
+    public void setId(String id) {
+<span class="fc" id="L85">        this.id = id;</span>
+<span class="fc" id="L86">    }</span>
+
+    @JsonProperty(&quot;name&quot;)
+    public String getName() {
+<span class="fc" id="L90">        return name;</span>
+    }
+
+    @JsonProperty(&quot;name&quot;)
+    public void setName(String name) {
+<span class="fc" id="L95">        this.name = name;</span>
+<span class="fc" id="L96">    }</span>
+
+    @JsonProperty(&quot;opening_hours&quot;)
+    public OpeningHours getOpeningHours() {
+<span class="nc" id="L100">        return openingHours;</span>
+    }
+
+    @JsonProperty(&quot;opening_hours&quot;)
+    public void setOpeningHours(OpeningHours openingHours) {
+<span class="fc" id="L105">        this.openingHours = openingHours;</span>
+<span class="fc" id="L106">    }</span>
+
+    @JsonProperty(&quot;photos&quot;)
+    public List&lt;Photo&gt; getPhotos() {
+<span class="nc" id="L110">        return photos;</span>
+    }
+
+    @JsonProperty(&quot;photos&quot;)
+    public void setPhotos(List&lt;Photo&gt; photos) {
+<span class="fc" id="L115">        this.photos = photos;</span>
+<span class="fc" id="L116">    }</span>
+
+    @JsonProperty(&quot;place_id&quot;)
+    public String getPlaceId() {
+<span class="nc" id="L120">        return placeId;</span>
+    }
+
+    @JsonProperty(&quot;place_id&quot;)
+    public void setPlaceId(String placeId) {
+<span class="fc" id="L125">        this.placeId = placeId;</span>
+<span class="fc" id="L126">    }</span>
+
+    @JsonProperty(&quot;scope&quot;)
+    public String getScope() {
+<span class="nc" id="L130">        return scope;</span>
+    }
+
+    @JsonProperty(&quot;scope&quot;)
+    public void setScope(String scope) {
+<span class="nc" id="L135">        this.scope = scope;</span>
+<span class="nc" id="L136">    }</span>
+
+    @JsonProperty(&quot;alt_ids&quot;)
+    public List&lt;AltId&gt; getAltIds() {
+<span class="nc" id="L140">        return altIds;</span>
+    }
+
+    @JsonProperty(&quot;alt_ids&quot;)
+    public void setAltIds(List&lt;AltId&gt; altIds) {
+<span class="nc" id="L145">        this.altIds = altIds;</span>
+<span class="nc" id="L146">    }</span>
+
+    @JsonProperty(&quot;reference&quot;)
+    public String getReference() {
+<span class="nc" id="L150">        return reference;</span>
+    }
+
+    @JsonProperty(&quot;reference&quot;)
+    public void setReference(String reference) {
+<span class="fc" id="L155">        this.reference = reference;</span>
+<span class="fc" id="L156">    }</span>
+
+    @JsonProperty(&quot;types&quot;)
+    public List&lt;String&gt; getTypes() {
+<span class="nc" id="L160">        return types;</span>
+    }
+
+    @JsonProperty(&quot;types&quot;)
+    public void setTypes(List&lt;String&gt; types) {
+<span class="fc" id="L165">        this.types = types;</span>
+<span class="fc" id="L166">    }</span>
+
+    @JsonProperty(&quot;vicinity&quot;)
+    public String getVicinity() {
+<span class="nc" id="L170">        return vicinity;</span>
+    }
+
+    @JsonProperty(&quot;vicinity&quot;)
+    public void setVicinity(String vicinity) {
+<span class="nc" id="L175">        this.vicinity = vicinity;</span>
+<span class="nc" id="L176">    }</span>
+
+    @JsonAnyGetter
+    public Map&lt;String, Object&gt; getAdditionalProperties() {
+<span class="nc" id="L180">        return this.additionalProperties;</span>
+    }
+
+    @JsonAnySetter
+    public void setAdditionalProperty(String name, Object value) {
+<span class="fc" id="L185">        this.additionalProperties.put(name, value);</span>
+<span class="fc" id="L186">    }</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.3.201901230119</span></div></body></html>

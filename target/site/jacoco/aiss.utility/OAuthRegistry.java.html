@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>OAuthRegistry.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">project_name</a> &gt; <a href="index.source.html" class="el_package">aiss.utility</a> &gt; <span class="el_source">OAuthRegistry.java</span></div><h1>OAuthRegistry.java</h1><pre class="source lang-java linenums">package aiss.utility;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.api.client.auth.oauth2.AuthorizationCodeFlow;
+import com.google.api.client.auth.oauth2.BearerToken;
+import com.google.api.client.auth.oauth2.ClientParametersAuthentication;
+import com.google.api.client.auth.oauth2.Credential;
+import com.google.api.client.http.BasicAuthentication;
+import com.google.api.client.http.GenericUrl;
+import com.google.api.client.http.javanet.NetHttpTransport;
+import com.google.api.client.json.jackson2.JacksonFactory;
+import com.google.api.client.util.store.MemoryDataStoreFactory;
+
+/**
+ * 
+ * This class loads the data from the OAuth providers and creates
+ * authorization flows for our servlets.
+ * 
+ * @author japarejo
+ *
+ */
+
+<span class="nc" id="L35">public class OAuthRegistry {</span>
+	
+<span class="nc" id="L37">	private static Logger log=Logger.getLogger(OAuthRegistry.class.getName());</span>
+            
+	// File from which the OAuth data for each provider will be loaded
+	protected static final String OAUTH_RESOURCE=&quot;WEB-INF/OAuthConfig.json&quot;;
+	// Map were the configurations are loaded:
+<span class="nc" id="L42">	protected static Map&lt;String,OAuthServiceConfiguration&gt; serviceConfigurations=null;</span>
+	
+	static { // We load the configuration of the OAuth providers when the class is loaded by the server:
+<span class="nc" id="L45">		loadConfig();</span>
+<span class="nc" id="L46">	}</span>
+	
+	/**
+	 * Creates an OAuth2 authorization flow for using the data provided as parameter 
+	 * @param tokenURL
+	 * @param clientID
+	 * @param clientSecret
+	 * @param authorizationFormURL
+	 * @param scopes
+	 * @return authorizatin flow
+	 * @throws IOException
+	 */
+	public static AuthorizationCodeFlow initializeFlow(String tokenURL, String clientID, String clientSecret, String authorizationFormURL,Set&lt;String&gt; scopes) throws IOException {
+<span class="nc" id="L59">		AuthorizationCodeFlow.Builder flowBuilder = new AuthorizationCodeFlow.Builder(</span>
+<span class="nc" id="L60">				BearerToken.authorizationHeaderAccessMethod(), new NetHttpTransport(), new JacksonFactory(),</span>
+<span class="nc" id="L61">				new GenericUrl(tokenURL),</span>
+<span class="nc" id="L62">				new ClientParametersAuthentication(clientID, clientSecret),</span>
+<span class="nc" id="L63">				clientID, authorizationFormURL).setDataStoreFactory(</span>
+<span class="nc" id="L64">						MemoryDataStoreFactory.getDefaultInstance());</span>
+
+		// Set scopes		
+<span class="nc" id="L67">		flowBuilder.setScopes(scopes);</span>
+
+<span class="nc" id="L69">		return flowBuilder.build();</span>
+	}
+	
+	/**
+	 * Create an authorization flow for an specific service.
+	 * 
+	 * @param service name for which we create the authorization flow.
+	 * @return an authorization flow configured for the service provided as parameter
+	 * @throws IOException when there is no configuration for the service in 
+	 * the registry
+	 */
+	public static AuthorizationCodeFlow initializeFlow(String service) throws IOException{
+<span class="nc" id="L81">		log.finest(&quot;Creating authorization flow for &quot;+service);</span>
+<span class="nc bnc" id="L82" title="All 2 branches missed.">		if(serviceConfigurations==null)</span>
+<span class="nc" id="L83">			loadConfig();</span>
+<span class="nc" id="L84">		OAuthServiceConfiguration config=serviceConfigurations.get(service);</span>
+<span class="nc bnc" id="L85" title="All 2 branches missed.">		if(config==null)</span>
+<span class="nc" id="L86">			throw new IOException(&quot;There is no OAuth configuration for the service '&quot;+config+&quot;'&quot;);</span>
+<span class="nc" id="L87">		return initializeFlow(config.getTokenUrl(), config.getClientId(),</span>
+<span class="nc" id="L88">				config.getClientSecret(), config.getAuthorizationFormUrl(), config.getScopes());</span>
+	}
+	
+	
+	public static void onAuthorizationSuccess(String onSuccess, String provider, Credential credential, HttpServletRequest request, HttpServletResponse response) throws IOException{
+<span class="nc bnc" id="L93" title="All 2 branches missed.">		if(onSuccess!=null){</span>
+<span class="nc bnc" id="L94" title="All 2 branches missed.">			if(onSuccess.equals(&quot;close&quot;))</span>
+<span class="nc" id="L95">				response.getWriter().print(&quot;&lt;script&gt;window.close()&lt;/script&gt;&quot;);</span>
+<span class="nc bnc" id="L96" title="All 2 branches missed.">			else if(onSuccess.startsWith(&quot;redirect:&quot;))</span>
+<span class="nc" id="L97">				response.sendRedirect(onSuccess.replaceAll(&quot;redirect:&quot;, &quot;&quot;));</span>
+<span class="nc" id="L98">		}else</span>
+<span class="nc" id="L99">			response.getWriter().append(&quot;Access token for &quot;).append(provider+&quot;: &quot;).append(credential.getAccessToken());</span>
+<span class="nc" id="L100">	}</span>
+	
+	/**
+	 * Load the configuration of the different OAuth providers from the Json file.
+	 */
+	private static void loadConfig()
+	{
+<span class="nc" id="L107">		serviceConfigurations=new HashMap&lt;&gt;();</span>
+<span class="nc" id="L108">		ObjectMapper om=new ObjectMapper();		</span>
+		try {						
+			
+<span class="nc" id="L111">			InputStream is = Thread.currentThread().getContextClassLoader()</span>
+<span class="nc" id="L112">				    .getResourceAsStream(OAUTH_RESOURCE);</span>
+			
+<span class="nc bnc" id="L114" title="All 2 branches missed.">			if(is==null)</span>
+<span class="nc" id="L115">				log.warning(&quot;Unable read file &quot;+OAUTH_RESOURCE);</span>
+			else{
+<span class="nc" id="L117">				serviceConfigurations=(Map&lt;String,OAuthServiceConfiguration&gt;)om.readValue(is, new TypeReference&lt;HashMap&lt;String,OAuthServiceConfiguration&gt;&gt;(){});</span>
+			}
+<span class="nc" id="L119">			log.info(serviceConfigurations.size()+&quot; OAuth configurations Loaded!&quot;);</span>
+<span class="nc" id="L120">		} catch (IOException e) { 			</span>
+<span class="nc" id="L121">			log.log(Level.WARNING,&quot;Unable to load OAuth configuration from &quot;+OAUTH_RESOURCE);</span>
+<span class="nc" id="L122">			log.log(Level.WARNING,e.getMessage());</span>
+		}
+<span class="nc" id="L124">	}</span>
+	
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.3.201901230119</span></div></body></html>

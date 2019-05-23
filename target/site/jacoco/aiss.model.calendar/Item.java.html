@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Item.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">project_name</a> &gt; <a href="index.source.html" class="el_package">aiss.model.calendar</a> &gt; <span class="el_source">Item.java</span></div><h1>Item.java</h1><pre class="source lang-java linenums">
+package aiss.model.calendar;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import com.fasterxml.jackson.annotation.JsonAnyGetter;
+import com.fasterxml.jackson.annotation.JsonAnySetter;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+
+@JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonPropertyOrder({
+    &quot;kind&quot;,
+    &quot;etag&quot;,
+    &quot;id&quot;,
+    &quot;summary&quot;,
+    &quot;timeZone&quot;,
+    &quot;colorId&quot;,
+    &quot;backgroundColor&quot;,
+    &quot;foregroundColor&quot;,
+    &quot;selected&quot;,
+    &quot;accessRole&quot;,
+    &quot;defaultReminders&quot;,
+    &quot;notificationSettings&quot;,
+    &quot;primary&quot;,
+    &quot;conferenceProperties&quot;,
+    &quot;summaryOverride&quot;
+})
+<span class="nc" id="L32">public class Item {</span>
+
+    @JsonProperty(&quot;kind&quot;)
+    private String kind;
+    @JsonProperty(&quot;etag&quot;)
+    private String etag;
+    @JsonProperty(&quot;id&quot;)
+    private String id;
+    @JsonProperty(&quot;summary&quot;)
+    private String summary;
+    @JsonProperty(&quot;timeZone&quot;)
+    private String timeZone;
+    @JsonProperty(&quot;colorId&quot;)
+    private String colorId;
+    @JsonProperty(&quot;backgroundColor&quot;)
+    private String backgroundColor;
+    @JsonProperty(&quot;foregroundColor&quot;)
+    private String foregroundColor;
+    @JsonProperty(&quot;selected&quot;)
+    private Boolean selected;
+    @JsonProperty(&quot;accessRole&quot;)
+    private String accessRole;
+    @JsonProperty(&quot;defaultReminders&quot;)
+<span class="nc" id="L55">    private List&lt;DefaultReminder&gt; defaultReminders = null;</span>
+    @JsonProperty(&quot;notificationSettings&quot;)
+    private NotificationSettings notificationSettings;
+    @JsonProperty(&quot;primary&quot;)
+    private Boolean primary;
+    @JsonProperty(&quot;conferenceProperties&quot;)
+    private ConferenceProperties conferenceProperties;
+    @JsonProperty(&quot;summaryOverride&quot;)
+    private String summaryOverride;
+    @JsonIgnore
+<span class="nc" id="L65">    private Map&lt;String, Object&gt; additionalProperties = new HashMap&lt;String, Object&gt;();</span>
+
+    @JsonProperty(&quot;kind&quot;)
+    public String getKind() {
+<span class="nc" id="L69">        return kind;</span>
+    }
+
+    @JsonProperty(&quot;kind&quot;)
+    public void setKind(String kind) {
+<span class="nc" id="L74">        this.kind = kind;</span>
+<span class="nc" id="L75">    }</span>
+
+    @JsonProperty(&quot;etag&quot;)
+    public String getEtag() {
+<span class="nc" id="L79">        return etag;</span>
+    }
+
+    @JsonProperty(&quot;etag&quot;)
+    public void setEtag(String etag) {
+<span class="nc" id="L84">        this.etag = etag;</span>
+<span class="nc" id="L85">    }</span>
+
+    @JsonProperty(&quot;id&quot;)
+    public String getId() {
+<span class="nc" id="L89">        return id;</span>
+    }
+
+    @JsonProperty(&quot;id&quot;)
+    public void setId(String id) {
+<span class="nc" id="L94">        this.id = id;</span>
+<span class="nc" id="L95">    }</span>
+
+    @JsonProperty(&quot;summary&quot;)
+    public String getSummary() {
+<span class="nc" id="L99">        return summary;</span>
+    }
+
+    @JsonProperty(&quot;summary&quot;)
+    public void setSummary(String summary) {
+<span class="nc" id="L104">        this.summary = summary;</span>
+<span class="nc" id="L105">    }</span>
+
+    @JsonProperty(&quot;timeZone&quot;)
+    public String getTimeZone() {
+<span class="nc" id="L109">        return timeZone;</span>
+    }
+
+    @JsonProperty(&quot;timeZone&quot;)
+    public void setTimeZone(String timeZone) {
+<span class="nc" id="L114">        this.timeZone = timeZone;</span>
+<span class="nc" id="L115">    }</span>
+
+    @JsonProperty(&quot;colorId&quot;)
+    public String getColorId() {
+<span class="nc" id="L119">        return colorId;</span>
+    }
+
+    @JsonProperty(&quot;colorId&quot;)
+    public void setColorId(String colorId) {
+<span class="nc" id="L124">        this.colorId = colorId;</span>
+<span class="nc" id="L125">    }</span>
+
+    @JsonProperty(&quot;backgroundColor&quot;)
+    public String getBackgroundColor() {
+<span class="nc" id="L129">        return backgroundColor;</span>
+    }
+
+    @JsonProperty(&quot;backgroundColor&quot;)
+    public void setBackgroundColor(String backgroundColor) {
+<span class="nc" id="L134">        this.backgroundColor = backgroundColor;</span>
+<span class="nc" id="L135">    }</span>
+
+    @JsonProperty(&quot;foregroundColor&quot;)
+    public String getForegroundColor() {
+<span class="nc" id="L139">        return foregroundColor;</span>
+    }
+
+    @JsonProperty(&quot;foregroundColor&quot;)
+    public void setForegroundColor(String foregroundColor) {
+<span class="nc" id="L144">        this.foregroundColor = foregroundColor;</span>
+<span class="nc" id="L145">    }</span>
+
+    @JsonProperty(&quot;selected&quot;)
+    public Boolean getSelected() {
+<span class="nc" id="L149">        return selected;</span>
+    }
+
+    @JsonProperty(&quot;selected&quot;)
+    public void setSelected(Boolean selected) {
+<span class="nc" id="L154">        this.selected = selected;</span>
+<span class="nc" id="L155">    }</span>
+
+    @JsonProperty(&quot;accessRole&quot;)
+    public String getAccessRole() {
+<span class="nc" id="L159">        return accessRole;</span>
+    }
+
+    @JsonProperty(&quot;accessRole&quot;)
+    public void setAccessRole(String accessRole) {
+<span class="nc" id="L164">        this.accessRole = accessRole;</span>
+<span class="nc" id="L165">    }</span>
+
+    @JsonProperty(&quot;defaultReminders&quot;)
+    public List&lt;DefaultReminder&gt; getDefaultReminders() {
+<span class="nc" id="L169">        return defaultReminders;</span>
+    }
+
+    @JsonProperty(&quot;defaultReminders&quot;)
+    public void setDefaultReminders(List&lt;DefaultReminder&gt; defaultReminders) {
+<span class="nc" id="L174">        this.defaultReminders = defaultReminders;</span>
+<span class="nc" id="L175">    }</span>
+
+    @JsonProperty(&quot;notificationSettings&quot;)
+    public NotificationSettings getNotificationSettings() {
+<span class="nc" id="L179">        return notificationSettings;</span>
+    }
+
+    @JsonProperty(&quot;notificationSettings&quot;)
+    public void setNotificationSettings(NotificationSettings notificationSettings) {
+<span class="nc" id="L184">        this.notificationSettings = notificationSettings;</span>
+<span class="nc" id="L185">    }</span>
+
+    @JsonProperty(&quot;primary&quot;)
+    public Boolean getPrimary() {
+<span class="nc" id="L189">        return primary;</span>
+    }
+
+    @JsonProperty(&quot;primary&quot;)
+    public void setPrimary(Boolean primary) {
+<span class="nc" id="L194">        this.primary = primary;</span>
+<span class="nc" id="L195">    }</span>
+
+    @JsonProperty(&quot;conferenceProperties&quot;)
+    public ConferenceProperties getConferenceProperties() {
+<span class="nc" id="L199">        return conferenceProperties;</span>
+    }
+
+    @JsonProperty(&quot;conferenceProperties&quot;)
+    public void setConferenceProperties(ConferenceProperties conferenceProperties) {
+<span class="nc" id="L204">        this.conferenceProperties = conferenceProperties;</span>
+<span class="nc" id="L205">    }</span>
+
+    @JsonProperty(&quot;summaryOverride&quot;)
+    public String getSummaryOverride() {
+<span class="nc" id="L209">        return summaryOverride;</span>
+    }
+
+    @JsonProperty(&quot;summaryOverride&quot;)
+    public void setSummaryOverride(String summaryOverride) {
+<span class="nc" id="L214">        this.summaryOverride = summaryOverride;</span>
+<span class="nc" id="L215">    }</span>
+
+    @JsonAnyGetter
+    public Map&lt;String, Object&gt; getAdditionalProperties() {
+<span class="nc" id="L219">        return this.additionalProperties;</span>
+    }
+
+    @JsonAnySetter
+    public void setAdditionalProperty(String name, Object value) {
+<span class="nc" id="L224">        this.additionalProperties.put(name, value);</span>
+<span class="nc" id="L225">    }</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.3.201901230119</span></div></body></html>

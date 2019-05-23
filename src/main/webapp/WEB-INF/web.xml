@@ -103,96 +103,92 @@
     <servlet-name>ListCalendarSearchController</servlet-name>
     <url-pattern>/ListCalendarSearchController</url-pattern>
   </servlet-mapping>
-   <!-- Google Drive files - retrieve -->
-    <servlet>
-        <servlet-name>GoogleDriveFileListController</servlet-name>
-        <servlet-class>aiss.GoogleDriveFileListController</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>GoogleDriveFileListController</servlet-name>
-        <url-pattern>/googleDriveFileList</url-pattern>
-    </servlet-mapping>
-    <!-- Google Drive files - delete -->
-    <servlet>
-        <servlet-name>GoogleDriveFileDeleteController</servlet-name>
-        <servlet-class>aiss.GoogleDriveFileDeleteController</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>GoogleDriveFileDeleteController</servlet-name>
-        <url-pattern>/googleDriveFileDelete</url-pattern>
-    </servlet-mapping>
-    <!-- Google Drive files - update -->
-    <servlet>
-        <servlet-name>GoogleDriveFileUpdateController</servlet-name>
-        <servlet-class>aiss.GoogleDriveFileUpdateController</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>GoogleDriveFileUpdateController</servlet-name>
-        <url-pattern>/googleDriveFileUpdate</url-pattern>
-    </servlet-mapping>
-    <!-- Google Drive files - create -->
-    <servlet>
-        <servlet-name>GoogleDriveFileNewController</servlet-name>
-        <servlet-class>aiss.GoogleDriveFileNewController</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>GoogleDriveFileNewController</servlet-name>
-        <url-pattern>/googleDriveFileNew</url-pattern>
-    </servlet-mapping>
-     <!-- GoogleDriveAuthController-->
-    <servlet>
-        <description/>
-        <servlet-name>GoogleCalendarAuthController</servlet-name>
-        <servlet-class>aiss.controller.oauth.GenericAuthController</servlet-class>
-        <init-param>
-            <param-name>provider</param-name>
-            <param-value>GoogleCalendar</param-value>
-        </init-param>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>GoogleCalendarAuthController</servlet-name>
-        <url-pattern>/AuthController/GoogleCalendar</url-pattern>
-    </servlet-mapping>
-    <!--GoogleCalendarOAuth2Callback-->
-    <servlet>
-        <description/>
-        <servlet-name>GoogleCalendarOAuth2Callback</servlet-name>
-        <servlet-class>aiss.controller.oauth.OAuth2Callback</servlet-class>
-        <init-param>
-            <param-name>provider</param-name>
-            <param-value>GoogleCalendar</param-value>
-        </init-param>
-        <init-param>
-            <param-name>onSuccess</param-name>
-            <param-value>redirect:/muestraCalendario</param-value>
-        </init-param>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>GoogleCalendarOAuth2Callback</servlet-name>
-        <url-pattern>/oauth2callback/GoogleCalendar</url-pattern> <!-- url de callback- -->
-    </servlet-mapping>
-    
-     <!-- Rest Client --> 
- <!-- All REST resources will be prefixed by /api  -->
-	<context-param>
-		<param-name>resteasy.servlet.mapping.prefix</param-name>
-		<param-value>/api</param-value>
-	</context-param>
-
-	<!-- Servlets -->
-	<servlet>
-		<servlet-name>Resteasy</servlet-name>
-		<servlet-class>org.jboss.resteasy.plugins.server.servlet.HttpServletDispatcher</servlet-class>
-		<init-param>
-			<param-name>javax.ws.rs.Application</param-name>
-			<param-value>aiss.api.MovieApplication</param-value>
-		</init-param>
-	</servlet>		
-	
-	<!-- Servlet mappings -->
-	<!-- All calls to /api/xxx will be sent to the resteasy servlet -->
-	<servlet-mapping>
-		<servlet-name>Resteasy</servlet-name>
-		<url-pattern>/api/*</url-pattern>
-	</servlet-mapping>
+  <servlet>
+    <servlet-name>GoogleDriveFileListController</servlet-name>
+    <servlet-class>aiss.GoogleDriveFileListController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GoogleDriveFileListController</servlet-name>
+    <url-pattern>/googleDriveFileList</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>GoogleDriveFileDeleteController</servlet-name>
+    <servlet-class>aiss.GoogleDriveFileDeleteController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GoogleDriveFileDeleteController</servlet-name>
+    <url-pattern>/googleDriveFileDelete</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>GoogleDriveFileUpdateController</servlet-name>
+    <servlet-class>aiss.GoogleDriveFileUpdateController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GoogleDriveFileUpdateController</servlet-name>
+    <url-pattern>/googleDriveFileUpdate</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>GoogleDriveFileNewController</servlet-name>
+    <servlet-class>aiss.GoogleDriveFileNewController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GoogleDriveFileNewController</servlet-name>
+    <url-pattern>/googleDriveFileNew</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <servlet-name>GoogleCalendarAuthController</servlet-name>
+    <servlet-class>aiss.controller.oauth.GenericAuthController</servlet-class>
+    <init-param>
+      <param-name>provider</param-name>
+      <param-value>GoogleCalendar</param-value>
+    </init-param>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GoogleCalendarAuthController</servlet-name>
+    <url-pattern>/AuthController/GoogleCalendar</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <servlet-name>GoogleCalendarOAuth2Callback</servlet-name>
+    <servlet-class>aiss.controller.oauth.OAuth2Callback</servlet-class>
+    <init-param>
+      <param-name>provider</param-name>
+      <param-value>GoogleCalendar</param-value>
+    </init-param>
+    <init-param>
+      <param-name>onSuccess</param-name>
+      <param-value>redirect:/muestraCalendario</param-value>
+    </init-param>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GoogleCalendarOAuth2Callback</servlet-name>
+    <url-pattern>/oauth2callback/GoogleCalendar</url-pattern>
+  </servlet-mapping>
+  <context-param>
+    <param-name>resteasy.servlet.mapping.prefix</param-name>
+    <param-value>/api</param-value>
+  </context-param>
+  <servlet>
+    <servlet-name>Resteasy</servlet-name>
+    <servlet-class>org.jboss.resteasy.plugins.server.servlet.HttpServletDispatcher</servlet-class>
+    <init-param>
+      <param-name>javax.ws.rs.Application</param-name>
+      <param-value>aiss.api.MovieApplication</param-value>
+    </init-param>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Resteasy</servlet-name>
+    <url-pattern>/api/*</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>RateController</display-name>
+    <servlet-name>RateController</servlet-name>
+    <servlet-class>aiss.RateController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>RateController</servlet-name>
+    <url-pattern>/RateController</url-pattern>
+  </servlet-mapping>
 </web-app>
