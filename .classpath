@@ -181,5 +181,7 @@
 	<classpathentry kind="lib" path="calendar/libs-sources/jetty-6.1.26-sources.jar"/>
 	<classpathentry kind="lib" path="calendar/libs-sources/jetty-util-6.1.26-sources.jar"/>
 	<classpathentry kind="lib" path="calendar/libs-sources/transaction-api-1.1-sources.jar"/>
+	<classpathentry kind="lib" path="gradle/wrapper/gradle-wrapper.jar"/>
+	<classpathentry kind="lib" path="gradle/wrapper/gradle-wrapper.properties"/>
 	<classpathentry kind="output" path="target/project_name-0.0.1-SNAPSHOT/WEB-INF/classes"/>
 </classpath>

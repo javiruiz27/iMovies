@@ -133,7 +133,7 @@
     <servlet-name>GoogleCalendarOAuth2Callback</servlet-name>
     <url-pattern>/oauth2callback/GoogleCalendar</url-pattern>
   </servlet-mapping>
-  <servlet>
+ <!-- <servlet>
     <description></description>
     <display-name>CalendarQuickstart</display-name>
     <servlet-name>CalendarQuickstart</servlet-name>
@@ -142,5 +142,5 @@
   <servlet-mapping>
     <servlet-name>CalendarQuickstart</servlet-name>
     <url-pattern>/CalendarQuickstart</url-pattern>
-  </servlet-mapping>
+  </servlet-mapping>-->
 </web-app>
