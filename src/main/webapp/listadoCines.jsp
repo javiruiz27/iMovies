@@ -25,6 +25,19 @@
 
 
 	</fieldset>
+		
+		<fieldset>
+		<legend>
+			Tiempo en: "
+			<c:out value="${requestScope.lugar}" />
+			"
+		</legend>
+
+		<c:out value="${requestScope.tiempo.headline.text}" />
+			
+				
+
+	</fieldset>
 
 </body>
 </html>

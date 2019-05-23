@@ -23,8 +23,9 @@
    	 value="${requestScope.url3}">
  	 ERROR (no puede mostrarse el video)
 	</object>
+	
 	<c:if test="${requestScope.actuales=='si'}">
-		<form action="PlacesSearchController" method="post">
+		<form action="WeatherSearchController" method="get">
 		<p>¿En que ciudad te encuentras?</p>
 			<input type="text" name="ciudad" value=> <input
 				class="submit" type="submit" name="searchBtn" title="search"
@@ -37,7 +38,7 @@
 			<input type="hidden" name="idpelicula" value="${requestScope.imdbID}"/>
 			<input type="number" name="rate" /> 
 			<input	class="submit" type="submit" name="searchBtn" title="search"
-				value="Valorar">
+				value="Valorar" >
 	</form>
 
 	<fieldset>
@@ -77,6 +78,18 @@
 	
 	
 	
+<script language="javascript">
+function envio_form(){
+document.formulario.target = "_blank"; 
+document.formulario.action = "PlacesSearchController";
+document.formulario.submit();
+document.formulario.target = "_self";
+document.formulario.action = "WeatherSearchController";
+document.formulario.submit();
+}
+</script>
+
+
 
 
 </body>
