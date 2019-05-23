@@ -42,12 +42,12 @@ public class RateController extends HttpServlet {
 		
 		if(idmovie!=null || rate != null) {
 			TMDBSearchResource sr = new TMDBSearchResource();
-			
+		
 			Rate res = new Rate();
 			
 			res.setValue((double)rate);
 			
-			sr.postRate(idmovie, res.getValue());
+			sr.postRate(idmovie, res);
 			
 			request.setAttribute("idmovie", idmovie);
 			request.setAttribute("rate", rate);

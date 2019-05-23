@@ -5,6 +5,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import org.restlet.resource.ClientResource;
+import org.restlet.resource.ResourceException;
 
 import aiss.model.tmdb.Details;
 import aiss.model.tmdb.GuessID;
@@ -17,17 +18,38 @@ public class TMDBSearchResource {
 
 	private static final String TMDB_API_KEY = "e925e771d23f12d0770dad8d0309141f";
 	private static final Logger log = Logger.getLogger(TMDBSearchResource.class.getName());
-
-	public Rate postRate(String idmovie, Double rate) throws UnsupportedEncodingException {
+	private static final String URL_SESSION = "https://api.themoviedb.org/3/authentication/guest_session/new?api_key=";
+	
+	public GuessID getGuessId() {
+		GuessID res = null;
+		ClientResource cr = null;
+		
+		try {
+			cr = new ClientResource(URL_SESSION+TMDB_API_KEY);
+			res = cr.get(GuessID.class);
+		}catch(ResourceException e) {
+			System.err.println("La sesion Id no se ha obtenido correctamente");
+		}
+		return res;
+	}
+	
+	public Rate postRate(String idmovie, Rate rate) throws UnsupportedEncodingException {
 		Rate res = null;
-		GuessID guess = TMDBSession.getGuestSession();
+		GuessID guess = getGuessId();
 		String sessionId = guess.getGuestSessionId();
 		log.log(Level.FINE, "El session id es " + sessionId);
-		// https://api.themoviedb.org/3/movie/{movie_id}/rating?api_key=<<api_key>>
-		String URL = "https://api.themoviedb.org/3/movie/" + idmovie + "/rating?guest_session_id=" + sessionId
-				+ "&api_key=" + TMDB_API_KEY;
+		String URL = "https://api.themoviedb.org/3/movie/" + idmovie + "/rating?api_key=" + TMDB_API_KEY
+				+ "&guest_session_id=" + sessionId;
+//		String URL = "https://api.themoviedb.org/3/movie/" + idmovie + "/rating?guest_session_id=" + sessionId
+//				+ "&api_key=" + TMDB_API_KEY;
 
-		ClientResource cr = new ClientResource(URL);
+		ClientResource cr = null;
+		try {
+			cr = new ClientResource(URL);
+		} catch (ResourceException e) {
+			System.err.println("Error " + cr.getResponse().getStatus());
+			throw e;
+		}
 		res = cr.post(rate, Rate.class);
 		log.log(Level.FINE, "El comentario ha sido posteado");
 

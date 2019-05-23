@@ -93,6 +93,18 @@
     <servlet-name>PeliculasController</servlet-name>
     <url-pattern>/PeliculasController</url-pattern>
   </servlet-mapping>
+  
+  <servlet>
+    <description></description>
+    <display-name>RateController</display-name>
+    <servlet-name>RateController</servlet-name>
+    <servlet-class>aiss.RateController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>RateController</servlet-name>
+    <url-pattern>/RateController</url-pattern>
+  </servlet-mapping>
+  
   <servlet>
     <description></description>
     <display-name>ListCalendarSearchController</display-name>
@@ -186,16 +198,7 @@
     <servlet-name>Resteasy</servlet-name>
     <url-pattern>/api/*</url-pattern>
   </servlet-mapping>
-  <servlet>
-    <description></description>
-    <display-name>RateController</display-name>
-    <servlet-name>RateController</servlet-name>
-    <servlet-class>aiss.RateController</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>RateController</servlet-name>
-    <url-pattern>/RateController</url-pattern>
-  </servlet-mapping>
+ 
   <!-- GoogleDriveAuthController-->
     <servlet>
         <description/>

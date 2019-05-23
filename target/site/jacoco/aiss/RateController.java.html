@@ -42,12 +42,12 @@ public class RateController extends HttpServlet {
 		
 <span class="nc bnc" id="L43" title="All 4 branches missed.">		if(idmovie!=null || rate != null) {</span>
 <span class="nc" id="L44">			TMDBSearchResource sr = new TMDBSearchResource();</span>
-			
+		
 <span class="nc" id="L46">			Rate res = new Rate();</span>
 			
 <span class="nc" id="L48">			res.setValue((double)rate);</span>
 			
-<span class="nc" id="L50">			sr.postRate(idmovie, res.getValue());</span>
+<span class="nc" id="L50">			sr.postRate(idmovie, res);</span>
 			
 <span class="nc" id="L52">			request.setAttribute(&quot;idmovie&quot;, idmovie);</span>
 <span class="nc" id="L53">			request.setAttribute(&quot;rate&quot;, rate);</span>
