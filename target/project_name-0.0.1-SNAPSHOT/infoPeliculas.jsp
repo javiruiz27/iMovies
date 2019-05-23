@@ -69,8 +69,8 @@
 	</fieldset>
 	
 
-
-
+<a class="" href="index2.jsp">Google Drive</a>
+<br></br>
 	<a class="" href="index.jsp">Inicio</a>
 	
 

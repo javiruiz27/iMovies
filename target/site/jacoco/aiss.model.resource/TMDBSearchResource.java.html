@@ -22,15 +22,15 @@ import aiss.model.tmdb.SearchVideo;
 <span class="nc" id="L22">		Rate res = null;</span>
 <span class="nc" id="L23">		GuessID guess = TMDBSession.getGuestSession();</span>
 <span class="nc" id="L24">		String sessionId = guess.getGuestSessionId();</span>
-<span class="nc" id="L25">		log.log(Level.FINE,&quot;El session id es &quot;+sessionId);</span>
-		//https://api.themoviedb.org/3/movie/{movie_id}/rating?api_key=&lt;&lt;api_key&gt;&gt;
-<span class="nc" id="L27">		String URL = &quot;https://api.themoviedb.org/3/movie/&quot; + idmovie</span>
-<span class="nc" id="L28">				+ &quot;/rating?guest_session_id=&quot;+sessionId+&quot;&amp;api_key=&quot; + TMDB_API_KEY;</span>
-		
+<span class="nc" id="L25">		log.log(Level.FINE, &quot;El session id es &quot; + sessionId);</span>
+		// https://api.themoviedb.org/3/movie/{movie_id}/rating?api_key=&lt;&lt;api_key&gt;&gt;
+<span class="nc" id="L27">		String URL = &quot;https://api.themoviedb.org/3/movie/&quot; + idmovie + &quot;/rating?guest_session_id=&quot; + sessionId</span>
+<span class="nc" id="L28">				+ &quot;&amp;api_key=&quot; + TMDB_API_KEY;</span>
+
 <span class="nc" id="L30">		ClientResource cr = new ClientResource(URL);</span>
-<span class="nc" id="L31">		res = cr.post(rate,Rate.class);</span>
+<span class="nc" id="L31">		res = cr.post(rate, Rate.class);</span>
 <span class="nc" id="L32">		log.log(Level.FINE, &quot;El comentario ha sido posteado&quot;);</span>
-		
+
 <span class="nc" id="L34">		return res;</span>
 
 	}
@@ -45,58 +45,57 @@ import aiss.model.tmdb.SearchVideo;
 //
 //		return ps;
 //	}
-	
 
 	public SearchMovie getCartelera() throws UnsupportedEncodingException {
 
-<span class="nc" id="L52">		String URL = &quot;https://api.themoviedb.org/3/movie/now_playing?api_key=&quot; + TMDB_API_KEY + &quot;&amp;language=EN&amp;page=1&quot;;</span>
+<span class="nc" id="L51">		String URL = &quot;https://api.themoviedb.org/3/movie/now_playing?api_key=&quot; + TMDB_API_KEY + &quot;&amp;language=EN&amp;page=1&quot;;</span>
 
-<span class="nc" id="L54">		ClientResource cr = new ClientResource(URL);</span>
-<span class="nc" id="L55">		SearchMovie ps = cr.get(SearchMovie.class);</span>
+<span class="nc" id="L53">		ClientResource cr = new ClientResource(URL);</span>
+<span class="nc" id="L54">		SearchMovie ps = cr.get(SearchMovie.class);</span>
 
-<span class="nc" id="L57">		return ps;</span>
+<span class="nc" id="L56">		return ps;</span>
 	}
 
 	public SearchMovie getMovieByName(String name) throws UnsupportedEncodingException {
 
-<span class="nc" id="L62">		String URL = &quot;https://api.themoviedb.org/3/search/movie?api_key=&quot; + TMDB_API_KEY + &quot;&amp;language=EN&amp;query=&quot; + name</span>
-<span class="nc" id="L63">				+ &quot;&amp;page=1&quot;;</span>
-<span class="nc" id="L64">		ClientResource cr = new ClientResource(URL);</span>
-<span class="nc" id="L65">		SearchMovie ps = cr.get(SearchMovie.class);</span>
+<span class="nc" id="L61">		String URL = &quot;https://api.themoviedb.org/3/search/movie?api_key=&quot; + TMDB_API_KEY + &quot;&amp;language=EN&amp;query=&quot; + name</span>
+<span class="nc" id="L62">				+ &quot;&amp;page=1&quot;;</span>
+<span class="nc" id="L63">		ClientResource cr = new ClientResource(URL);</span>
+<span class="nc" id="L64">		SearchMovie ps = cr.get(SearchMovie.class);</span>
 
-<span class="nc" id="L67">		return ps;</span>
+<span class="nc" id="L66">		return ps;</span>
 
 	}
 
 	public SearchVideo getVideo(Integer id) throws UnsupportedEncodingException {
 
-<span class="nc" id="L73">		String URL = &quot;https://api.themoviedb.org/3/movie/&quot; + id + &quot;/videos?api_key=&quot; + TMDB_API_KEY + &quot;&amp;language=EN&quot;;</span>
+<span class="nc" id="L72">		String URL = &quot;https://api.themoviedb.org/3/movie/&quot; + id + &quot;/videos?api_key=&quot; + TMDB_API_KEY + &quot;&amp;language=EN&quot;;</span>
 		// https://api.themoviedb.org/3/movie/{movie_id}/videos?api_key=&lt;&lt;api_key&gt;&gt;&amp;language=en-US
 
-<span class="nc" id="L76">		ClientResource cr = new ClientResource(URL);</span>
-<span class="nc" id="L77">		SearchVideo ps = cr.get(SearchVideo.class);</span>
+<span class="nc" id="L75">		ClientResource cr = new ClientResource(URL);</span>
+<span class="nc" id="L76">		SearchVideo ps = cr.get(SearchVideo.class);</span>
 
-<span class="nc" id="L79">		return ps;</span>
+<span class="nc" id="L78">		return ps;</span>
 	}
 
 	public Details getDetalles(Integer id) throws UnsupportedEncodingException {
 
-<span class="nc" id="L84">		String URL = &quot;https://api.themoviedb.org/3/movie/&quot; + id + &quot;?api_key=&quot; + TMDB_API_KEY + &quot;&amp;language=EN&quot;;</span>
+<span class="nc" id="L83">		String URL = &quot;https://api.themoviedb.org/3/movie/&quot; + id + &quot;?api_key=&quot; + TMDB_API_KEY + &quot;&amp;language=EN&quot;;</span>
 
-<span class="nc" id="L86">		ClientResource cr = new ClientResource(URL);</span>
-<span class="nc" id="L87">		Details ps = cr.get(Details.class);</span>
+<span class="nc" id="L85">		ClientResource cr = new ClientResource(URL);</span>
+<span class="nc" id="L86">		Details ps = cr.get(Details.class);</span>
 
-<span class="nc" id="L89">		return ps;</span>
+<span class="nc" id="L88">		return ps;</span>
 	}
 
 	public SearchImagen getImagen(Integer id) throws UnsupportedEncodingException {
 
-<span class="nc" id="L94">		String URL = &quot;https://api.themoviedb.org/3/movie/&quot; + id + &quot;/images?api_key=&quot; + TMDB_API_KEY + &quot;&amp;language=EN&quot;;</span>
+<span class="nc" id="L93">		String URL = &quot;https://api.themoviedb.org/3/movie/&quot; + id + &quot;/images?api_key=&quot; + TMDB_API_KEY + &quot;&amp;language=EN&quot;;</span>
 
-<span class="nc" id="L96">		ClientResource cr = new ClientResource(URL);</span>
-<span class="nc" id="L97">		SearchImagen ps = cr.get(SearchImagen.class);</span>
+<span class="nc" id="L95">		ClientResource cr = new ClientResource(URL);</span>
+<span class="nc" id="L96">		SearchImagen ps = cr.get(SearchImagen.class);</span>
 
-<span class="nc" id="L99">		return ps;</span>
+<span class="nc" id="L98">		return ps;</span>
 	}
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.3.201901230119</span></div></body></html>

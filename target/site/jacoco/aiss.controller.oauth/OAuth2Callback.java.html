@@ -1,62 +1,63 @@
-<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>OAuth2Callback.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">project_name</a> &gt; <a href="index.source.html" class="el_package">aiss.controller.oauth</a> &gt; <span class="el_source">OAuth2Callback.java</span></div><h1>OAuth2Callback.java</h1><pre class="source lang-java linenums">
-package aiss.controller.oauth;
-
-import java.io.IOException;
-import java.util.UUID;
-import java.util.logging.Logger;
-
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>OAuth2Callback.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">project_name</a> &gt; <a href="index.source.html" class="el_package">aiss.controller.oauth</a> &gt; <span class="el_source">OAuth2Callback.java</span></div><h1>OAuth2Callback.java</h1><pre class="source lang-java linenums">package aiss.controller.oauth;
 
 import aiss.utility.OAuthRegistry;
-
 import com.google.api.client.auth.oauth2.AuthorizationCodeFlow;
 import com.google.api.client.auth.oauth2.AuthorizationCodeResponseUrl;
 import com.google.api.client.auth.oauth2.Credential;
 import com.google.api.client.extensions.servlet.auth.oauth2.AbstractAuthorizationCodeCallbackServlet;
 import com.google.api.client.http.GenericUrl;
+import java.io.IOException;
+import java.util.UUID;
+import java.util.logging.Logger;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 /**
  * Servlet implementation class OAuth2Callback
  */
-<span class="nc" id="L23">public class OAuth2Callback extends AbstractAuthorizationCodeCallbackServlet {</span>
+<span class="nc" id="L19">public class OAuth2Callback extends AbstractAuthorizationCodeCallbackServlet {</span>
+
 	private static final long serialVersionUID = 1L;
-<span class="nc" id="L25">	private static Logger log=Logger.getLogger(OAuth2Callback.class.getName());</span>
-		
+<span class="nc" id="L22">	private static Logger log = Logger.getLogger(OAuth2Callback.class.getName());</span>
+
 	@Override
 	protected void onSuccess(HttpServletRequest req, HttpServletResponse resp, Credential credential)
 			throws ServletException, IOException {
-<span class="nc" id="L30">		String provider=getInitParameter(&quot;provider&quot;);</span>
-<span class="nc" id="L31">		req.getSession().setAttribute(provider+&quot;-token&quot;, credential.getAccessToken());</span>
-<span class="nc" id="L32">		OAuthRegistry.onAuthorizationSuccess(getInitParameter(&quot;onSuccess&quot;), provider, credential, req, resp);				</span>
-		
+<span class="nc" id="L27">		String provider = getInitParameter(&quot;provider&quot;);</span>
+<span class="nc bnc" id="L28" title="All 4 branches missed.">		if (provider == null || &quot;&quot;.equals(provider)) {</span>
+<span class="nc" id="L29">			log.warning(&quot;No provider found in OAuth Callbak servlet for request: &quot; + req.getRequestURI());</span>
+<span class="nc" id="L30">		} else {</span>
+<span class="nc" id="L31">			req.getSession().setAttribute(provider + &quot;-token&quot;, credential.getAccessToken());</span>
+<span class="nc" id="L32">			OAuthRegistry.onAuthorizationSuccess(getInitParameter(&quot;onSuccess&quot;), provider, credential, req, resp);</span>
+		}
 <span class="nc" id="L34">	}</span>
 
 	@Override
 	protected void onError(HttpServletRequest req, HttpServletResponse resp, AuthorizationCodeResponseUrl errorResponse)
 			throws ServletException, IOException {
-<span class="nc" id="L39">		log.warning(&quot;ERROR on OAuth Callback! &quot;+errorResponse.getCode()+&quot;: &quot;+errorResponse.getError()+&quot;. &quot;+errorResponse.getErrorDescription());</span>
-<span class="nc" id="L40">		resp.getWriter().append(&quot;ERROR!&quot;).append(errorResponse.getCode()).append(&quot;: &quot;)</span>
-<span class="nc" id="L41">			.append(errorResponse.getError()).append(errorResponse.getErrorDescription());</span>
-<span class="nc" id="L42">	}</span>
+<span class="nc" id="L39">		log.warning(&quot;ERROR on OAuth Callback! &quot; + errorResponse.getCode() + &quot;: &quot; + errorResponse.getError() + &quot;. &quot;</span>
+<span class="nc" id="L40">				+ errorResponse.getErrorDescription());</span>
+<span class="nc" id="L41">		resp.getWriter().append(&quot;ERROR!&quot;).append(errorResponse.getCode()).append(&quot;: &quot;).append(errorResponse.getError())</span>
+<span class="nc" id="L42">				.append(errorResponse.getErrorDescription());</span>
+<span class="nc" id="L43">	}</span>
 
 	@Override
 	protected String getRedirectUri(HttpServletRequest req) throws ServletException, IOException {
-				
-<span class="nc" id="L47">		GenericUrl url = new GenericUrl(req.getRequestURL().toString());</span>
-<span class="nc" id="L48">		url.setRawPath(&quot;/oauth2callback/&quot;+getInitParameter(&quot;provider&quot;));</span>
-<span class="nc" id="L49">		return url.build();</span>
+
+<span class="nc" id="L48">		GenericUrl url = new GenericUrl(req.getRequestURL().toString());</span>
+<span class="nc" id="L49">		url.setRawPath(&quot;/oauth2callback/&quot; + getInitParameter(&quot;provider&quot;));</span>
+<span class="nc" id="L50">		return url.build();</span>
 	}
 
 	@Override
-	protected AuthorizationCodeFlow initializeFlow() throws IOException {		
-<span class="nc" id="L54">		return OAuthRegistry.initializeFlow(getInitParameter(&quot;provider&quot;));</span>
+	protected AuthorizationCodeFlow initializeFlow() throws IOException {
+<span class="nc" id="L55">		return OAuthRegistry.initializeFlow(getInitParameter(&quot;provider&quot;));</span>
 	}
 
 	@Override
-	protected String getUserId(HttpServletRequest req) throws ServletException, IOException {		
-<span class="nc" id="L59">		return UUID.randomUUID().toString();</span>
+	protected String getUserId(HttpServletRequest req) throws ServletException, IOException {
+<span class="nc" id="L60">		return UUID.randomUUID().toString();</span>
 	}
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.3.201901230119</span></div></body></html>
