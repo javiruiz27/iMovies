@@ -8,13 +8,14 @@ import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import java.util.stream.Collectors;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import org.hamcrest.Description;
 
 import aiss.model.places.Result;
 import aiss.model.places.Search;
@@ -58,14 +59,35 @@ public class PlacesSearchController extends HttpServlet {
 		
 		
 		
-	//	List<Weather> descripcion = tiempo.stream().map(x->x.getWeather()).collect(Collectors.toList());
+		List<Weather> weather2  = new ArrayList<>();
+		List<String> description = new ArrayList<>();
+		List<String> icon= new ArrayList<>();
+		List<String> urls= new ArrayList<>();
+		List<Double> temperatura =new ArrayList<>();
 		
-//		for (int i = 0; i < tiempo.size(); i++) {
-//			for (int j = 0; i < tiempo.size(); j++) {
-//			 descripcion.add(tiempo.get(i).getWeather().get(j));
-//			
-//		}
-//		}
+		for (int i = 0; i < tiempo.size(); i++) {
+			aiss.model.weather.List list = tiempo.get(i);
+			temperatura.add(tiempo.get(i).getMain().getTemp());
+			
+			for (int j = 0; j < tiempo.get(i).getWeather().size(); j++) {
+			weather2.add(list.getWeather().get(j));
+				
+				
+		}
+		}
+			
+			for (int k = 0; k <weather2.size(); k++) {
+				
+				description.add(weather2.get(k).getDescription());
+				icon.add(weather2.get(k).getIcon());
+			}
+			
+			for (int z = 0; z < icon.size(); z++) {
+				urls.add("https://openweathermap.org/themes/openweathermap/assets/vendor/owm/img/widgets/"+icon.get(z) +".png");
+				
+				
+			}
+		
 			
 		
 		
@@ -99,7 +121,10 @@ public class PlacesSearchController extends HttpServlet {
 			request.setAttribute("cines", result);
 			request.setAttribute("tiempo", tiempo);
 			request.setAttribute("fechas", fechas);
-//			request.setAttribute("descripcion", descripcion);
+			request.setAttribute("weather2", weather2);
+			request.setAttribute("description", description);
+			request.setAttribute("urls", urls);
+			request.setAttribute("temperatura", temperatura);
 			log.log(Level.INFO, "Se han cargado los cines y el tiempo de " + lugar);
 		} else {
 			log.log(Level.INFO, "Ha ocurrido un error al cargar los cines o el timepo  de " + lugar);

@@ -8,6 +8,7 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Lista de cines</title>
+<link rel="stylesheet" href="css/places.css">
 </head>
 <body>
 
@@ -26,19 +27,20 @@
 			<br />
 		</c:forEach>
 </fieldset>
-	<div>
+
+<h3>Este es el tiempo que hará durante los próximos 5 días en <c:out value="${requestScope.lugar}"></c:out></h3>
+
+<div id=grande>
+
+	<div id=izquierda>
 	
-	 <legend>
-			Tiempo en  "
-			<c:out value="${requestScope.lugar}" />
-			"
-		</legend>
-	  <table width="575" border="1" cellspacing="2">
+	 
+	  <table border="1">
         <tr>
             <th>Fecha</th>
         
         </tr>
-        
+       
         <c:forEach items="${requestScope.fechas}" var="fecha">
             <tr align="center">
                 <td> <c:out value=" ${fecha} "/> </td>
@@ -47,45 +49,64 @@
 
           </table>
     </div>
-    <div>
-     <table width="575" border="1" cellspacing="2">
+    
+    	<div id=centroIzquierda>
+
+	  <table  border="1" >
         <tr>
-           
+            
             <th>Descripción</th>
-        </tr>    
-              <c:forEach items="${requestScope.tiempo}" var="tiempo">
+        
+        </tr>
+       
+        <c:forEach items="${requestScope.description}" var="description">
             <tr align="center">
-              <c:forEach items="${tiempo.weather}" var="weather">
-              
-              <td> <c:out value="${weather.description}" /> 
-              </c:forEach>
-              </tr>
-		</c:forEach>
-                
-            <!--    <td><img src="https://openweathermap.org/themes/openweathermap/assets/vendor/owm/img/widgets/02n.png" alt="Smiley face" height="42" width="42"> </td>-->
-                 
-           		
-    </table>
-	</div>
-		
-	<!--  	Fecha<c:out value="${requestScope.fechas}"/>
- 	<c:forEach items="${requestScope.tiempo}" var="tiempo">
- 	
+                <td>  <c:out value="${description} "/> </td> 
+               
+                </tr>
+                 </c:forEach>
 
- 		<c:forEach items="${tiempo.weather}" var="weather">
-		<c:out value="${weather.description}" /> 
-			<br />
-		</c:forEach>
-		</c:forEach>
+          </table>
+    </div>
+    
+    <div id=centroDerecha>
 
+	  <table  border="1" >
+        <tr>
+          <th>Iconos </th>
+   
+        </tr>
+       
+        <c:forEach items="${requestScope.urls}" var="url">
+            <tr align="center">
+                <td>  <img src="${url}" height="14" width="40"> </td> 
+               
+                </tr>
+                 </c:forEach>
 
-	</fieldset>
-	-->
-<div id="openweathermap-widget-15"></div>
-<script>window.myWidgetParam ? window.myWidgetParam : window.myWidgetParam = [];  window.myWidgetParam.push({id: 15,cityid: '6361046',appid: '4812afad37956a4a23bc9cd4e9878b7c',units: 'metric',containerid: 'openweathermap-widget-15', lang: 'es'  }); 
-(function() {var script = document.createElement('script');script.async = true;script.charset = "utf-8";script.src = "//openweathermap.org/themes/openweathermap/assets/vendor/owm/js/weather-widget-generator.js";
-var s = document.getElementsByTagName('script')[0];s.parentNode.insertBefore(script, s);  })();</script>
+          </table>
+    </div>
+    
+      <div id=derecha>
 
+	  <table  border="1" >
+        <tr>
+          <th>Temperatura </th>
+   
+        </tr>
+       
+        <c:forEach items="${requestScope.temperatura}" var="temperatura">
+            <tr align="center">
+                <td>    <c:out value="${temperatura} "/> ºC   </td> 
+               
+                </tr>
+                 </c:forEach>
+
+          </table>
+    </div>
+    
+    </div>
+    
 </body>
 
 

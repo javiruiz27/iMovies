@@ -1,0 +1,32 @@
+/*CSS code for iMovies*/
+
+/*Code of initial page*/
+
+div#grande{
+	margin-top:20px;
+	with:100%;
+	
+}
+
+div#izquierda{
+	float:left;
+	with:25%;
+}
+
+div#centroIzquierda{
+	float:left;
+	with:25%;
+}
+
+div#centroDerecha{
+	float:left;
+	with:25%;
+}
+div#derecha{
+	float:left;
+	with:25%;
+}
+
+
+
+/*=======================================*/
