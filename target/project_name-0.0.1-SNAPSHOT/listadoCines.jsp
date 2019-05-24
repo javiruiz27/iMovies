@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page import="java.util.*" %>
+<%@ page import="java.text.SimpleDateFormat"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,9 +24,50 @@
 					
 			<br />
 		</c:forEach>
+</fieldset>
+	 <fieldset>
+	 <legend>
+			Tiempo en  "
+			<c:out value="${requestScope.lugar}" />
+			"
+		</legend>
+	  <table width="575" border="1" cellspacing="2">
+        <tr>
+            <th>Fecha</th>
+            <th>Descripción</th>
+        </tr>
+        <c:forEach items="${requestScope.fechas}" var="fecha">
+            <tr align="center">
+                <td> <c:out value=" ${fecha} "/> </td>
+                <td> <c:out value=" nubes "/> </td>
+              <td><img src="https://openweathermap.org/themes/openweathermap/assets/vendor/owm/img/widgets/02n.png" alt="Smiley face" height="42" width="42"> </td>
+                 
+            </tr>
+        </c:forEach>			
+    </table>
+</fieldset>		
+		
+	<!--  	Fecha<c:out value="${requestScope.fechas}"/>
+ 	<c:forEach items="${requestScope.tiempo}" var="tiempo">
+ 	
+
+ 		<c:forEach items="${tiempo.weather}" var="weather">
+		<c:out value="${weather.description}" /> 
+			<br />
+		</c:forEach>
+		</c:forEach>
 
 
 	</fieldset>
+	-->
+<div id="openweathermap-widget-15"></div>
+<script>window.myWidgetParam ? window.myWidgetParam : window.myWidgetParam = [];  window.myWidgetParam.push({id: 15,cityid: '6361046',appid: '4812afad37956a4a23bc9cd4e9878b7c',units: 'metric',containerid: 'openweathermap-widget-15', lang: 'es'  }); 
+(function() {var script = document.createElement('script');script.async = true;script.charset = "utf-8";script.src = "//openweathermap.org/themes/openweathermap/assets/vendor/owm/js/weather-widget-generator.js";
+var s = document.getElementsByTagName('script')[0];s.parentNode.insertBefore(script, s);  })();</script>
 
 </body>
+
+
+
+
 </html>

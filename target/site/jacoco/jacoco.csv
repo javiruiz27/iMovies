@@ -8,7 +8,7 @@ project_name,aiss.model.calendar,DefaultReminder,32,0,0,0,11,0,7,0,7,0
 project_name,aiss.model.calendar,ConferenceProperties,28,0,0,0,9,0,5,0,5,0
 project_name,aiss.utility,OAuthRegistry,176,0,12,0,41,0,12,0,6,0
 project_name,aiss.utility,OAuthServiceConfiguration,63,0,0,0,24,0,12,0,12,0
-project_name,aiss.utility,OAuthRegistry.new TypeReference() {...},3,0,0,0,1,0,1,0,1,0
+project_name,aiss.utility,OAuthRegistry.new TypeReference() {...},3,0,0,0,2,0,1,0,1,0
 project_name,aiss.model.tmdb,SearchMovie,9,40,0,0,3,15,3,8,3,8
 project_name,aiss.model.tmdb,Rate,25,0,0,0,8,0,5,0,5,0
 project_name,aiss.model.tmdb,Result,49,70,0,0,16,32,15,16,15,16
@@ -25,24 +25,37 @@ project_name,aiss.model.tmdb,Dates,32,0,0,0,11,0,7,0,7,0
 project_name,aiss.model.tmdb,SearchImagen,45,0,0,0,16,0,9,0,9,0
 project_name,aiss.controller.oauth,OAuth2Callback,117,0,4,0,19,0,9,0,7,0
 project_name,aiss.controller.oauth,GenericAuthController,62,0,0,0,11,0,5,0,5,0
+project_name,aiss.model.weather,Rain,25,0,0,0,8,0,5,0,5,0
+project_name,aiss.model.weather,Weather,46,0,0,0,17,0,11,0,11,0
+project_name,aiss.model.weather,Snow,25,0,0,0,8,0,5,0,5,0
+project_name,aiss.model.weather,Coord,32,0,0,0,11,0,7,0,7,0
+project_name,aiss.model.weather,City,46,0,0,0,17,0,11,0,11,0
+project_name,aiss.model.weather,SearchWeather,56,0,0,0,21,0,13,0,13,0
+project_name,aiss.model.weather,Clouds,25,0,0,0,8,0,5,0,5,0
+project_name,aiss.model.weather,Main,74,0,0,0,29,0,19,0,19,0
+project_name,aiss.model.weather,Wind,32,0,0,0,11,0,7,0,7,0
+project_name,aiss.model.weather,List,84,0,0,0,33,0,21,0,21,0
+project_name,aiss.model.weather,Sys,25,0,0,0,8,0,5,0,5,0
 project_name,aiss.model.resource,PeliculaResource,185,0,14,0,40,0,15,0,8,0
 project_name,aiss.model.resource,GoogleDriveResource,343,0,0,0,70,0,9,0,9,0
 project_name,aiss.model.resource,FacebookPostResource,45,0,0,0,9,0,2,0,2,0
 project_name,aiss.model.resource,TMDBSession,0,22,0,0,0,6,0,3,0,3
 project_name,aiss.model.resource,PlacesSearchResource,24,32,0,0,4,7,1,3,1,3
 project_name,aiss.model.resource,CalendarSearchResource,23,0,0,0,8,0,2,0,2,0
+project_name,aiss.model.resource,WeatherSearchResource,38,0,0,0,6,0,3,0,3,0
 project_name,aiss.model.resource,TMDBSearchResource,167,44,0,0,33,12,5,4,5,4
 project_name,aiss,ListCalendarSearchController,71,0,2,0,19,0,5,0,4,0
 project_name,aiss,PeliculasController,93,0,4,0,26,0,6,0,4,0
 project_name,aiss,HelloWorldServlet,20,0,0,0,6,0,3,0,3,0
 project_name,aiss,RateController,107,0,4,0,25,0,6,0,4,0
 project_name,aiss,GoogleDriveFileDeleteController,77,0,8,0,17,0,7,0,3,0
-project_name,aiss,PlacesSearchController,75,0,2,0,20,0,5,0,4,0
+project_name,aiss,PlacesSearchController,138,0,6,0,35,0,7,0,4,0
 project_name,aiss,InfoController,213,0,8,0,49,0,8,0,4,0
 project_name,aiss,PeliculasActualesSearchController,93,0,6,0,26,0,8,0,5,0
 project_name,aiss,SearchMoviesController,104,0,4,0,28,0,6,0,4,0
 project_name,aiss,GoogleDriveFileNewController,103,0,8,0,24,0,8,0,4,0
 project_name,aiss,GoogleDriveFileListController,66,0,6,0,18,0,7,0,4,0
+project_name,aiss,WeatherSearchController,23,0,0,0,9,0,3,0,3,0
 project_name,aiss,GoogleDriveFileUpdateController,139,0,16,0,33,0,12,0,4,0
 project_name,aiss.model.google.drive,FileItem,274,0,0,0,116,0,75,0,75,0
 project_name,aiss.model.google.drive,Parent,38,0,0,0,16,0,11,0,11,0
