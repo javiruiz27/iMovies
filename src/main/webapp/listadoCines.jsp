@@ -10,6 +10,7 @@
 <title>Lista de cines</title>
 </head>
 <body>
+
 	<fieldset>
 		<legend>
 			Lista de cines en "
@@ -25,7 +26,8 @@
 			<br />
 		</c:forEach>
 </fieldset>
-	 <fieldset>
+	<div>
+	
 	 <legend>
 			Tiempo en  "
 			<c:out value="${requestScope.lugar}" />
@@ -34,18 +36,37 @@
 	  <table width="575" border="1" cellspacing="2">
         <tr>
             <th>Fecha</th>
-            <th>Descripción</th>
+        
         </tr>
+        
         <c:forEach items="${requestScope.fechas}" var="fecha">
             <tr align="center">
                 <td> <c:out value=" ${fecha} "/> </td>
-                <td> <c:out value=" nubes "/> </td>
-              <td><img src="https://openweathermap.org/themes/openweathermap/assets/vendor/owm/img/widgets/02n.png" alt="Smiley face" height="42" width="42"> </td>
+                </tr>
+                 </c:forEach>
+
+          </table>
+    </div>
+    <div>
+     <table width="575" border="1" cellspacing="2">
+        <tr>
+           
+            <th>Descripción</th>
+        </tr>    
+              <c:forEach items="${requestScope.tiempo}" var="tiempo">
+            <tr align="center">
+              <c:forEach items="${tiempo.weather}" var="weather">
+              
+              <td> <c:out value="${weather.description}" /> 
+              </c:forEach>
+              </tr>
+		</c:forEach>
+                
+            <!--    <td><img src="https://openweathermap.org/themes/openweathermap/assets/vendor/owm/img/widgets/02n.png" alt="Smiley face" height="42" width="42"> </td>-->
                  
-            </tr>
-        </c:forEach>			
+           		
     </table>
-</fieldset>		
+	</div>
 		
 	<!--  	Fecha<c:out value="${requestScope.fechas}"/>
  	<c:forEach items="${requestScope.tiempo}" var="tiempo">

@@ -8,6 +8,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.stream.Collectors;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -20,6 +21,7 @@ import aiss.model.places.Search;
 import aiss.model.resource.PlacesSearchResource;
 import aiss.model.resource.WeatherSearchResource;
 import aiss.model.weather.SearchWeather;
+import aiss.model.weather.Weather;
 
 /**
  * Servlet implementation class PlacesSearchController
@@ -54,6 +56,19 @@ public class PlacesSearchController extends HttpServlet {
 		
 		List<aiss.model.weather.List> tiempo = weather.getList();
 		
+		
+		
+	//	List<Weather> descripcion = tiempo.stream().map(x->x.getWeather()).collect(Collectors.toList());
+		
+//		for (int i = 0; i < tiempo.size(); i++) {
+//			for (int j = 0; i < tiempo.size(); j++) {
+//			 descripcion.add(tiempo.get(i).getWeather().get(j));
+//			
+//		}
+//		}
+			
+		
+		
 		Search cines = places.getPlaces(lugar);
 	   
 	
@@ -84,6 +99,7 @@ public class PlacesSearchController extends HttpServlet {
 			request.setAttribute("cines", result);
 			request.setAttribute("tiempo", tiempo);
 			request.setAttribute("fechas", fechas);
+//			request.setAttribute("descripcion", descripcion);
 			log.log(Level.INFO, "Se han cargado los cines y el tiempo de " + lugar);
 		} else {
 			log.log(Level.INFO, "Ha ocurrido un error al cargar los cines o el timepo  de " + lugar);
