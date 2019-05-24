@@ -1,6 +1,7 @@
 package aiss.model.resource;
 
 import java.io.UnsupportedEncodingException;
+
 import java.util.logging.Logger;
 
 import org.restlet.resource.ClientResource;
@@ -17,7 +18,6 @@ public class WeatherResource {
 		String url = "http://dataservice.accuweather.com/locations/v1/cities/search?apikey="+Weather_API_KEY+"&q="+ciudad+"&language=es";
 		ClientResource cr = new ClientResource(url);
 		SearchLocationKey locationKey = cr.get(SearchLocationKey.class);
-
 		return locationKey;
 
 	}
@@ -32,7 +32,15 @@ public class WeatherResource {
 
 	}
 	
+	 //"http://dataservice.accuweather.com/locations/v1/search?apikey=7brLnI5lLl0VZPvm9P6YRJbVqaIDSHzs&q=Sevilla&language=es"
 	
+	public SearchLocationKey getLocationKey2(String ciudad) throws UnsupportedEncodingException {
+		String url = "http://dataservice.accuweather.com/locations/v1//search?apikey="+Weather_API_KEY+"&q="+ciudad+"&language=es";
+		ClientResource cr = new ClientResource(url);
+		SearchLocationKey locationKey = cr.get(SearchLocationKey.class);
+		return locationKey;
+
+	}
 	
 
 }

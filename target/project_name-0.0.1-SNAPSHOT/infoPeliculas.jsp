@@ -25,7 +25,7 @@
 	</object>
 	
 	<c:if test="${requestScope.actuales=='si'}">
-		<form action="WeatherSearchController" method="get">
+		<form action="WeatherSearchController" method="post">
 		<p>¿En que ciudad te encuentras?</p>
 			<input type="text" name="ciudad" value=> <input
 				class="submit" type="submit" name="searchBtn" title="search"

@@ -38,7 +38,7 @@ public class WeatherSearchController extends HttpServlet {
 		
 		WeatherResource weather = new WeatherResource();
 		
-		SearchLocationKey locationKey = weather.getLocationKey(ciudad);
+		SearchLocationKey locationKey = weather.getLocationKey2(ciudad);
 		
 		if(locationKey.getKey()!=null) {
 		SearchWeather tiempo = weather.getTiempo(locationKey.getKey());
