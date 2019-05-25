@@ -11,7 +11,7 @@
 
 	<h1>La valoración introducida debe estar entre 1 y 10</h1>
 
-	<a class="button" href="index.jsp">Inicio</a>
+	<a class="button" href="javascript:history.back()"> Volver Atrás</a>
 
 </body>
 </html>

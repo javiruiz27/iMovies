@@ -94,9 +94,9 @@ public class PlacesSearchController extends HttpServlet {
 						+ ".png");
 
 			}
-
-			Search cines = places.getPlaces(lugar);
-
+			Search cines=places.getPlaces("lugar");
+			
+			
 			Date dNow = new Date();
 			SimpleDateFormat ft = new SimpleDateFormat("MM/dd/yyyy HH:mm");
 			Calendar calendar = Calendar.getInstance();
@@ -112,9 +112,7 @@ public class PlacesSearchController extends HttpServlet {
 				fechas.add(fechaFormateada);
 
 			}
-
 			List<Result> result = cines.getResults();
-
 			if (result.size() > 0 && tiempo.size() > 0) {
 				rd = request.getRequestDispatcher("/listadoCines.jsp");
 				request.setAttribute("lugar", lugar);
@@ -127,7 +125,7 @@ public class PlacesSearchController extends HttpServlet {
 				request.setAttribute("temperatura", temperatura);
 				log.log(Level.INFO, "Se han cargado los cines y el tiempo de " + lugar);
 			} else {
-				log.log(Level.INFO, "Ha ocurrido un error al cargar los cines o el timepo  de " + lugar);
+				log.log(Level.INFO, "Ha ocurrido un error al cargar los cines o el tiempo  de " + lugar);
 				rd = request.getRequestDispatcher("/errorCiudad.jsp");
 			}
 			rd.forward(request, response);
