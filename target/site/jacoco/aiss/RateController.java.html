@@ -40,7 +40,7 @@ public class RateController extends HttpServlet {
 		
 		
 		
-<span class="nc bnc" id="L43" title="All 4 branches missed.">		if(idmovie!=null || rate != null) {</span>
+<span class="nc bnc" id="L43" title="All 8 branches missed.">		if((idmovie!=null || rate != null) &amp;&amp; (rate&gt;=0.5 &amp;&amp; rate &lt;=10)) {</span>
 <span class="nc" id="L44">			TMDBSearchResource sr = new TMDBSearchResource();</span>
 		
 <span class="nc" id="L46">			Rate res = new Rate();</span>
@@ -57,7 +57,7 @@ public class RateController extends HttpServlet {
 <span class="nc" id="L57">			rd = request.getRequestDispatcher(&quot;/rateCompleted.jsp&quot;);</span>
 			
 <span class="nc" id="L59">		}else {</span>
-<span class="nc" id="L60">			rd=request.getRequestDispatcher(&quot;/error.jsp&quot;);</span>
+<span class="nc" id="L60">			rd=request.getRequestDispatcher(&quot;/errorRate.jsp&quot;);</span>
 <span class="nc" id="L61">			log.log(Level.INFO, &quot;No se ha podido valorar&quot;);</span>
 		}
 		

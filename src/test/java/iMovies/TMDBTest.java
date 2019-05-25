@@ -47,6 +47,8 @@ public class TMDBTest {
 		
 		System.out.println("El id de sesion es: " + result.getGuestSessionId());
 		
+		
+		
 	} 
 	
 	

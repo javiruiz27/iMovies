@@ -19,57 +19,68 @@ import aiss.model.tmdb.Rate;
 public class RateController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private static final Logger log = Logger.getLogger(RateController.class.getName());
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public RateController() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		RequestDispatcher rd = null;
+	public RateController() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
-		
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		RequestDispatcher rd = null;
+		Double rate = 11.;
+
 		String idmovie = request.getParameter("idpelicula");
-		Double rate = Double.parseDouble(request.getParameter("rate"));
-		
-		
-		
-		if((idmovie!=null || rate != null) && (rate>=0.5 && rate <=10)) {
+		if (request.getParameter("rate").length() != 0) {
+
+			rate = Double.parseDouble(request.getParameter("rate"));
+		} else {
+
+			rd = request.getRequestDispatcher("/index.jsp");
+
+			log.log(Level.INFO, "Has dejado el nombre en blanco");
+
+		}
+
+		if ((idmovie != null || rate != null) && (rate >= 0.5 && rate <= 10) && (rate.toString().length() > 0)) {
 			TMDBSearchResource sr = new TMDBSearchResource();
-		
+
 			Rate res = new Rate();
-			
-			res.setValue((double)rate);
-			
+
+			res.setValue((double) rate);
+
 			sr.postRate(idmovie, res);
-			
+
 			request.setAttribute("idmovie", idmovie);
 			request.setAttribute("rate", rate);
 			log.log(Level.INFO, "No hay problemas");
 			log.log(Level.INFO, "Valor de rate:" + res);
 			log.log(Level.INFO, "Valor de id:" + idmovie);
 			rd = request.getRequestDispatcher("/rateCompleted.jsp");
-			
-		}else {
-			rd=request.getRequestDispatcher("/errorRate.jsp");
+
+		} else {
+			rd = request.getRequestDispatcher("/errorRate.jsp");
 			log.log(Level.INFO, "No se ha podido valorar");
 		}
-		
+
 		log.log(Level.INFO, "Se han mandado los datos de" + idmovie);
 		rd.forward(request, response);
-		
+
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		doGet(request, response);
 	}
 
