@@ -27,6 +27,55 @@ div#derecha{
 	with:25%;
 }
 
+div#places{
+	margin-top:20px;
+	
+	
+}
+
+div#cines{
+	float:left;
+	
+}
+
+div#urlCines{
+	float:left;
+	
+}
+
+table{
+	background-color:#FFFFFF
+}
+body {
+	background-image:url("http://muestradecinecubano.albaceteporcuba.com/wp-content/uploads/2014/04/cinefondo.png");
+	font-family: Georgia, 'Times New Roman', Times, serif;
+	
+}
+
+.button {
+	font-family: fantasy;
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 12px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+    color: #fff;
+    background-color: #0000ff;
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 9px #999;
+}
+
+.button:hover {background-color: #0000ff}
+
+.button:active {
+  background-color: #0000ff;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
 
 
 /*=======================================*/

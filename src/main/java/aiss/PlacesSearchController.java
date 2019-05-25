@@ -94,7 +94,8 @@ public class PlacesSearchController extends HttpServlet {
 
 		}
 
-		Search cines = places.getPlaces(lugar);
+		
+
 
 		Date dNow = new Date();
 		SimpleDateFormat ft = new SimpleDateFormat("MM/dd/yyyy HH:mm");
@@ -111,8 +112,20 @@ public class PlacesSearchController extends HttpServlet {
 			fechas.add(fechaFormateada);
 
 		}
-
+		
+			
+		Search cines = places.getPlaces(lugar);
+		
+		List<String> urlCine= new ArrayList<>();
 		List<Result> result = cines.getResults();
+		for(int x = 0; x<result.size(); x++ ) {
+			urlCine.add("https://www.google.com/maps/search/"
+					+ "?api=1&query="+ result.get(x).getGeometry()
+					.getLocation().getLat()+","+result.get(x).getGeometry().getLocation().getLng());
+			
+		}
+
+	
 
 		if (result.size() > 0 && tiempo.size() > 0) {
 			rd = request.getRequestDispatcher("/listadoCines.jsp");
@@ -123,6 +136,7 @@ public class PlacesSearchController extends HttpServlet {
 			request.setAttribute("weather2", weather2);
 			request.setAttribute("description", description);
 			request.setAttribute("urls", urls);
+			request.setAttribute("urlCine", urlCine);
 			request.setAttribute("temperatura", temperatura);
 			log.log(Level.INFO, "Se han cargado los cines y el tiempo de " + lugar);
 		} else {

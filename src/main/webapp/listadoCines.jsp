@@ -18,14 +18,24 @@
 			<c:out value="${requestScope.lugar}" />
 			"
 		</legend>
-
+	<div id =places>
+	<div id =cines>
 		<c:forEach items="${requestScope.cines}" var="cine" end="8">
-			<span><c:out value="${cine.name}" /> Coordenadas: <c:out
-					value="${cine.geometry.location.lat}"></c:out>-  
-					<c:out value="${cine.geometry.location.lng}"></c:out> </span>
+			<c:out value="${cine.name}" /><br><br>
+			</c:forEach>
+			</div>
+		<div id =urlCines>
+		<c:forEach items="${requestScope.urlCine}" var="url" end="8">
+		<a href="${url}"><c:out value="${url}"/></a><br><br>
+			</c:forEach>
+			</div>
+			
+			</div>
+			
+			
 					
 			<br />
-		</c:forEach>
+		
 </fieldset>
 
 <h3>Este es el tiempo que hará durante los próximos 5 días en <c:out value="${requestScope.lugar}"></c:out></h3>
@@ -106,6 +116,10 @@
     </div>
     
     </div>
+    
+<div id=volver>
+<br><a class ="button" href="javascript:history.back()"> Volver Atrás</a>
+ </div>
     
 </body>
 
