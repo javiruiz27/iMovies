@@ -42,6 +42,7 @@ public class InfoController extends HttpServlet {
 		RequestDispatcher rd = null;
 
 		TMDBSearchResource tmdb = new TMDBSearchResource();
+		
 		//String url2 = "https://image.tmdb.org/t/p/w500/kqjL17yufvn9OVLyXYpvtyrFfak.jpg";
 		String titulo = request.getParameter("titulo");
 		String id = request.getParameter("id");

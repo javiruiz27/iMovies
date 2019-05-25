@@ -45,7 +45,7 @@ public class RateController extends HttpServlet {
 
 			rd = request.getRequestDispatcher("/index.jsp");
 
-			log.log(Level.INFO, "Has dejado el nombre en blanco");
+			log.log(Level.INFO, "Has dejado la valoracion en blanco");
 
 		}
 

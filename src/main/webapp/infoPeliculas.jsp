@@ -8,6 +8,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Información de la película</title>
+<link rel="stylesheet" href="css/iMovies.css">
 </head>
 <body>
 
@@ -27,7 +28,7 @@
 		<form action="PlacesSearchController" method="post">
 		<p>¿En que ciudad te encuentras?</p>
 			<input type="text" name="ciudad" value=> <input
-				class="submit" type="submit" name="searchBtn" title="search"
+				class="button" type="submit" name="searchBtn" title="search"
 				value="Buscar">
 		</form>
 		</c:if>
@@ -36,7 +37,7 @@
 		<p>Valora la película</p>
 			<input type="hidden" name="idpelicula" value="${requestScope.imdbID}"/>
 			<input type="number" name="rate" /> 
-			<input	class="submit" type="submit" name="searchBtn" title="search"
+			<input	class="button" type="submit" name="searchBtn" title="search"
 				value="Valorar">
 	</form>
 
