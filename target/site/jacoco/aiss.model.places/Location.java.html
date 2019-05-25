@@ -15,14 +15,14 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
     &quot;lat&quot;,
     &quot;lng&quot;
 })
-<span class="fc" id="L18">public class Location {</span>
+<span class="nc" id="L18">public class Location {</span>
 
     @JsonProperty(&quot;lat&quot;)
     private Double lat;
     @JsonProperty(&quot;lng&quot;)
     private Double lng;
     @JsonIgnore
-<span class="fc" id="L25">    private Map&lt;String, Object&gt; additionalProperties = new HashMap&lt;String, Object&gt;();</span>
+<span class="nc" id="L25">    private Map&lt;String, Object&gt; additionalProperties = new HashMap&lt;String, Object&gt;();</span>
 
     @JsonProperty(&quot;lat&quot;)
     public Double getLat() {
@@ -31,8 +31,8 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
     @JsonProperty(&quot;lat&quot;)
     public void setLat(Double lat) {
-<span class="fc" id="L34">        this.lat = lat;</span>
-<span class="fc" id="L35">    }</span>
+<span class="nc" id="L34">        this.lat = lat;</span>
+<span class="nc" id="L35">    }</span>
 
     @JsonProperty(&quot;lng&quot;)
     public Double getLng() {
@@ -41,8 +41,8 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
     @JsonProperty(&quot;lng&quot;)
     public void setLng(Double lng) {
-<span class="fc" id="L44">        this.lng = lng;</span>
-<span class="fc" id="L45">    }</span>
+<span class="nc" id="L44">        this.lng = lng;</span>
+<span class="nc" id="L45">    }</span>
 
     @JsonAnyGetter
     public Map&lt;String, Object&gt; getAdditionalProperties() {

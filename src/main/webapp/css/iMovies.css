@@ -7,6 +7,12 @@ body {
 	font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
+body1{
+	background-image:
+	url("http://revistaronda.net/wp-content/uploads/2018/11/promos.jpg");
+	font-family: Georgia, 'Times New Roman, Times, serif'
+}
+
 .centrado_inicialTit {
 	color: red;
 	font-weight: bold;
@@ -18,26 +24,66 @@ body {
 	font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',
 		'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 	font-weight: bold;
-	margin-left: 45%;
+	margin-left: 40%;
 }
 
 .centrado_inicialbtn {
 	margin-left: 47%;
 }
 
-.logomd {
-	margin-left: 80%;
-	width: 150px;
-	height: 150px;
+.logo {
+    width: 150px;
+    height: 150px;
+    margin-left: 80%;
+    margin-top: 15%;
 }
 
-.btn_cine{
-	
+.logo2 {
+    width: 150px;
+    height: 150px;
+    margin-left:auto;
+    margin-top: auto;
+}
+.button {
+	font-family: fantasy;
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 12px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+    color: #fff;
+    background-color: #0000ff;
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 9px #999;
 }
 
-.btn_face {
-	margin-left: 80%;
+.button:hover {background-color: #0000ff}
+
+.button:active {
+  background-color: #0000ff;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
 }
+
+.button2 {
+    background-color: #f4511e;
+    border: none;
+    color: white;
+    padding: 3px 32px;
+    text-align: center;
+    font-size: 16px;
+    margin: 4px 2px;
+    opacity: 0.7;
+    transition: 0.3s;
+    display: inline-block;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.button2:hover {opacity: 1}
 
 
 /*=======================================*/

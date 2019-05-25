@@ -15,8 +15,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.hamcrest.Description;
-
 import aiss.model.places.Result;
 import aiss.model.places.Search;
 import aiss.model.resource.PlacesSearchResource;
@@ -29,14 +27,14 @@ import aiss.model.weather.Weather;
  */
 public class PlacesSearchController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-<span class="nc" id="L32">	private static final Logger log = Logger.getLogger(PlacesSearchController.class.getName());</span>
+<span class="nc" id="L30">	private static final Logger log = Logger.getLogger(PlacesSearchController.class.getName());</span>
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
 	public PlacesSearchController() {
-<span class="nc" id="L38">		super();</span>
-<span class="nc" id="L39">	}</span>
+<span class="nc" id="L36">		super();</span>
+<span class="nc" id="L37">	}</span>
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
@@ -45,45 +43,45 @@ public class PlacesSearchController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-<span class="nc" id="L48">		String lugar = request.getParameter(&quot;ciudad&quot;);</span>
+<span class="nc" id="L46">		String lugar = request.getParameter(&quot;ciudad&quot;);</span>
 //https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&amp;photoreference=CnRtAAAATLZNl354RwP_9UKbQ_5Psy40texXePv4oAlgP4qNEkdIrkyse7rPXYGd9D_Uj1rVsQdWT4oRz4QrYAJNpFX7rzqqMlZw2h2E2y5IKMUZ7ouD_SlcHxYq1yL4KbKUv3qtWgTK0A6QbGh87GB3sscrHRIQiG2RrmU_jF4tENr9wGS_YxoUSSDrYjWmrNfeEHSGSc3FyhNLlBU&amp;key=YOUR_API_KEY
-<span class="nc" id="L50">		RequestDispatcher rd = null;</span>
+<span class="nc" id="L48">		RequestDispatcher rd = null;</span>
 
-<span class="nc" id="L52">		PlacesSearchResource places = new PlacesSearchResource();</span>
+<span class="nc" id="L50">		PlacesSearchResource places = new PlacesSearchResource();</span>
 		
-<span class="nc" id="L54">		WeatherSearchResource items= new WeatherSearchResource();</span>
+<span class="nc" id="L52">		WeatherSearchResource items= new WeatherSearchResource();</span>
 		
-<span class="nc" id="L56">		SearchWeather weather = items.getWeather(lugar);</span>
+<span class="nc" id="L54">		SearchWeather weather = items.getWeather(lugar);</span>
 		
-<span class="nc" id="L58">		List&lt;aiss.model.weather.List&gt; tiempo = weather.getList();</span>
+<span class="nc" id="L56">		List&lt;aiss.model.weather.List&gt; tiempo = weather.getList();</span>
 		
 		
 		
-<span class="nc" id="L62">		List&lt;Weather&gt; weather2  = new ArrayList&lt;&gt;();</span>
-<span class="nc" id="L63">		List&lt;String&gt; description = new ArrayList&lt;&gt;();</span>
-<span class="nc" id="L64">		List&lt;String&gt; icon= new ArrayList&lt;&gt;();</span>
-<span class="nc" id="L65">		List&lt;String&gt; urls= new ArrayList&lt;&gt;();</span>
-<span class="nc" id="L66">		List&lt;Double&gt; temperatura =new ArrayList&lt;&gt;();</span>
+<span class="nc" id="L60">		List&lt;Weather&gt; weather2  = new ArrayList&lt;&gt;();</span>
+<span class="nc" id="L61">		List&lt;String&gt; description = new ArrayList&lt;&gt;();</span>
+<span class="nc" id="L62">		List&lt;String&gt; icon= new ArrayList&lt;&gt;();</span>
+<span class="nc" id="L63">		List&lt;String&gt; urls= new ArrayList&lt;&gt;();</span>
+<span class="nc" id="L64">		List&lt;Double&gt; temperatura =new ArrayList&lt;&gt;();</span>
 		
-<span class="nc bnc" id="L68" title="All 2 branches missed.">		for (int i = 0; i &lt; tiempo.size(); i++) {</span>
-<span class="nc" id="L69">			aiss.model.weather.List list = tiempo.get(i);</span>
-<span class="nc" id="L70">			temperatura.add(tiempo.get(i).getMain().getTemp());</span>
+<span class="nc bnc" id="L66" title="All 2 branches missed.">		for (int i = 0; i &lt; tiempo.size(); i++) {</span>
+<span class="nc" id="L67">			aiss.model.weather.List list = tiempo.get(i);</span>
+<span class="nc" id="L68">			temperatura.add(tiempo.get(i).getMain().getTemp());</span>
 			
-<span class="nc bnc" id="L72" title="All 2 branches missed.">			for (int j = 0; j &lt; tiempo.get(i).getWeather().size(); j++) {</span>
-<span class="nc" id="L73">			weather2.add(list.getWeather().get(j));</span>
+<span class="nc bnc" id="L70" title="All 2 branches missed.">			for (int j = 0; j &lt; tiempo.get(i).getWeather().size(); j++) {</span>
+<span class="nc" id="L71">			weather2.add(list.getWeather().get(j));</span>
 				
 				
 		}
 		}
 			
-<span class="nc bnc" id="L79" title="All 2 branches missed.">			for (int k = 0; k &lt;weather2.size(); k++) {</span>
+<span class="nc bnc" id="L77" title="All 2 branches missed.">			for (int k = 0; k &lt;weather2.size(); k++) {</span>
 				
-<span class="nc" id="L81">				description.add(weather2.get(k).getDescription());</span>
-<span class="nc" id="L82">				icon.add(weather2.get(k).getIcon());</span>
+<span class="nc" id="L79">				description.add(weather2.get(k).getDescription());</span>
+<span class="nc" id="L80">				icon.add(weather2.get(k).getIcon());</span>
 			}
 			
-<span class="nc bnc" id="L85" title="All 2 branches missed.">			for (int z = 0; z &lt; icon.size(); z++) {</span>
-<span class="nc" id="L86">				urls.add(&quot;https://openweathermap.org/themes/openweathermap/assets/vendor/owm/img/widgets/&quot;+icon.get(z) +&quot;.png&quot;);</span>
+<span class="nc bnc" id="L83" title="All 2 branches missed.">			for (int z = 0; z &lt; icon.size(); z++) {</span>
+<span class="nc" id="L84">				urls.add(&quot;https://openweathermap.org/themes/openweathermap/assets/vendor/owm/img/widgets/&quot;+icon.get(z) +&quot;.png&quot;);</span>
 				
 				
 			}
@@ -91,48 +89,48 @@ public class PlacesSearchController extends HttpServlet {
 			
 		
 		
-<span class="nc" id="L94">		Search cines = places.getPlaces(lugar);</span>
+<span class="nc" id="L92">		Search cines = places.getPlaces(lugar);</span>
 	   
 	
-<span class="nc" id="L97">		Date dNow = new Date();</span>
-<span class="nc" id="L98">		   SimpleDateFormat ft =  new SimpleDateFormat (&quot;MM/dd/yyyy HH:mm&quot;);</span>
-<span class="nc" id="L99">		   Calendar calendar = Calendar.getInstance();</span>
-<span class="nc" id="L100">		   calendar.setTime(dNow); //tuFechaBase es un Date;</span>
+<span class="nc" id="L95">		Date dNow = new Date();</span>
+<span class="nc" id="L96">		   SimpleDateFormat ft =  new SimpleDateFormat (&quot;MM/dd/yyyy HH:mm&quot;);</span>
+<span class="nc" id="L97">		   Calendar calendar = Calendar.getInstance();</span>
+<span class="nc" id="L98">		   calendar.setTime(dNow); //tuFechaBase es un Date;</span>
 		 
-<span class="nc" id="L102">		   List&lt;String&gt; fechas = new ArrayList&lt;&gt;();</span>
+<span class="nc" id="L100">		   List&lt;String&gt; fechas = new ArrayList&lt;&gt;();</span>
 		  
-<span class="nc bnc" id="L104" title="All 2 branches missed.">			for (int i = 0; i &lt; tiempo.size(); i++) {</span>
-<span class="nc" id="L105">				 calendar.add(Calendar.HOUR,   3); </span>
-<span class="nc" id="L106">				 Date fechaSalida = calendar.getTime();</span>
-<span class="nc" id="L107">				 String fechaFormateada = ft.format(fechaSalida);</span>
+<span class="nc bnc" id="L102" title="All 2 branches missed.">			for (int i = 0; i &lt; tiempo.size(); i++) {</span>
+<span class="nc" id="L103">				 calendar.add(Calendar.HOUR,   3); </span>
+<span class="nc" id="L104">				 Date fechaSalida = calendar.getTime();</span>
+<span class="nc" id="L105">				 String fechaFormateada = ft.format(fechaSalida);</span>
 				 
-<span class="nc" id="L109">				 fechas.add(fechaFormateada);</span>
+<span class="nc" id="L107">				 fechas.add(fechaFormateada);</span>
 				
 			}	
 			
 			
 		
 
-<span class="nc" id="L116">		List&lt;Result&gt; result = cines.getResults();</span>
+<span class="nc" id="L114">		List&lt;Result&gt; result = cines.getResults();</span>
 
-<span class="nc bnc" id="L118" title="All 4 branches missed.">		if ( result.size() &gt; 0 &amp;&amp; tiempo.size()&gt;0) {</span>
-<span class="nc" id="L119">			rd = request.getRequestDispatcher(&quot;/listadoCines.jsp&quot;);</span>
-<span class="nc" id="L120">			request.setAttribute(&quot;lugar&quot;, lugar);</span>
-<span class="nc" id="L121">			request.setAttribute(&quot;cines&quot;, result);</span>
-<span class="nc" id="L122">			request.setAttribute(&quot;tiempo&quot;, tiempo);</span>
-<span class="nc" id="L123">			request.setAttribute(&quot;fechas&quot;, fechas);</span>
-<span class="nc" id="L124">			request.setAttribute(&quot;weather2&quot;, weather2);</span>
-<span class="nc" id="L125">			request.setAttribute(&quot;description&quot;, description);</span>
-<span class="nc" id="L126">			request.setAttribute(&quot;urls&quot;, urls);</span>
-<span class="nc" id="L127">			request.setAttribute(&quot;temperatura&quot;, temperatura);</span>
-<span class="nc" id="L128">			log.log(Level.INFO, &quot;Se han cargado los cines y el tiempo de &quot; + lugar);</span>
-<span class="nc" id="L129">		} else {</span>
-<span class="nc" id="L130">			log.log(Level.INFO, &quot;Ha ocurrido un error al cargar los cines o el timepo  de &quot; + lugar);</span>
-<span class="nc" id="L131">			rd = request.getRequestDispatcher(&quot;/error.jsp&quot;);</span>
+<span class="nc bnc" id="L116" title="All 4 branches missed.">		if ( result.size() &gt; 0 &amp;&amp; tiempo.size()&gt;0) {</span>
+<span class="nc" id="L117">			rd = request.getRequestDispatcher(&quot;/listadoCines.jsp&quot;);</span>
+<span class="nc" id="L118">			request.setAttribute(&quot;lugar&quot;, lugar);</span>
+<span class="nc" id="L119">			request.setAttribute(&quot;cines&quot;, result);</span>
+<span class="nc" id="L120">			request.setAttribute(&quot;tiempo&quot;, tiempo);</span>
+<span class="nc" id="L121">			request.setAttribute(&quot;fechas&quot;, fechas);</span>
+<span class="nc" id="L122">			request.setAttribute(&quot;weather2&quot;, weather2);</span>
+<span class="nc" id="L123">			request.setAttribute(&quot;description&quot;, description);</span>
+<span class="nc" id="L124">			request.setAttribute(&quot;urls&quot;, urls);</span>
+<span class="nc" id="L125">			request.setAttribute(&quot;temperatura&quot;, temperatura);</span>
+<span class="nc" id="L126">			log.log(Level.INFO, &quot;Se han cargado los cines y el tiempo de &quot; + lugar);</span>
+<span class="nc" id="L127">		} else {</span>
+<span class="nc" id="L128">			log.log(Level.INFO, &quot;Ha ocurrido un error al cargar los cines o el timepo  de &quot; + lugar);</span>
+<span class="nc" id="L129">			rd = request.getRequestDispatcher(&quot;/error.jsp&quot;);</span>
 		}
-<span class="nc" id="L133">		rd.forward(request, response);</span>
+<span class="nc" id="L131">		rd.forward(request, response);</span>
 
-<span class="nc" id="L135">	}</span>
+<span class="nc" id="L133">	}</span>
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
@@ -141,8 +139,8 @@ public class PlacesSearchController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-<span class="nc" id="L144">		doGet(request, response);</span>
-<span class="nc" id="L145">	}</span>
+<span class="nc" id="L142">		doGet(request, response);</span>
+<span class="nc" id="L143">	}</span>
 
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.3.201901230119</span></div></body></html>

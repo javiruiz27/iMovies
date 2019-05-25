@@ -7,6 +7,7 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Películas Actuales</title>
+<link rel="stylesheet" href="css/Cartelera.css">
 </head>
 <body>
 
@@ -28,10 +29,10 @@
 					name="actuales" type="hidden" value="${requestScope.actuales}">
 
 
+	
 
 
-
-				<button class="btn-special btn-s-one" type="submit" class="button">Más
+				<button class="button2" type="submit" class="button">Más
 					información</button>
 
 			</form>
@@ -43,8 +44,8 @@
 	</fieldset>
 
 
+	<a class="button" href="index.jsp">Volver al inicio</a>
 
-	<a class="botoncito" href="index.jsp">Volver al inicio</a>
 
 
 </body>

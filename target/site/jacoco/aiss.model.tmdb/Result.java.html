@@ -29,7 +29,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
     &quot;overview&quot;,
     &quot;release_date&quot;
 })
-<span class="fc" id="L32">public class Result {</span>
+<span class="nc" id="L32">public class Result {</span>
 
     @JsonProperty(&quot;vote_count&quot;)
     private int voteCount;
@@ -50,7 +50,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
     @JsonProperty(&quot;original_title&quot;)
     private String originalTitle;
     @JsonProperty(&quot;genre_ids&quot;)
-<span class="fc" id="L53">    private List&lt;Integer&gt; genreIds = null;</span>
+<span class="nc" id="L53">    private List&lt;Integer&gt; genreIds = null;</span>
     @JsonProperty(&quot;backdrop_path&quot;)
     private String backdropPath;
     @JsonProperty(&quot;adult&quot;)
@@ -60,7 +60,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
     @JsonProperty(&quot;release_date&quot;)
     private String releaseDate;
     @JsonIgnore
-<span class="fc" id="L63">    private Map&lt;String, Object&gt; additionalProperties = new HashMap&lt;String, Object&gt;();</span>
+<span class="nc" id="L63">    private Map&lt;String, Object&gt; additionalProperties = new HashMap&lt;String, Object&gt;();</span>
 
     @JsonProperty(&quot;vote_count&quot;)
     public int getVoteCount() {
@@ -69,8 +69,8 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
     @JsonProperty(&quot;vote_count&quot;)
     public void setVoteCount(int voteCount) {
-<span class="fc" id="L72">        this.voteCount = voteCount;</span>
-<span class="fc" id="L73">    }</span>
+<span class="nc" id="L72">        this.voteCount = voteCount;</span>
+<span class="nc" id="L73">    }</span>
 
     @JsonProperty(&quot;id&quot;)
     public int getId() {
@@ -79,8 +79,8 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
     @JsonProperty(&quot;id&quot;)
     public void setId(int id) {
-<span class="fc" id="L82">        this.id = id;</span>
-<span class="fc" id="L83">    }</span>
+<span class="nc" id="L82">        this.id = id;</span>
+<span class="nc" id="L83">    }</span>
 
     @JsonProperty(&quot;video&quot;)
     public boolean isVideo() {
@@ -89,8 +89,8 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
     @JsonProperty(&quot;video&quot;)
     public void setVideo(boolean video) {
-<span class="fc" id="L92">        this.video = video;</span>
-<span class="fc" id="L93">    }</span>
+<span class="nc" id="L92">        this.video = video;</span>
+<span class="nc" id="L93">    }</span>
 
     @JsonProperty(&quot;vote_average&quot;)
     public double getVoteAverage() {
@@ -99,8 +99,8 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
     @JsonProperty(&quot;vote_average&quot;)
     public void setVoteAverage(double voteAverage) {
-<span class="fc" id="L102">        this.voteAverage = voteAverage;</span>
-<span class="fc" id="L103">    }</span>
+<span class="nc" id="L102">        this.voteAverage = voteAverage;</span>
+<span class="nc" id="L103">    }</span>
 
     @JsonProperty(&quot;title&quot;)
     public String getTitle() {
@@ -109,8 +109,8 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
     @JsonProperty(&quot;title&quot;)
     public void setTitle(String title) {
-<span class="fc" id="L112">        this.title = title;</span>
-<span class="fc" id="L113">    }</span>
+<span class="nc" id="L112">        this.title = title;</span>
+<span class="nc" id="L113">    }</span>
     
     
 
@@ -121,8 +121,8 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
     @JsonProperty(&quot;popularity&quot;)
     public void setPopularity(double popularity) {
-<span class="fc" id="L124">        this.popularity = popularity;</span>
-<span class="fc" id="L125">    }</span>
+<span class="nc" id="L124">        this.popularity = popularity;</span>
+<span class="nc" id="L125">    }</span>
 
     @JsonProperty(&quot;poster_path&quot;)
     public String getPosterPath() {
@@ -131,8 +131,8 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
     @JsonProperty(&quot;poster_path&quot;)
     public void setPosterPath(String posterPath) {
-<span class="fc" id="L134">        this.posterPath = posterPath;</span>
-<span class="fc" id="L135">    }</span>
+<span class="nc" id="L134">        this.posterPath = posterPath;</span>
+<span class="nc" id="L135">    }</span>
 
     @JsonProperty(&quot;original_language&quot;)
     public String getOriginalLanguage() {
@@ -141,18 +141,18 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
     @JsonProperty(&quot;original_language&quot;)
     public void setOriginalLanguage(String originalLanguage) {
-<span class="fc" id="L144">        this.originalLanguage = originalLanguage;</span>
-<span class="fc" id="L145">    }</span>
+<span class="nc" id="L144">        this.originalLanguage = originalLanguage;</span>
+<span class="nc" id="L145">    }</span>
 
     @JsonProperty(&quot;original_title&quot;)
     public String getOriginalTitle() {
-<span class="fc" id="L149">        return originalTitle;</span>
+<span class="nc" id="L149">        return originalTitle;</span>
     }
 
     @JsonProperty(&quot;original_title&quot;)
     public void setOriginalTitle(String originalTitle) {
-<span class="fc" id="L154">        this.originalTitle = originalTitle;</span>
-<span class="fc" id="L155">    }</span>
+<span class="nc" id="L154">        this.originalTitle = originalTitle;</span>
+<span class="nc" id="L155">    }</span>
 
     @JsonProperty(&quot;genre_ids&quot;)
     public List&lt;Integer&gt; getGenreIds() {
@@ -161,8 +161,8 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
     @JsonProperty(&quot;genre_ids&quot;)
     public void setGenreIds(List&lt;Integer&gt; genreIds) {
-<span class="fc" id="L164">        this.genreIds = genreIds;</span>
-<span class="fc" id="L165">    }</span>
+<span class="nc" id="L164">        this.genreIds = genreIds;</span>
+<span class="nc" id="L165">    }</span>
 
     @JsonProperty(&quot;backdrop_path&quot;)
     public String getBackdropPath() {
@@ -171,8 +171,8 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
     @JsonProperty(&quot;backdrop_path&quot;)
     public void setBackdropPath(String backdropPath) {
-<span class="fc" id="L174">        this.backdropPath = backdropPath;</span>
-<span class="fc" id="L175">    }</span>
+<span class="nc" id="L174">        this.backdropPath = backdropPath;</span>
+<span class="nc" id="L175">    }</span>
 
     @JsonProperty(&quot;adult&quot;)
     public boolean isAdult() {
@@ -181,8 +181,8 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
     @JsonProperty(&quot;adult&quot;)
     public void setAdult(boolean adult) {
-<span class="fc" id="L184">        this.adult = adult;</span>
-<span class="fc" id="L185">    }</span>
+<span class="nc" id="L184">        this.adult = adult;</span>
+<span class="nc" id="L185">    }</span>
 
     @JsonProperty(&quot;overview&quot;)
     public String getOverview() {
@@ -191,8 +191,8 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
     @JsonProperty(&quot;overview&quot;)
     public void setOverview(String overview) {
-<span class="fc" id="L194">        this.overview = overview;</span>
-<span class="fc" id="L195">    }</span>
+<span class="nc" id="L194">        this.overview = overview;</span>
+<span class="nc" id="L195">    }</span>
 
     @JsonProperty(&quot;release_date&quot;)
     public String getReleaseDate() {
@@ -201,8 +201,8 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
     @JsonProperty(&quot;release_date&quot;)
     public void setReleaseDate(String releaseDate) {
-<span class="fc" id="L204">        this.releaseDate = releaseDate;</span>
-<span class="fc" id="L205">    }</span>
+<span class="nc" id="L204">        this.releaseDate = releaseDate;</span>
+<span class="nc" id="L205">    }</span>
 
     @JsonAnyGetter
     public Map&lt;String, Object&gt; getAdditionalProperties() {

@@ -15,8 +15,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.hamcrest.Description;
-
 import aiss.model.places.Result;
 import aiss.model.places.Search;
 import aiss.model.resource.PlacesSearchResource;

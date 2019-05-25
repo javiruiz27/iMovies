@@ -7,19 +7,19 @@ import org.restlet.resource.ClientResource;
 
 import aiss.model.tmdb.GuessID;
 
-<span class="fc" id="L10">public class TMDBSession {</span>
+<span class="nc" id="L10">public class TMDBSession {</span>
 	
 	private static final String TMDB_API_KEY = &quot;e925e771d23f12d0770dad8d0309141f&quot;;
-<span class="fc" id="L13">	private static final Logger log = Logger.getLogger(TMDBSession.class.getName());</span>
+<span class="nc" id="L13">	private static final Logger log = Logger.getLogger(TMDBSession.class.getName());</span>
 	
 	public static GuessID getGuestSession() throws UnsupportedEncodingException {
 
-<span class="fc" id="L17">		String URL = &quot;https://api.themoviedb.org/3/authentication/guest_session/new?api_key=&quot; + TMDB_API_KEY;</span>
+<span class="nc" id="L17">		String URL = &quot;https://api.themoviedb.org/3/authentication/guest_session/new?api_key=&quot; + TMDB_API_KEY;</span>
 
-<span class="fc" id="L19">		ClientResource cr = new ClientResource(URL);</span>
-<span class="fc" id="L20">		GuessID g = cr.get(GuessID.class);</span>
+<span class="nc" id="L19">		ClientResource cr = new ClientResource(URL);</span>
+<span class="nc" id="L20">		GuessID g = cr.get(GuessID.class);</span>
 
-<span class="fc" id="L22">		return g;</span>
+<span class="nc" id="L22">		return g;</span>
 
 	}
 	

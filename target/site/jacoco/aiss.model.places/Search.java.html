@@ -17,16 +17,16 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
     &quot;results&quot;,
     &quot;status&quot;
 })
-<span class="fc" id="L20">public class Search {</span>
+<span class="nc" id="L20">public class Search {</span>
 
     @JsonProperty(&quot;html_attributions&quot;)
-<span class="fc" id="L23">    private List&lt;Object&gt; htmlAttributions = null;</span>
+<span class="nc" id="L23">    private List&lt;Object&gt; htmlAttributions = null;</span>
     @JsonProperty(&quot;results&quot;)
-<span class="fc" id="L25">    private List&lt;Result&gt; results = null;</span>
+<span class="nc" id="L25">    private List&lt;Result&gt; results = null;</span>
     @JsonProperty(&quot;status&quot;)
     private String status;
     @JsonIgnore
-<span class="fc" id="L29">    private Map&lt;String, Object&gt; additionalProperties = new HashMap&lt;String, Object&gt;();</span>
+<span class="nc" id="L29">    private Map&lt;String, Object&gt; additionalProperties = new HashMap&lt;String, Object&gt;();</span>
 
     @JsonProperty(&quot;html_attributions&quot;)
     public List&lt;Object&gt; getHtmlAttributions() {
@@ -35,18 +35,18 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
     @JsonProperty(&quot;html_attributions&quot;)
     public void setHtmlAttributions(List&lt;Object&gt; htmlAttributions) {
-<span class="fc" id="L38">        this.htmlAttributions = htmlAttributions;</span>
-<span class="fc" id="L39">    }</span>
+<span class="nc" id="L38">        this.htmlAttributions = htmlAttributions;</span>
+<span class="nc" id="L39">    }</span>
 
     @JsonProperty(&quot;results&quot;)
     public List&lt;Result&gt; getResults() {
-<span class="fc" id="L43">        return results;</span>
+<span class="nc" id="L43">        return results;</span>
     }
 
     @JsonProperty(&quot;results&quot;)
     public void setResults(List&lt;Result&gt; results) {
-<span class="fc" id="L48">        this.results = results;</span>
-<span class="fc" id="L49">    }</span>
+<span class="nc" id="L48">        this.results = results;</span>
+<span class="nc" id="L49">    }</span>
 
     @JsonProperty(&quot;status&quot;)
     public String getStatus() {
@@ -55,8 +55,8 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
     @JsonProperty(&quot;status&quot;)
     public void setStatus(String status) {
-<span class="fc" id="L58">        this.status = status;</span>
-<span class="fc" id="L59">    }</span>
+<span class="nc" id="L58">        this.status = status;</span>
+<span class="nc" id="L59">    }</span>
 
     @JsonAnyGetter
     public Map&lt;String, Object&gt; getAdditionalProperties() {
@@ -65,8 +65,8 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
     @JsonAnySetter
     public void setAdditionalProperty(String name, Object value) {
-<span class="fc" id="L68">        this.additionalProperties.put(name, value);</span>
-<span class="fc" id="L69">    }</span>
+<span class="nc" id="L68">        this.additionalProperties.put(name, value);</span>
+<span class="nc" id="L69">    }</span>
 
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.3.201901230119</span></div></body></html>

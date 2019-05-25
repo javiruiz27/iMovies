@@ -40,7 +40,7 @@ public class RateController extends HttpServlet {
 		
 		
 		
-		if(idmovie!=null || rate != null) {
+		if((idmovie!=null || rate != null) && (rate>=0.5 && rate <=10)) {
 			TMDBSearchResource sr = new TMDBSearchResource();
 		
 			Rate res = new Rate();
@@ -57,7 +57,7 @@ public class RateController extends HttpServlet {
 			rd = request.getRequestDispatcher("/rateCompleted.jsp");
 			
 		}else {
-			rd=request.getRequestDispatcher("/error.jsp");
+			rd=request.getRequestDispatcher("/errorRate.jsp");
 			log.log(Level.INFO, "No se ha podido valorar");
 		}
 		

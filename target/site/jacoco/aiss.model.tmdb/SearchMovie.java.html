@@ -19,7 +19,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
     &quot;total_pages&quot;,
     &quot;results&quot;
 })
-<span class="fc" id="L22">public class SearchMovie {</span>
+<span class="nc" id="L22">public class SearchMovie {</span>
 
     @JsonProperty(&quot;page&quot;)
     private int page;
@@ -28,9 +28,9 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
     @JsonProperty(&quot;total_pages&quot;)
     private int totalPages;
     @JsonProperty(&quot;results&quot;)
-<span class="fc" id="L31">    private List&lt;Result&gt; results = null;</span>
+<span class="nc" id="L31">    private List&lt;Result&gt; results = null;</span>
     @JsonIgnore
-<span class="fc" id="L33">    private Map&lt;String, Object&gt; additionalProperties = new HashMap&lt;String, Object&gt;();</span>
+<span class="nc" id="L33">    private Map&lt;String, Object&gt; additionalProperties = new HashMap&lt;String, Object&gt;();</span>
 
     @JsonProperty(&quot;page&quot;)
     public int getPage() {
@@ -39,18 +39,18 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
     @JsonProperty(&quot;page&quot;)
     public void setPage(int page) {
-<span class="fc" id="L42">        this.page = page;</span>
-<span class="fc" id="L43">    }</span>
+<span class="nc" id="L42">        this.page = page;</span>
+<span class="nc" id="L43">    }</span>
 
     @JsonProperty(&quot;total_results&quot;)
     public int getTotalResults() {
-<span class="fc" id="L47">        return totalResults;</span>
+<span class="nc" id="L47">        return totalResults;</span>
     }
 
     @JsonProperty(&quot;total_results&quot;)
     public void setTotalResults(int totalResults) {
-<span class="fc" id="L52">        this.totalResults = totalResults;</span>
-<span class="fc" id="L53">    }</span>
+<span class="nc" id="L52">        this.totalResults = totalResults;</span>
+<span class="nc" id="L53">    }</span>
 
     @JsonProperty(&quot;total_pages&quot;)
     public int getTotalPages() {
@@ -59,18 +59,18 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
     @JsonProperty(&quot;total_pages&quot;)
     public void setTotalPages(int totalPages) {
-<span class="fc" id="L62">        this.totalPages = totalPages;</span>
-<span class="fc" id="L63">    }</span>
+<span class="nc" id="L62">        this.totalPages = totalPages;</span>
+<span class="nc" id="L63">    }</span>
 
     @JsonProperty(&quot;results&quot;)
     public List&lt;Result&gt; getResults() {
-<span class="fc" id="L67">        return results;</span>
+<span class="nc" id="L67">        return results;</span>
     }
 
     @JsonProperty(&quot;results&quot;)
     public void setResults(List&lt;Result&gt; results) {
-<span class="fc" id="L72">        this.results = results;</span>
-<span class="fc" id="L73">    }</span>
+<span class="nc" id="L72">        this.results = results;</span>
+<span class="nc" id="L73">    }</span>
 
     @JsonAnyGetter
     public Map&lt;String, Object&gt; getAdditionalProperties() {
@@ -79,8 +79,8 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
     @JsonAnySetter
     public void setAdditionalProperty(String name, Object value) {
-<span class="fc" id="L82">        this.additionalProperties.put(name, value);</span>
-<span class="fc" id="L83">    }</span>
+<span class="nc" id="L82">        this.additionalProperties.put(name, value);</span>
+<span class="nc" id="L83">    }</span>
 
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.3.201901230119</span></div></body></html>
