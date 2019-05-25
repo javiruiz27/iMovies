@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <project name="maven-antrun-" default="main"  >
 <target name="main">
-  <property name="target.webapp.dir" value="C:\Users\Javier\Documents\TERCERO\AISS-Proyecto4\iMovies\target/project_name-0.0.1-SNAPSHOT"/>
-  <property name="src.webapp.dir" value="C:\Users\Javier\Documents\TERCERO\AISS-Proyecto4\iMovies/src/main/webapp"/>
+  <property name="target.webapp.dir" value="C:\Users\Usurio\Desktop\universidad\tercer año\Segundo Cuatrimestre\AISS\Proyecto\WorkspaceIMovies\iMovies\target/project_name-0.0.1-SNAPSHOT"/>
+  <property name="src.webapp.dir" value="C:\Users\Usurio\Desktop\universidad\tercer año\Segundo Cuatrimestre\AISS\Proyecto\WorkspaceIMovies\iMovies/src/main/webapp"/>
   <sync todir="${target.webapp.dir}" includeEmptyDirs="true" verbose="true">
     <fileset dir="${src.webapp.dir}"/>
     <preserveintarget>

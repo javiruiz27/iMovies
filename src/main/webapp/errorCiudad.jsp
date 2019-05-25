@@ -9,7 +9,7 @@
 </head>
 <body>
 
-	<h1>El parámetro ciudad no puede estar vacío</h1>
+	<h1>No se encontro ningún resultado con ese nombre de ciudad</h1>
 
 	<a class="button" href="javascript:history.back()"> Volver Atrás</a>
 

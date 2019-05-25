@@ -63,10 +63,25 @@ public class PlacesSearchController extends HttpServlet {
 			rd = request.getRequestDispatcher("error/.jsp");
 		}else {
 		log.log(Level.FINE, "Aqui estamos: -----------------------------------------------------------");
+		
 		WeatherSearchResource items = new WeatherSearchResource();
 
-		SearchWeather weather = items.getWeather(lugar);
+		SearchWeather weather = null;
+		try {
+			
+		
+		 weather = items.getWeather(lugar);
+		
+		} catch (Exception e) {
 
+			rd = request.getRequestDispatcher("/errorCiudad.jsp");
+			
+
+			log.log(Level.INFO, "Has dejado la ciudad en blanco");
+			
+			rd.forward(request, response);
+		}
+		
 		List<aiss.model.weather.List> tiempo = weather.getList();
 
 		List<Weather> weather2 = new ArrayList<>();
