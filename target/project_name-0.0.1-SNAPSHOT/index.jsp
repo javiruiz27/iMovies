@@ -39,12 +39,16 @@
 			
 		</form>
 	</div>
-	
+	<br></br>
+	<div class="centrado_inicialText" id="">
+    <a class="button" href="/googleDriveFileList">Google Drive</a>
+</div>
 
 
 
 	<img class="logo" src="images/logo.jpeg"
 		alt="Fallo en la carga de imagen">
+		<input type="hidden"value='${sessionScope["GoogleDrive-token"]}'>
 
 
 </body>

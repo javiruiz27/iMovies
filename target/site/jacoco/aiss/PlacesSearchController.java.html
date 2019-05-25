@@ -94,44 +94,58 @@ public class PlacesSearchController extends HttpServlet {
 
 		}
 
-<span class="nc" id="L97">		Search cines = places.getPlaces(lugar);</span>
+		
 
-<span class="nc" id="L99">		Date dNow = new Date();</span>
-<span class="nc" id="L100">		SimpleDateFormat ft = new SimpleDateFormat(&quot;MM/dd/yyyy HH:mm&quot;);</span>
-<span class="nc" id="L101">		Calendar calendar = Calendar.getInstance();</span>
-<span class="nc" id="L102">		calendar.setTime(dNow); // tuFechaBase es un Date;</span>
 
-<span class="nc" id="L104">		List&lt;String&gt; fechas = new ArrayList&lt;&gt;();</span>
+<span class="nc" id="L100">		Date dNow = new Date();</span>
+<span class="nc" id="L101">		SimpleDateFormat ft = new SimpleDateFormat(&quot;MM/dd/yyyy HH:mm&quot;);</span>
+<span class="nc" id="L102">		Calendar calendar = Calendar.getInstance();</span>
+<span class="nc" id="L103">		calendar.setTime(dNow); // tuFechaBase es un Date;</span>
 
-<span class="nc bnc" id="L106" title="All 2 branches missed.">		for (int i = 0; i &lt; tiempo.size(); i++) {</span>
-<span class="nc" id="L107">			calendar.add(Calendar.HOUR, 3);</span>
-<span class="nc" id="L108">			Date fechaSalida = calendar.getTime();</span>
-<span class="nc" id="L109">			String fechaFormateada = ft.format(fechaSalida);</span>
+<span class="nc" id="L105">		List&lt;String&gt; fechas = new ArrayList&lt;&gt;();</span>
 
-<span class="nc" id="L111">			fechas.add(fechaFormateada);</span>
+<span class="nc bnc" id="L107" title="All 2 branches missed.">		for (int i = 0; i &lt; tiempo.size(); i++) {</span>
+<span class="nc" id="L108">			calendar.add(Calendar.HOUR, 3);</span>
+<span class="nc" id="L109">			Date fechaSalida = calendar.getTime();</span>
+<span class="nc" id="L110">			String fechaFormateada = ft.format(fechaSalida);</span>
+
+<span class="nc" id="L112">			fechas.add(fechaFormateada);</span>
 
 		}
-
-<span class="nc" id="L115">		List&lt;Result&gt; result = cines.getResults();</span>
-
-<span class="nc bnc" id="L117" title="All 4 branches missed.">		if (result.size() &gt; 0 &amp;&amp; tiempo.size() &gt; 0) {</span>
-<span class="nc" id="L118">			rd = request.getRequestDispatcher(&quot;/listadoCines.jsp&quot;);</span>
-<span class="nc" id="L119">			request.setAttribute(&quot;lugar&quot;, lugar);</span>
-<span class="nc" id="L120">			request.setAttribute(&quot;cines&quot;, result);</span>
-<span class="nc" id="L121">			request.setAttribute(&quot;tiempo&quot;, tiempo);</span>
-<span class="nc" id="L122">			request.setAttribute(&quot;fechas&quot;, fechas);</span>
-<span class="nc" id="L123">			request.setAttribute(&quot;weather2&quot;, weather2);</span>
-<span class="nc" id="L124">			request.setAttribute(&quot;description&quot;, description);</span>
-<span class="nc" id="L125">			request.setAttribute(&quot;urls&quot;, urls);</span>
-<span class="nc" id="L126">			request.setAttribute(&quot;temperatura&quot;, temperatura);</span>
-<span class="nc" id="L127">			log.log(Level.INFO, &quot;Se han cargado los cines y el tiempo de &quot; + lugar);</span>
-<span class="nc" id="L128">		} else {</span>
-<span class="nc" id="L129">			log.log(Level.INFO, &quot;Ha ocurrido un error al cargar los cines o el timepo  de &quot; + lugar);</span>
-<span class="nc" id="L130">			rd = request.getRequestDispatcher(&quot;/errorCiudad.jsp&quot;);</span>
+		
+			
+<span class="nc" id="L117">		Search cines = places.getPlaces(lugar);</span>
+		
+<span class="nc" id="L119">		List&lt;String&gt; urlCine= new ArrayList&lt;&gt;();</span>
+<span class="nc" id="L120">		List&lt;Result&gt; result = cines.getResults();</span>
+<span class="nc bnc" id="L121" title="All 2 branches missed.">		for(int x = 0; x&lt;result.size(); x++ ) {</span>
+<span class="nc" id="L122">			urlCine.add(&quot;https://www.google.com/maps/search/&quot;</span>
+<span class="nc" id="L123">					+ &quot;?api=1&amp;query=&quot;+ result.get(x).getGeometry()</span>
+<span class="nc" id="L124">					.getLocation().getLat()+&quot;,&quot;+result.get(x).getGeometry().getLocation().getLng());</span>
+			
 		}
-<span class="nc" id="L132">		rd.forward(request, response);</span>
 
-<span class="nc" id="L134">	}</span>
+	
+
+<span class="nc bnc" id="L130" title="All 4 branches missed.">		if (result.size() &gt; 0 &amp;&amp; tiempo.size() &gt; 0) {</span>
+<span class="nc" id="L131">			rd = request.getRequestDispatcher(&quot;/listadoCines.jsp&quot;);</span>
+<span class="nc" id="L132">			request.setAttribute(&quot;lugar&quot;, lugar);</span>
+<span class="nc" id="L133">			request.setAttribute(&quot;cines&quot;, result);</span>
+<span class="nc" id="L134">			request.setAttribute(&quot;tiempo&quot;, tiempo);</span>
+<span class="nc" id="L135">			request.setAttribute(&quot;fechas&quot;, fechas);</span>
+<span class="nc" id="L136">			request.setAttribute(&quot;weather2&quot;, weather2);</span>
+<span class="nc" id="L137">			request.setAttribute(&quot;description&quot;, description);</span>
+<span class="nc" id="L138">			request.setAttribute(&quot;urls&quot;, urls);</span>
+<span class="nc" id="L139">			request.setAttribute(&quot;urlCine&quot;, urlCine);</span>
+<span class="nc" id="L140">			request.setAttribute(&quot;temperatura&quot;, temperatura);</span>
+<span class="nc" id="L141">			log.log(Level.INFO, &quot;Se han cargado los cines y el tiempo de &quot; + lugar);</span>
+<span class="nc" id="L142">		} else {</span>
+<span class="nc" id="L143">			log.log(Level.INFO, &quot;Ha ocurrido un error al cargar los cines o el timepo  de &quot; + lugar);</span>
+<span class="nc" id="L144">			rd = request.getRequestDispatcher(&quot;/errorCiudad.jsp&quot;);</span>
+		}
+<span class="nc" id="L146">		rd.forward(request, response);</span>
+
+<span class="nc" id="L148">	}</span>
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
@@ -140,8 +154,8 @@ public class PlacesSearchController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-<span class="nc" id="L143">		doGet(request, response);</span>
-<span class="nc" id="L144">	}</span>
+<span class="nc" id="L157">		doGet(request, response);</span>
+<span class="nc" id="L158">	}</span>
 
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.3.201901230119</span></div></body></html>

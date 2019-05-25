@@ -26,7 +26,7 @@
 			</div>
 		<div id =urlCines>
 		<c:forEach items="${requestScope.urlCine}" var="url" end="8">
-		<a href="${url}"><c:out value="${url}"/></a><br><br>
+		<a  target="_blank"href="${url}">IR AL CINE</a><br><br>
 			</c:forEach>
 			</div>
 			

@@ -11,6 +11,11 @@
 <link rel="stylesheet" href="css/iMovies.css">
 </head>
 <body>
+<% String controller = "/googleDriveFileNew"; %>
+
+<c:if test="${not empty file}">
+    <% controller = "/googleDriveFileUpdate";%>
+</c:if>
 
 
 	<img alt="Poster" src="${requestScope.url2}"> 	
@@ -40,6 +45,15 @@
 			<input	class="button" type="submit" name="searchBtn" title="search"
 				value="Valorar">
 	</form>
+	
+	<form action="<%= controller%>" method="post">
+		<p>Añade la pelicula a Google Drive</p>
+			<input type="hidden" name="id" value="${file.id}"/>
+			<input type="hidden" name="title" id="title" value="${requestScope.titulo}">
+			<input type="hidden" name="content" value="${requestScope.overview}"> 
+			<input	class="button" type="submit" name="searchBtn" title="search"
+				value="Añadir">
+	</form>
 
 	<fieldset>
 		<legend>
@@ -68,13 +82,12 @@
 	</fieldset>
 	
 
-<a class="" href="index2.jsp">Google Drive</a>
 <br></br>
-	<a class="" href="index.jsp">Inicio</a>
+	<a class="button" href="index.jsp">Inicio</a>
 	
 
 	
-	<a href="javascript:history.back()"> Volver Atrás</a>
+	<a class="button" href="javascript:history.back()"> Volver Atrás</a>
 	
 	
 	
