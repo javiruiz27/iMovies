@@ -15,7 +15,7 @@
 <p> Error al cargar imagen</p>
 <br>
 
-	<fieldset>
+	<fieldset>  
 		<legend>
 			Mostrando información de "
 			<c:out value="${requestScope.titulo}" />

@@ -57,9 +57,12 @@ public class PlacesSearchController extends HttpServlet {
 
 	
 //https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=CnRtAAAATLZNl354RwP_9UKbQ_5Psy40texXePv4oAlgP4qNEkdIrkyse7rPXYGd9D_Uj1rVsQdWT4oRz4QrYAJNpFX7rzqqMlZw2h2E2y5IKMUZ7ouD_SlcHxYq1yL4KbKUv3qtWgTK0A6QbGh87GB3sscrHRIQiG2RrmU_jF4tENr9wGS_YxoUSSDrYjWmrNfeEHSGSc3FyhNLlBU&key=YOUR_API_KEY
-		
+		log.log(Level.FINE, "Aqui estamos: ");
 		PlacesSearchResource places = new PlacesSearchResource();
-
+		if(places.equals(null)) {
+			rd = request.getRequestDispatcher("error/.jsp");
+		}else {
+		log.log(Level.FINE, "Aqui estamos: -----------------------------------------------------------");
 		WeatherSearchResource items = new WeatherSearchResource();
 
 		SearchWeather weather = items.getWeather(lugar);
@@ -113,8 +116,9 @@ public class PlacesSearchController extends HttpServlet {
 
 		}
 		
-			
+		log.log(Level.FINE, "Aqui estamos: --------------------------------");	
 		Search cines = places.getPlaces(lugar);
+		log.log(Level.FINE, "Aqui estamos: --------------------------------" + cines);
 		
 		List<String> urlCine= new ArrayList<>();
 		List<Result> result = cines.getResults();
@@ -144,7 +148,7 @@ public class PlacesSearchController extends HttpServlet {
 			rd = request.getRequestDispatcher("/errorCiudad.jsp");
 		}
 		rd.forward(request, response);
-
+		}
 	}
 
 	/**
