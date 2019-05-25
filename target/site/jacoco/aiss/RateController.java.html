@@ -19,59 +19,70 @@ import aiss.model.tmdb.Rate;
 public class RateController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 <span class="nc" id="L21">	private static final Logger log = Logger.getLogger(RateController.class.getName());</span>
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public RateController() {
-<span class="nc" id="L27">        super();</span>
-        // TODO Auto-generated constructor stub
-<span class="nc" id="L29">    }</span>
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-<span class="nc" id="L35">		RequestDispatcher rd = null;</span>
+	public RateController() {
+<span class="nc" id="L27">		super();</span>
+		// TODO Auto-generated constructor stub
+<span class="nc" id="L29">	}</span>
 
-		
-<span class="nc" id="L38">		String idmovie = request.getParameter(&quot;idpelicula&quot;);</span>
-<span class="nc" id="L39">		Double rate = Double.parseDouble(request.getParameter(&quot;rate&quot;));</span>
-		
-		
-		
-<span class="nc bnc" id="L43" title="All 8 branches missed.">		if((idmovie!=null || rate != null) &amp;&amp; (rate&gt;=0.5 &amp;&amp; rate &lt;=10)) {</span>
-<span class="nc" id="L44">			TMDBSearchResource sr = new TMDBSearchResource();</span>
-		
-<span class="nc" id="L46">			Rate res = new Rate();</span>
-			
-<span class="nc" id="L48">			res.setValue((double)rate);</span>
-			
-<span class="nc" id="L50">			sr.postRate(idmovie, res);</span>
-			
-<span class="nc" id="L52">			request.setAttribute(&quot;idmovie&quot;, idmovie);</span>
-<span class="nc" id="L53">			request.setAttribute(&quot;rate&quot;, rate);</span>
-<span class="nc" id="L54">			log.log(Level.INFO, &quot;No hay problemas&quot;);</span>
-<span class="nc" id="L55">			log.log(Level.INFO, &quot;Valor de rate:&quot; + res);</span>
-<span class="nc" id="L56">			log.log(Level.INFO, &quot;Valor de id:&quot; + idmovie);</span>
-<span class="nc" id="L57">			rd = request.getRequestDispatcher(&quot;/rateCompleted.jsp&quot;);</span>
-			
-<span class="nc" id="L59">		}else {</span>
-<span class="nc" id="L60">			rd=request.getRequestDispatcher(&quot;/errorRate.jsp&quot;);</span>
-<span class="nc" id="L61">			log.log(Level.INFO, &quot;No se ha podido valorar&quot;);</span>
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+<span class="nc" id="L37">		RequestDispatcher rd = null;</span>
+<span class="nc" id="L38">		Double rate = 11.;</span>
+
+<span class="nc" id="L40">		String idmovie = request.getParameter(&quot;idpelicula&quot;);</span>
+<span class="nc bnc" id="L41" title="All 2 branches missed.">		if (request.getParameter(&quot;rate&quot;).length() != 0) {</span>
+
+<span class="nc" id="L43">			rate = Double.parseDouble(request.getParameter(&quot;rate&quot;));</span>
+<span class="nc" id="L44">		} else {</span>
+
+<span class="nc" id="L46">			rd = request.getRequestDispatcher(&quot;/index.jsp&quot;);</span>
+
+<span class="nc" id="L48">			log.log(Level.INFO, &quot;Has dejado la valoracion en blanco&quot;);</span>
+
 		}
-		
-<span class="nc" id="L64">		log.log(Level.INFO, &quot;Se han mandado los datos de&quot; + idmovie);</span>
-<span class="nc" id="L65">		rd.forward(request, response);</span>
-		
-<span class="nc" id="L67">	}</span>
+
+<span class="nc bnc" id="L52" title="All 10 branches missed.">		if ((idmovie != null || rate != null) &amp;&amp; (rate &gt;= 0.5 &amp;&amp; rate &lt;= 10) &amp;&amp; (rate.toString().length() &gt; 0)) {</span>
+<span class="nc" id="L53">			TMDBSearchResource sr = new TMDBSearchResource();</span>
+
+<span class="nc" id="L55">			Rate res = new Rate();</span>
+
+<span class="nc" id="L57">			res.setValue((double) rate);</span>
+
+<span class="nc" id="L59">			sr.postRate(idmovie, res);</span>
+
+<span class="nc" id="L61">			request.setAttribute(&quot;idmovie&quot;, idmovie);</span>
+<span class="nc" id="L62">			request.setAttribute(&quot;rate&quot;, rate);</span>
+<span class="nc" id="L63">			log.log(Level.INFO, &quot;No hay problemas&quot;);</span>
+<span class="nc" id="L64">			log.log(Level.INFO, &quot;Valor de rate:&quot; + res);</span>
+<span class="nc" id="L65">			log.log(Level.INFO, &quot;Valor de id:&quot; + idmovie);</span>
+<span class="nc" id="L66">			rd = request.getRequestDispatcher(&quot;/rateCompleted.jsp&quot;);</span>
+
+<span class="nc" id="L68">		} else {</span>
+<span class="nc" id="L69">			rd = request.getRequestDispatcher(&quot;/errorRate.jsp&quot;);</span>
+<span class="nc" id="L70">			log.log(Level.INFO, &quot;No se ha podido valorar&quot;);</span>
+		}
+
+<span class="nc" id="L73">		log.log(Level.INFO, &quot;Se han mandado los datos de&quot; + idmovie);</span>
+<span class="nc" id="L74">		rd.forward(request, response);</span>
+
+<span class="nc" id="L76">	}</span>
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-<span class="nc" id="L73">		doGet(request, response);</span>
-<span class="nc" id="L74">	}</span>
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+<span class="nc" id="L84">		doGet(request, response);</span>
+<span class="nc" id="L85">	}</span>
 
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.3.201901230119</span></div></body></html>

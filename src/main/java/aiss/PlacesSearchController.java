@@ -42,95 +42,96 @@ public class PlacesSearchController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
-		String lugar="hola";
-		
+
+		String lugar = "hola";
+
 		RequestDispatcher rd = null;
 		if (request.getParameter("ciudad").length() != 0) {
 			lugar = request.getParameter("ciudad");
-		}else {
+		} else {
 			rd = request.getRequestDispatcher("/index.jsp");
 
 			log.log(Level.INFO, "Has dejado la ciudad en blanco");
 
 		}
-			
-		
-//https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=CnRtAAAATLZNl354RwP_9UKbQ_5Psy40texXePv4oAlgP4qNEkdIrkyse7rPXYGd9D_Uj1rVsQdWT4oRz4QrYAJNpFX7rzqqMlZw2h2E2y5IKMUZ7ouD_SlcHxYq1yL4KbKUv3qtWgTK0A6QbGh87GB3sscrHRIQiG2RrmU_jF4tENr9wGS_YxoUSSDrYjWmrNfeEHSGSc3FyhNLlBU&key=YOUR_API_KEY
-			
 
-			PlacesSearchResource places = new PlacesSearchResource();
-
-			WeatherSearchResource items = new WeatherSearchResource();
-
-			SearchWeather weather = items.getWeather(lugar);
-
-			List<aiss.model.weather.List> tiempo = weather.getList();
-
-			List<Weather> weather2 = new ArrayList<>();
-			List<String> description = new ArrayList<>();
-			List<String> icon = new ArrayList<>();
-			List<String> urls = new ArrayList<>();
-			List<Double> temperatura = new ArrayList<>();
-
-			for (int i = 0; i < tiempo.size(); i++) {
-				aiss.model.weather.List list = tiempo.get(i);
-				temperatura.add(tiempo.get(i).getMain().getTemp());
-
-				for (int j = 0; j < tiempo.get(i).getWeather().size(); j++) {
-					weather2.add(list.getWeather().get(j));
-
-				}
-			}
-
-			for (int k = 0; k < weather2.size(); k++) {
-
-				description.add(weather2.get(k).getDescription());
-				icon.add(weather2.get(k).getIcon());
-			}
-
-			for (int z = 0; z < icon.size(); z++) {
-				urls.add("https://openweathermap.org/themes/openweathermap/assets/vendor/owm/img/widgets/" + icon.get(z)
-						+ ".png");
-
-			}
-			Search cines=places.getPlaces("lugar");
-			
-			
-			Date dNow = new Date();
-			SimpleDateFormat ft = new SimpleDateFormat("MM/dd/yyyy HH:mm");
-			Calendar calendar = Calendar.getInstance();
-			calendar.setTime(dNow); // tuFechaBase es un Date;
-
-			List<String> fechas = new ArrayList<>();
-
-			for (int i = 0; i < tiempo.size(); i++) {
-				calendar.add(Calendar.HOUR, 3);
-				Date fechaSalida = calendar.getTime();
-				String fechaFormateada = ft.format(fechaSalida);
-
-				fechas.add(fechaFormateada);
-
-			}
-			List<Result> result = cines.getResults();
-			if (result.size() > 0 && tiempo.size() > 0) {
-				rd = request.getRequestDispatcher("/listadoCines.jsp");
-				request.setAttribute("lugar", lugar);
-				request.setAttribute("cines", result);
-				request.setAttribute("tiempo", tiempo);
-				request.setAttribute("fechas", fechas);
-				request.setAttribute("weather2", weather2);
-				request.setAttribute("description", description);
-				request.setAttribute("urls", urls);
-				request.setAttribute("temperatura", temperatura);
-				log.log(Level.INFO, "Se han cargado los cines y el tiempo de " + lugar);
-			} else {
-				log.log(Level.INFO, "Ha ocurrido un error al cargar los cines o el tiempo  de " + lugar);
-				rd = request.getRequestDispatcher("/errorCiudad.jsp");
-			}
-			rd.forward(request, response);
-		}
 	
+//https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=CnRtAAAATLZNl354RwP_9UKbQ_5Psy40texXePv4oAlgP4qNEkdIrkyse7rPXYGd9D_Uj1rVsQdWT4oRz4QrYAJNpFX7rzqqMlZw2h2E2y5IKMUZ7ouD_SlcHxYq1yL4KbKUv3qtWgTK0A6QbGh87GB3sscrHRIQiG2RrmU_jF4tENr9wGS_YxoUSSDrYjWmrNfeEHSGSc3FyhNLlBU&key=YOUR_API_KEY
+		
+		PlacesSearchResource places = new PlacesSearchResource();
+
+		WeatherSearchResource items = new WeatherSearchResource();
+
+		SearchWeather weather = items.getWeather(lugar);
+
+		List<aiss.model.weather.List> tiempo = weather.getList();
+
+		List<Weather> weather2 = new ArrayList<>();
+		List<String> description = new ArrayList<>();
+		List<String> icon = new ArrayList<>();
+		List<String> urls = new ArrayList<>();
+		List<Double> temperatura = new ArrayList<>();
+
+		for (int i = 0; i < tiempo.size(); i++) {
+			aiss.model.weather.List list = tiempo.get(i);
+			temperatura.add(tiempo.get(i).getMain().getTemp());
+
+			for (int j = 0; j < tiempo.get(i).getWeather().size(); j++) {
+				weather2.add(list.getWeather().get(j));
+
+			}
+		}
+
+		for (int k = 0; k < weather2.size(); k++) {
+
+			description.add(weather2.get(k).getDescription());
+			icon.add(weather2.get(k).getIcon());
+		}
+
+		for (int z = 0; z < icon.size(); z++) {
+			urls.add("https://openweathermap.org/themes/openweathermap/assets/vendor/owm/img/widgets/" + icon.get(z)
+					+ ".png");
+
+		}
+
+		Search cines = places.getPlaces(lugar);
+
+		Date dNow = new Date();
+		SimpleDateFormat ft = new SimpleDateFormat("MM/dd/yyyy HH:mm");
+		Calendar calendar = Calendar.getInstance();
+		calendar.setTime(dNow); // tuFechaBase es un Date;
+
+		List<String> fechas = new ArrayList<>();
+
+		for (int i = 0; i < tiempo.size(); i++) {
+			calendar.add(Calendar.HOUR, 3);
+			Date fechaSalida = calendar.getTime();
+			String fechaFormateada = ft.format(fechaSalida);
+
+			fechas.add(fechaFormateada);
+
+		}
+
+		List<Result> result = cines.getResults();
+
+		if (result.size() > 0 && tiempo.size() > 0) {
+			rd = request.getRequestDispatcher("/listadoCines.jsp");
+			request.setAttribute("lugar", lugar);
+			request.setAttribute("cines", result);
+			request.setAttribute("tiempo", tiempo);
+			request.setAttribute("fechas", fechas);
+			request.setAttribute("weather2", weather2);
+			request.setAttribute("description", description);
+			request.setAttribute("urls", urls);
+			request.setAttribute("temperatura", temperatura);
+			log.log(Level.INFO, "Se han cargado los cines y el tiempo de " + lugar);
+		} else {
+			log.log(Level.INFO, "Ha ocurrido un error al cargar los cines o el timepo  de " + lugar);
+			rd = request.getRequestDispatcher("/errorCiudad.jsp");
+		}
+		rd.forward(request, response);
+
+	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
