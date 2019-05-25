@@ -8,6 +8,7 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Información de la película</title>
+<link rel="stylesheet" href="css/iMovies.css">
 </head>
 <body>
 
@@ -33,7 +34,7 @@
 		</span><br />
 
 	 <br>
-			<a class="" href="${requestScope.url3}" target="_blank">VER TRAILER</a>
+			
 		
 
 	</fieldset>

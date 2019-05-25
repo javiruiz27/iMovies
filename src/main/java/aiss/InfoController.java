@@ -41,71 +41,94 @@ public class InfoController extends HttpServlet {
 
 		RequestDispatcher rd = null;
 
+		log.log(Level.FINE, "Aquí estamos 1 -------------------------------------------------");
+
 		TMDBSearchResource tmdb = new TMDBSearchResource();
-		
-		//String url2 = "https://image.tmdb.org/t/p/w500/kqjL17yufvn9OVLyXYpvtyrFfak.jpg";
+
+		// String url2 =
+		// "https://image.tmdb.org/t/p/w500/kqjL17yufvn9OVLyXYpvtyrFfak.jpg";
+
+		// String url2 =
+		// "https://image.tmdb.org/t/p/w500/kqjL17yufvn9OVLyXYpvtyrFfak.jpg";
+
 		String titulo = request.getParameter("titulo");
+		log.log(Level.FINE, "Aquí estamos:" + titulo);
 		String id = request.getParameter("id");
+		log.log(Level.FINE, "Aquí estamos:" + id);
 		String actuales = request.getParameter("actuales");
-
-
-		//String url3= "https://www.themoviedb.org/movie/299537-captain-marvel#play=Z1BCujX3pw8";
+		log.log(Level.FINE, "Aquí estamos:" + actuales);
+		log.log(Level.FINE, "Aquí estamos 2 -------------------------------------------------");
+		// String url3=
+		// "https://www.themoviedb.org/movie/299537-captain-marvel#play=Z1BCujX3pw8";
 		Integer id2 = Integer.parseInt(id);
-		
-		
-		
+		log.log(Level.FINE, "Aquí estamos 3:" + id2);
 		SearchImagen imagen = tmdb.getImagen(id2);
-		
-		
+		log.log(Level.FINE, "Aquí estamos 4:" + imagen);
+
 		List<Poster> imagenes = imagen.getPosters();
-		Poster poster = imagenes.get(0);
-		String url2 ="https://image.tmdb.org/t/p/w300/" + poster.getFilePath();
-		
-		SearchVideo video= tmdb.getVideo(id2);
-		List<Result2> videos= video.getResults();
-		Result2 r2= videos.get(0);
-		String url3= "https://www.youtube.com/v/" + r2.getKey();
-		
-		Details detalles = tmdb.getDetalles(id2);
-		String overview = detalles.getOverview();
-		String imdbID = detalles.getImdbId();
-		String fechaEstreno = detalles.getReleaseDate();
-		Double puntuacion = detalles.getVoteAverage();
+		if (imagenes.isEmpty()) {
+			rd = request.getRequestDispatcher("/infoPeliculasError.jsp");
+			log.log(Level.FINE, "Lo mandamos");
+			rd.forward(request, response);
+		} else {
+			log.log(Level.FINE, "Aquí estamos 5:" + imagenes);
+			Poster poster = imagenes.get(0);
+			log.log(Level.FINE, "Aquí estamos 6:" + poster);
+			String url2 = "https://image.tmdb.org/t/p/w300/" + poster.getFilePath();
+			log.log(Level.FINE, "Aquí estamos 7:" + url2);
+			SearchVideo video = tmdb.getVideo(id2);
+			log.log(Level.FINE, "Aquí estamos .-----:" + video);
+			List<Result2> videos = video.getResults();
+			log.log(Level.FINE, "Aquí estamos:" + videos);
+			Result2 r2 = videos.get(0);
+			log.log(Level.FINE, "Aquí estamos:" + r2);
+			String url3 = "https://www.youtube.com/v/" + r2.getKey();
+			log.log(Level.FINE, "Aquí estamos:" + url3);
+			Details detalles = tmdb.getDetalles(id2);
+			log.log(Level.FINE, "Aquí estamos:" + detalles);
+			String overview = detalles.getOverview();
+			log.log(Level.FINE, "Aquí estamos:" + overview);
+			String imdbID = detalles.getImdbId();
+			log.log(Level.FINE, "Aquí estamos:" + imdbID);
+			String fechaEstreno = detalles.getReleaseDate();
+			log.log(Level.FINE, "Aquí estamos:" + fechaEstreno);
+			Double puntuacion = detalles.getVoteAverage();
+			log.log(Level.FINE, "Aquí estamos:" + puntuacion);
 
-		if(poster.getFilePath()!=null || imagenes.size()!=0 || overview != null && puntuacion>3) {
-			rd = request.getRequestDispatcher("/infoPeliculas.jsp");
-			request.setAttribute("overview", overview);
-			request.setAttribute("imdbID", imdbID);
-			request.setAttribute("titulo", titulo);
-			request.setAttribute("fechaEstreno", fechaEstreno);
-			request.setAttribute("puntuacion", puntuacion);
-			request.setAttribute("url2", url2);
-			request.setAttribute("url3", url3);
-			request.setAttribute("actuales", actuales);
-			
-			log.log(Level.INFO, "No hay problemas");
-			log.log(Level.INFO, "Valor de actuales:" + actuales);
-			
-			
-		}else {
-			rd=request.getRequestDispatcher("/infoPeliculasError.jsp");
-			request.setAttribute("overview", overview);
-			request.setAttribute("imdbID", imdbID);
-			request.setAttribute("titulo", titulo);
-			request.setAttribute("fechaEstreno", fechaEstreno);
-			request.setAttribute("puntuacion", puntuacion);
-			request.setAttribute("url3", url3);
-			request.setAttribute("actuales", actuales);
-			
-			log.log(Level.INFO, "No existen imagenes");
+			log.log(Level.FINE, "Aquí estamos 2");
+
+			if (poster.getFilePath() != null && imagenes.size() != 0 && overview != null && puntuacion > 3
+					&& !url2.isEmpty()) {
+				rd = request.getRequestDispatcher("/infoPeliculas.jsp");
+				request.setAttribute("overview", overview);
+				request.setAttribute("imdbID", imdbID);
+				request.setAttribute("titulo", titulo);
+				request.setAttribute("fechaEstreno", fechaEstreno);
+				request.setAttribute("puntuacion", puntuacion);
+				request.setAttribute("url2", url2);
+				request.setAttribute("url3", url3);
+				request.setAttribute("actuales", actuales);
+
+				log.log(Level.INFO, "No hay problemas");
+				log.log(Level.INFO, "Valor de actuales:" + actuales);
+
+			} else {
+				rd = request.getRequestDispatcher("/infoPeliculasError.jsp");
+				request.setAttribute("overview", overview);
+				request.setAttribute("imdbID", imdbID);
+				request.setAttribute("titulo", titulo);
+				request.setAttribute("fechaEstreno", fechaEstreno);
+				request.setAttribute("puntuacion", puntuacion);
+				request.setAttribute("url3", url3);
+				request.setAttribute("actuales", actuales);
+
+				log.log(Level.INFO, "No existen imagenes");
+			}
+
+			log.log(Level.INFO, "Mostrando información detallada de: " + titulo + " con id: " + id);
+			rd.forward(request, response);
+
 		}
-	
-		
-
-		log.log(Level.INFO, "Mostrando información detallada de: " + titulo + " con id: " + id);
-		rd.forward(request, response);
-		
-		
 
 	}
 
