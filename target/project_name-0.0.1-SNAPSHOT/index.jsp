@@ -10,7 +10,6 @@
 <body>
 
 
-
 	<div class="centrado_inicialTit">
 		<h1>iMovies</h1>
 	</div>
@@ -44,11 +43,19 @@
     <a class="button" href="/googleDriveFileList">Google Drive</a>
 </div>
 
+<br></br>
+	<div class="centrado_inicialText" id="">
+    <a class="button" href="https://5-dot-imovies-234214.appspot.com/docs/index.html">Documentación de la API</a>
+</div>
+
+
 
 
 	<img class="logo" src="images/logo.jpeg"
 		alt="Fallo en la carga de imagen">
 		<input type="hidden"value='${sessionScope["GoogleDrive-token"]}'>
+
+
 
 
 </body>

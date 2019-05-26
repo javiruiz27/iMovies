@@ -14,12 +14,12 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @JsonPropertyOrder({
     &quot;location&quot;
 })
-<span class="nc" id="L17">public class Geometry {</span>
+<span class="fc" id="L17">public class Geometry {</span>
 
     @JsonProperty(&quot;location&quot;)
     private Location location;
     @JsonIgnore
-<span class="nc" id="L22">    private Map&lt;String, Object&gt; additionalProperties = new HashMap&lt;String, Object&gt;();</span>
+<span class="fc" id="L22">    private Map&lt;String, Object&gt; additionalProperties = new HashMap&lt;String, Object&gt;();</span>
 
     @JsonProperty(&quot;location&quot;)
     public Location getLocation() {
@@ -28,8 +28,8 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
     @JsonProperty(&quot;location&quot;)
     public void setLocation(Location location) {
-<span class="nc" id="L31">        this.location = location;</span>
-<span class="nc" id="L32">    }</span>
+<span class="fc" id="L31">        this.location = location;</span>
+<span class="fc" id="L32">    }</span>
 
     @JsonAnyGetter
     public Map&lt;String, Object&gt; getAdditionalProperties() {
@@ -38,8 +38,8 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
     @JsonAnySetter
     public void setAdditionalProperty(String name, Object value) {
-<span class="nc" id="L41">        this.additionalProperties.put(name, value);</span>
-<span class="nc" id="L42">    }</span>
+<span class="fc" id="L41">        this.additionalProperties.put(name, value);</span>
+<span class="fc" id="L42">    }</span>
 
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.3.201901230119</span></div></body></html>

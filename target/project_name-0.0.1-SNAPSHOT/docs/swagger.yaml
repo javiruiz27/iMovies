@@ -70,6 +70,8 @@ paths:
           description: La petición se ha completado con éxito pero su respuesta no tiene ningún contenido
         400:
           description:  La solicitud contiene sintaxis errónea:movie invalid
+        500:
+          description: La petición no se ha completado porque el parámetro de entrada no corresponde con ningún elemento.
        
   /movies:
     post:

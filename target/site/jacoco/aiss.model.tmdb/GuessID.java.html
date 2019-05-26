@@ -16,7 +16,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
     &quot;guest_session_id&quot;,
     &quot;expires_at&quot;
 })
-<span class="nc" id="L19">public class GuessID {</span>
+<span class="fc" id="L19">public class GuessID {</span>
 
     @JsonProperty(&quot;success&quot;)
     private Boolean success;
@@ -25,7 +25,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
     @JsonProperty(&quot;expires_at&quot;)
     private String expiresAt;
     @JsonIgnore
-<span class="nc" id="L28">    private Map&lt;String, Object&gt; additionalProperties = new HashMap&lt;String, Object&gt;();</span>
+<span class="fc" id="L28">    private Map&lt;String, Object&gt; additionalProperties = new HashMap&lt;String, Object&gt;();</span>
 
     @JsonProperty(&quot;success&quot;)
     public Boolean getSuccess() {
@@ -34,18 +34,18 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
     @JsonProperty(&quot;success&quot;)
     public void setSuccess(Boolean success) {
-<span class="nc" id="L37">        this.success = success;</span>
-<span class="nc" id="L38">    }</span>
+<span class="fc" id="L37">        this.success = success;</span>
+<span class="fc" id="L38">    }</span>
 
     @JsonProperty(&quot;guest_session_id&quot;)
     public String getGuestSessionId() {
-<span class="nc" id="L42">        return guestSessionId;</span>
+<span class="fc" id="L42">        return guestSessionId;</span>
     }
 
     @JsonProperty(&quot;guest_session_id&quot;)
     public void setGuestSessionId(String guestSessionId) {
-<span class="nc" id="L47">        this.guestSessionId = guestSessionId;</span>
-<span class="nc" id="L48">    }</span>
+<span class="fc" id="L47">        this.guestSessionId = guestSessionId;</span>
+<span class="fc" id="L48">    }</span>
 
     @JsonProperty(&quot;expires_at&quot;)
     public String getExpiresAt() {
@@ -54,8 +54,8 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
     @JsonProperty(&quot;expires_at&quot;)
     public void setExpiresAt(String expiresAt) {
-<span class="nc" id="L57">        this.expiresAt = expiresAt;</span>
-<span class="nc" id="L58">    }</span>
+<span class="fc" id="L57">        this.expiresAt = expiresAt;</span>
+<span class="fc" id="L58">    }</span>
 
     @JsonAnyGetter
     public Map&lt;String, Object&gt; getAdditionalProperties() {

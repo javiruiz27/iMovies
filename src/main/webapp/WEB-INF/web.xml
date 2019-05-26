@@ -11,49 +11,7 @@
   <welcome-file-list>
     <welcome-file>index.jsp</welcome-file>
   </welcome-file-list>
-  <servlet>
-    <description></description>
-    <display-name>FacebookAuthController</display-name>
-    <servlet-name>FacebookAuthController</servlet-name>
-    <servlet-class>aiss.controller.oauth.GenericAuthController</servlet-class>
-    <init-param>
-      <param-name>provider</param-name>
-      <param-value>Facebook</param-value>
-    </init-param>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>FacebookAuthController</servlet-name>
-    <url-pattern>/AuthController/Facebook</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <description></description>
-    <display-name>FacebookAuth2Callback</display-name>
-    <servlet-name>FacebookOAuth2Callback</servlet-name>
-    <servlet-class>aiss.controller.oauth.OAuth2Callback</servlet-class>
-    <init-param>
-      <param-name>provider</param-name>
-      <param-value>Facebook</param-value>
-    </init-param>
-    <init-param>
-      <param-name>onSuccess</param-name>
-      <param-value>redirect:/facebookFriendsListing</param-value>
-    </init-param>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>FacebookOAuth2Callback</servlet-name>
-    <url-pattern>/oauth2callback/Facebook</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <description></description>
-    <display-name>SearchMoviesController</display-name>
-    <servlet-name>SearchMoviesController</servlet-name>
-    <servlet-class>aiss.SearchMoviesController</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>SearchMoviesController</servlet-name>
-    <url-pattern>/SearchMoviesController</url-pattern>
-  </servlet-mapping>
-  <servlet>
+	<servlet>
     <description></description>
     <display-name>PeliculasActualesSearchController</display-name>
     <servlet-name>PeliculasActualesSearchController</servlet-name>
@@ -104,16 +62,6 @@
     <url-pattern>/RateController</url-pattern>
   </servlet-mapping>
   <servlet>
-    <description></description>
-    <display-name>ListCalendarSearchController</display-name>
-    <servlet-name>ListCalendarSearchController</servlet-name>
-    <servlet-class>aiss.ListCalendarSearchController</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>ListCalendarSearchController</servlet-name>
-    <url-pattern>/ListCalendarSearchController</url-pattern>
-  </servlet-mapping>
-  <servlet>
     <servlet-name>GoogleDriveFileListController</servlet-name>
     <servlet-class>aiss.GoogleDriveFileListController</servlet-class>
   </servlet>
@@ -144,36 +92,6 @@
   <servlet-mapping>
     <servlet-name>GoogleDriveFileNewController</servlet-name>
     <url-pattern>/googleDriveFileNew</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <description></description>
-    <servlet-name>GoogleCalendarAuthController</servlet-name>
-    <servlet-class>aiss.controller.oauth.GenericAuthController</servlet-class>
-    <init-param>
-      <param-name>provider</param-name>
-      <param-value>GoogleCalendar</param-value>
-    </init-param>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>GoogleCalendarAuthController</servlet-name>
-    <url-pattern>/AuthController/GoogleCalendar</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <description></description>
-    <servlet-name>GoogleCalendarOAuth2Callback</servlet-name>
-    <servlet-class>aiss.controller.oauth.OAuth2Callback</servlet-class>
-    <init-param>
-      <param-name>provider</param-name>
-      <param-value>GoogleCalendar</param-value>
-    </init-param>
-    <init-param>
-      <param-name>onSuccess</param-name>
-      <param-value>redirect:/muestraCalendario</param-value>
-    </init-param>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>GoogleCalendarOAuth2Callback</servlet-name>
-    <url-pattern>/oauth2callback/GoogleCalendar</url-pattern>
   </servlet-mapping>
   <context-param>
     <param-name>resteasy.servlet.mapping.prefix</param-name>
@@ -220,15 +138,5 @@
   <servlet-mapping>
     <servlet-name>GoogleDriveOAuth2Callback</servlet-name>
     <url-pattern>/oauth2callback/GoogleDrive</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <description></description>
-    <display-name>WeatherSearchController</display-name>
-    <servlet-name>WeatherSearchController</servlet-name>
-    <servlet-class>aiss.WeatherSearchController</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>WeatherSearchController</servlet-name>
-    <url-pattern>/WeatherSearchController</url-pattern>
   </servlet-mapping>
 </web-app>

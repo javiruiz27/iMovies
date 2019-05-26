@@ -14,12 +14,12 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @JsonPropertyOrder({
     &quot;open_now&quot;
 })
-<span class="nc" id="L17">public class OpeningHours {</span>
+<span class="fc" id="L17">public class OpeningHours {</span>
 
     @JsonProperty(&quot;open_now&quot;)
     private Boolean openNow;
     @JsonIgnore
-<span class="nc" id="L22">    private Map&lt;String, Object&gt; additionalProperties = new HashMap&lt;String, Object&gt;();</span>
+<span class="fc" id="L22">    private Map&lt;String, Object&gt; additionalProperties = new HashMap&lt;String, Object&gt;();</span>
 
     @JsonProperty(&quot;open_now&quot;)
     public Boolean getOpenNow() {
@@ -28,8 +28,8 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
     @JsonProperty(&quot;open_now&quot;)
     public void setOpenNow(Boolean openNow) {
-<span class="nc" id="L31">        this.openNow = openNow;</span>
-<span class="nc" id="L32">    }</span>
+<span class="fc" id="L31">        this.openNow = openNow;</span>
+<span class="fc" id="L32">    }</span>
 
     @JsonAnyGetter
     public Map&lt;String, Object&gt; getAdditionalProperties() {

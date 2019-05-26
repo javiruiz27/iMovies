@@ -16,7 +16,7 @@ public class PlacesTest {
 	@Test
 	public void getCines() throws UnsupportedEncodingException {
 
-		String lugar = "sevilla";
+		String lugar = "Jaén";
 
 		PlacesSearchResource places = new PlacesSearchResource();
 
@@ -24,15 +24,18 @@ public class PlacesTest {
 
 		List<Result> result = search.getResults();
 
-		for (Result vr : result) {
+		if (result.size() != 0) {
+			for (Result vr : result) {
 
-			String key = vr.getName();
-			System.out.println(key);
+				String key = vr.getName();
+				System.out.println(key);
+
+			}
+		} else {
+			System.out.println("La ciudad introducida no se encuentra en nuestra base de datos,");
+			System.out.println("revise la escritura o el idioma introducido.");
 
 		}
 
 	}
-	
-
-
 }

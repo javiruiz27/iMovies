@@ -31,9 +31,15 @@ public class TMDBTest {
 		String name = "Avengers";
 		TMDBSearchResource tmdb = new TMDBSearchResource();
 		SearchMovie result = tmdb.getMovieByName(name);
-		Result res = result.getResults().get(0);
+		try {
+			Result res = result.getResults().get(0);
+			System.out.println(res.getOriginalTitle());
+		} catch (Exception e) {
+			System.out.println("La película introducida no se encuentra en nuestra base de datos,");
+			System.out.println("revise la escritura o el idioma introducido.");
+		}
 		
-		System.out.println(res.getOriginalTitle());
+		
 		
 	}
 	

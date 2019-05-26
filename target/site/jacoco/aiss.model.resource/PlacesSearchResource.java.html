@@ -7,18 +7,18 @@ import org.restlet.resource.ClientResource;
 
 import aiss.model.places.Search;
 
-<span class="nc" id="L10">public class PlacesSearchResource {</span>
+<span class="fc" id="L10">public class PlacesSearchResource {</span>
 
 	private static final String PLACES_API_KEY = &quot;AIzaSyCNEj2orEZ7nDkXBf6rDJCwpBD2dpAJelM&quot;;
-<span class="nc" id="L13">	private static final Logger log = Logger.getLogger(PlacesSearchResource.class.getName());</span>
+<span class="fc" id="L13">	private static final Logger log = Logger.getLogger(PlacesSearchResource.class.getName());</span>
 
 	public Search getPlaces(String place) throws UnsupportedEncodingException {
-<span class="nc" id="L16">		String url = &quot;https://maps.googleapis.com/maps/api/place/textsearch/json?query=cines+&quot; + place + &quot;&amp;key=&quot;</span>
-<span class="nc" id="L17">				+ PLACES_API_KEY;</span>
-<span class="nc" id="L18">		ClientResource cr = new ClientResource(url);</span>
-<span class="nc" id="L19">		Search result = cr.get(Search.class);</span>
+<span class="fc" id="L16">		String url = &quot;https://maps.googleapis.com/maps/api/place/textsearch/json?query=cines+&quot; + place + &quot;&amp;key=&quot;</span>
+<span class="fc" id="L17">				+ PLACES_API_KEY;</span>
+<span class="fc" id="L18">		ClientResource cr = new ClientResource(url);</span>
+<span class="fc" id="L19">		Search result = cr.get(Search.class);</span>
 
-<span class="nc" id="L21">		return result;</span>
+<span class="fc" id="L21">		return result;</span>
 
 	}
 	
